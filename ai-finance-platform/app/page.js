@@ -190,7 +190,7 @@ const LandingPage = () => {
             {testimonialsData.map((testimonial, index) => (
               <Card key={index} className="testimonial-card p-8 bg-neutral-900 border-neutral-800">
                 <CardContent className="pt-4 h-full flex flex-col justify-between">
-                  <p className="text-neutral-300 text-left italic text-lg leading-relaxed mb-8">"{testimonial.quote}"</p>
+                  <p className="text-neutral-300 text-left italic text-lg leading-relaxed mb-8">&quot;{testimonial.quote}&quot;</p>
                   <div className="flex items-center">
                     <Image
                       src={testimonial.image}
