@@ -36,7 +36,7 @@ const HeroSection = () => {
         yoyo: true,
         ease: "sine.inOut",
       });
-      
+
       gsap.to(glow2Ref.current, {
         x: "random(-150, 150)",
         y: "random(-150, 150)",
@@ -93,7 +93,7 @@ const HeroSection = () => {
     if (!wrapperRef.current) return;
     const { clientX, clientY } = e;
     const { innerWidth, innerHeight } = window;
-    
+
     // Calculate rotation between -10 and 10 degrees based on cursor position
     const xPos = (clientX / innerWidth - 0.5) * 20;
     const yPos = (clientY / innerHeight - 0.5) * -20;
@@ -117,8 +117,8 @@ const HeroSection = () => {
   };
 
   return (
-    <section 
-      ref={containerRef} 
+    <section
+      ref={containerRef}
       className="relative pt-40 pb-20 px-4 bg-background text-foreground overflow-hidden"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
@@ -152,7 +152,7 @@ const HeroSection = () => {
             </Button>
           </Link>
         </div>
-        
+
 
       </div>
     </section>

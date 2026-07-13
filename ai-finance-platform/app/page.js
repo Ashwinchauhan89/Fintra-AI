@@ -11,6 +11,7 @@ import {
   testimonialsData,
 } from "@/data/landing";
 import HeroSection from "@/components/hero";
+import AboutSection from "@/components/about-section";
 import Link from "next/link";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -118,6 +119,9 @@ const LandingPage = () => {
 
       {/* Hero Section */}
       <HeroSection />
+
+      {/* About Section */}
+      <AboutSection />
 
       {/* Stats Section */}
       <section className="stats-section py-20 bg-neutral-950 border-t border-neutral-900">
