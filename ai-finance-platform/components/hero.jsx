@@ -8,8 +8,9 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TextPlugin } from "gsap/TextPlugin";
+import { GSDevTools } from "@/lib/gsap/GSDevTools";
 
-gsap.registerPlugin(ScrollTrigger, TextPlugin);
+gsap.registerPlugin(ScrollTrigger, TextPlugin, GSDevTools);
 
 const HeroSection = () => {
   const containerRef = useRef(null);
@@ -81,28 +82,8 @@ const HeroSection = () => {
           "-=0.5"
         );
 
-      // Scroll animation for image
-      gsap.fromTo(
-        imageRef.current,
-        {
-          rotateX: 15,
-          scale: 0.8,
-          y: 100,
-          opacity: 0,
-        },
-        {
-          rotateX: 0,
-          scale: 1,
-          y: 0,
-          opacity: 1,
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 20%",
-            end: "bottom top",
-            scrub: 1,
-          },
-        }
-      );
+      // Add GSDevTools to debug the intro timeline
+      GSDevTools.create({ animation: tl });
     },
     { scope: containerRef }
   );
@@ -172,18 +153,7 @@ const HeroSection = () => {
           </Link>
         </div>
         
-        <div ref={wrapperRef} className="hero-image-wrapper perspective-[1200px] mt-10 md:mt-0 px-4">
-          <div ref={imageRef} className="hero-image rounded-xl border border-neutral-800/80 shadow-[0_30px_100px_rgba(136,206,2,0.15)] bg-neutral-950 p-2 transform-style-3d overflow-hidden">
-            <Image
-              src="/banner.png"
-              width={1280}
-              height={720}
-              alt="Dashboard Preview"
-              className="rounded-lg mx-auto opacity-90 hover:opacity-100 transition-opacity duration-500"
-              priority
-            />
-          </div>
-        </div>
+
       </div>
     </section>
   );
