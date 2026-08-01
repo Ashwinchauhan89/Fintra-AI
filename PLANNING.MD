@@ -1,394 +1,350 @@
-# 🚀 Fintra-AI Development Planning
+<div align="center">
 
-> AI-Powered Personal Finance Management Platform
+# 💸 Fintra-AI
 
-This document outlines the development roadmap, milestones, and modules for **Fintra-AI**. It serves as a guide for maintainers, contributors, and IEEE Summer of Code participants.
+### 🚀 AI-Powered Personal Finance Management Platform
 
----
+Manage your finances smarter with Artificial Intelligence, Machine Learning, and Modern Cloud Technologies.
 
-# 📌 Vision
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)]()
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)]()
+[![Prisma](https://img.shields.io/badge/Prisma-ORM-2D3748?logo=prisma)]()
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?logo=postgresql)]()
+[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38BDF8?logo=tailwindcss)]()
+[![Clerk](https://img.shields.io/badge/Auth-Clerk-6C47FF)]()
+[![Google Gemini](https://img.shields.io/badge/AI-Google%20Gemini-4285F4)]()
+[![Machine Learning](https://img.shields.io/badge/Machine%20Learning-Enabled-orange)]()
+[![Open Source](https://img.shields.io/badge/Open%20Source-Welcome-success)]()
 
-Build an intelligent, secure, and scalable finance management platform that helps users:
+⭐ Star this repository if you find it useful!
 
-- Track expenses
-- Manage income
-- Create budgets
-- Achieve savings goals
-- Receive AI-powered financial insights
-- Detect fraud
-- Improve financial health
-
----
-
-# 🎯 Objectives
-
-- Develop a production-ready finance platform.
-- Provide beginner-friendly and advanced contribution opportunities.
-- Integrate modern AI capabilities.
-- Maintain clean architecture and high code quality.
-- Foster an active open-source community.
+</div>
 
 ---
 
-# 🗺️ Project Timeline
+# 📖 Overview
 
-## Phase 1 — Foundation
+Fintra-AI is an **AI-powered Personal Finance Management Platform** built with **Next.js**, **Prisma**, **PostgreSQL**, **Google Gemini AI**, and **Machine Learning**.
 
-**Status:** ✅ In Progress
+The platform helps users manage expenses, track income, create budgets, monitor financial health, receive AI-powered recommendations, and leverage predictive analytics for smarter financial decisions.
 
-### Goals
+---
 
-- Project Setup
-- Authentication
-- Database Design
-- Dashboard
+# ✨ Key Features
+
+## 💰 Finance Management
+
 - Expense Tracking
 - Income Tracking
-
-Modules
-
-- Authentication
-- User Profile
-- Dashboard
-- Expense Manager
-- Income Manager
-
----
-
-## Phase 2 — Budget & Analytics
-
-**Status:** 🔄 Planned
-
-Modules
-
-- Budget Planner
+- Budget Planning
 - Savings Goals
-- Analytics Dashboard
+- Financial Dashboard
 - Monthly Reports
-- Charts
-- Category Insights
-
-Deliverables
-
-- Budget Creation
-- Budget Tracking
-- Financial Reports
-- Dashboard Analytics
+- Cash Flow Analysis
+- Multi-Category Expenses
 
 ---
 
-## Phase 3 — AI Features
-
-**Status:** 🧠 Planned
-
-Modules
+## 🤖 Artificial Intelligence
 
 - AI Financial Advisor
-- AI Budget Planner
-- AI Expense Categorization
-- AI Spending Insights
-- AI Savings Suggestions
-- AI Goal Prediction
-
-Deliverables
-
-- Gemini Integration
-- AI Chat
-- Personalized Recommendations
+- AI Budget Suggestions
+- AI Expense Insights
+- AI Goal Planner
+- AI Spending Analysis
+- AI Chat Assistant
+- Personalized Financial Recommendations
 
 ---
 
-## Phase 4 — Advanced Finance
+## 🧠 Machine Learning
 
-Modules
-
-- Investment Tracker
-- Portfolio Management
-- Financial Health Score
-- Tax Assistant
-- Credit Score Estimator
-
-Deliverables
-
-- Investment Dashboard
-- AI Portfolio Suggestions
-
----
-
-## Phase 5 — Security
-
-Modules
-
-- Arcjet Protection
-- Audit Logs
+- Expense Category Prediction
+- Spending Forecasting
+- Budget Prediction
 - Fraud Detection
-- Device Management
-- Login History
-- Session Tracking
-
-Deliverables
-
-- Secure Authentication
-- Threat Detection
-- Risk Analysis
+- Financial Health Score
+- Goal Completion Prediction
+- Investment Recommendation
+- Smart Recommendation Engine
 
 ---
 
-## Phase 6 — Notifications
+## 📊 Analytics
 
-Modules
+- Expense Analytics
+- Income Analytics
+- Spending Trends
+- Financial Reports
+- Interactive Charts
+- Cash Flow Dashboard
+
+---
+
+## 🔐 Security
+
+- Clerk Authentication
+- Arcjet Security
+- Protected APIs
+- Session Management
+- Secure Database
+- Role-Based Access Control
+
+---
+
+## 📧 Notifications
 
 - Email Notifications
-- Push Notifications
-- Monthly Reports
 - Budget Alerts
 - Goal Reminders
+- Monthly Financial Reports
 
 ---
 
-## Phase 7 — Reports
+# 🏗 Tech Stack
 
-Modules
+## Frontend
 
-- PDF Export
-- Excel Export
-- CSV Export
-- Financial Summary
+- Next.js
+- React
+- Tailwind CSS
+- Shadcn UI
 
----
+## Backend
 
-## Phase 8 — Collaboration
+- Next.js Server Actions
+- Prisma ORM
+- PostgreSQL
 
-Modules
+## AI
 
-- Shared Wallet
-- Family Budget
-- Team Workspace
-- Expense Splitting
+- Google Gemini API
 
----
+## Machine Learning
 
-## Phase 9 — Mobile Experience
+- Scikit-Learn
+- TensorFlow
+- PyTorch
+- XGBoost
+- Prophet
 
-Modules
+## Authentication
 
-- Progressive Web App (PWA)
-- Offline Support
-- Mobile UI
-- Installable App
+- Clerk
 
----
+## Email
 
-## Phase 10 — Developer Experience
+- Resend
 
-Modules
+## Security
 
-- Docker
-- GitHub Actions
-- Testing
-- API Documentation
-- Storybook
-- Performance Optimization
+- Arcjet
 
----
+## Deployment
 
-# 📦 Module Breakdown
-
-| Module | Priority | Difficulty |
-|----------|----------|------------|
-| Authentication | High | Beginner |
-| Expense Manager | High | Beginner |
-| Income Manager | High | Beginner |
-| Budget Planner | High | Medium |
-| Dashboard | High | Medium |
-| Reports | Medium | Medium |
-| AI Advisor | High | Advanced |
-| Fraud Detection | High | Advanced |
-| OCR Scanner | Medium | Advanced |
-| Investment Tracker | Medium | Advanced |
-| Notifications | Medium | Beginner |
-| Security | High | Advanced |
+- Vercel
 
 ---
 
-# 🤝 IEEE Summer of Code Contribution Paths
+# 📂 Project Structure
 
-## 🟢 Beginner Friendly
-
-Suitable for first-time contributors.
-
-Examples
-
-- UI Improvements
-- Documentation
-- Bug Fixes
-- Responsive Design
-- Form Validation
-- Dark Mode
-- Charts
-
----
-
-## 🟡 Intermediate
-
-Suitable for developers with experience.
-
-Examples
-
-- API Development
-- Reports
-- Analytics
-- Budget Planner
-- Notifications
-- Database Optimization
+```text
+Fintra-AI
+│
+├── app/
+├── components/
+├── data/
+├── emails/
+├── hooks/
+├── lib/
+├── prisma/
+├── public/
+├── docs/
+│   ├── PLANNING.md
+│   ├── MACHINELEARNING.md
+│   ├── CONTRIBUTING.md
+│   └── ARCHITECTURE.md
+└── README.md
+```
 
 ---
 
-## 🔴 Advanced
+# 🚀 Quick Start
 
-Large proposal-based modules.
+### Clone Repository
 
-Examples
+```bash
+git clone https://github.com/Ashwinchauhan89/Fintra-AI.git
 
-- AI Financial Advisor
-- Fraud Detection
-- OCR Scanner
-- Investment Module
-- AI Copilot
-- Security Enhancements
+cd Fintra-AI
+```
+
+### Install Dependencies
+
+```bash
+npm install
+```
+
+### Configure Environment
+
+Create a `.env` file.
+
+```env
+DATABASE_URL=
+DIRECT_URL=
+
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
+
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/onboarding
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/onboarding
+
+GEMINI_API_KEY=
+
+RESEND_API_KEY=
+
+ARCJET_KEY=
+```
+
+### Setup Database
+
+```bash
+npx prisma generate
+
+npx prisma db push
+```
+
+### Run Development Server
+
+```bash
+npm run dev
+```
+
+Open
+
+```
+http://localhost:3000
+```
 
 ---
 
-# 🏷 GitHub Labels
+# 📚 Documentation
 
-## Difficulty
-
-- good first issue
-- easy
-- medium
-- hard
-
-## Type
-
-- frontend
-- backend
-- database
-- ai
-- security
-- documentation
-- bug
-- enhancement
-- testing
-- performance
+| Document | Description |
+|-----------|-------------|
+| `README.md` | Project Overview |
+| `PLANNING.md` | Complete Development Roadmap |
+| `MACHINELEARNING.md` | Machine Learning Pipeline |
+| `CONTRIBUTING.md` | Contribution Guidelines |
+| `ARCHITECTURE.md` | System Design |
+| `SECURITY.md` | Security Policies |
 
 ---
 
-# 📅 Milestones
+# 🛣 Roadmap
 
-## Milestone 1
+### Phase 1
 
-- Repository Setup
-- Documentation
 - Authentication
 - Dashboard
-
----
-
-## Milestone 2
-
 - Expense Management
 - Income Management
+
+### Phase 2
+
 - Budget Planner
-
----
-
-## Milestone 3
-
 - Reports
 - Analytics
-- Notifications
 
----
+### Phase 3
 
-## Milestone 4
-
-- AI Features
+- AI Financial Advisor
 - Gemini Integration
-- AI Chat
+- Smart Recommendations
 
----
+### Phase 4
 
-## Milestone 5
-
+- Machine Learning
 - Fraud Detection
-- Security
-- Audit Logs
+- Expense Prediction
+- Financial Health Score
 
----
+### Phase 5
 
-## Milestone 6
-
-- OCR
+- OCR Receipt Scanner
 - Investment Tracker
-- Portfolio Analytics
+- Family Wallet
+- PWA Support
+
+📄 See **PLANNING.md** for the complete roadmap.
 
 ---
 
-## Milestone 7
+# 🤝 Contributing
 
-- Mobile Support
-- PWA
-- Performance
-- Deployment
+We welcome developers, designers, AI engineers, and machine learning enthusiasts.
+
+1. Fork the repository.
+2. Create a feature branch.
+3. Commit your changes.
+4. Push your branch.
+5. Open a Pull Request.
+
+Please read **CONTRIBUTING.md** before contributing.
 
 ---
 
-# 🌟 Long-Term Vision
+# 🎯 IEEE Summer of Code 2026
 
-Future enhancements include:
+This repository is designed for open-source collaboration.
+
+Contribution levels:
+
+- 🟢 Beginner — Documentation, UI, Bug Fixes
+- 🟡 Intermediate — APIs, Database, Analytics
+- 🔴 Advanced — AI, Machine Learning, Fraud Detection, OCR
+
+---
+
+# 🌟 Future Goals
 
 - AI Financial Copilot
-- Voice Assistant
-- Smart Receipt Scanner
+- Machine Learning Engine
+- Fraud Detection System
 - Open Banking Integration
+- Voice Finance Assistant
+- Smart Receipt OCR
+- Investment Portfolio Manager
 - Multi-Currency Support
-- Tax Filing Assistant
-- Retirement Planner
-- Wealth Prediction
-- Goal Forecasting
-- Financial Health Score
-- Carbon Footprint Tracking
-- ESG Investment Recommendations
+- Explainable AI
+- MLOps Pipeline
 
 ---
 
+# 📄 License
 
-
----
-
-# 📖 Contribution Workflow
-
-1. Pick an issue.
-2. Discuss the implementation with maintainers.
-3. Create a feature branch.
-4. Develop the solution.
-5. Test thoroughly.
-6. Submit a Pull Request.
-7. Address review feedback.
-8. Merge after approval.
+This project is licensed under the **MIT License**.
 
 ---
 
-# 👨‍💻 Maintainers
+# 👨‍💻 Maintainer
 
-- Ashwin Chauhan (Project Lead)
-- Project Admins
-- IEEE Summer of Code Mentors
+**Ashwin Chauhan**
+
+Project Lead — Fintra-AI
+
+GitHub: https://github.com/Ashwinchauhan89
 
 ---
 
-# ❤️ Thank You
+<div align="center">
 
-Every contribution—whether it's documentation, bug fixes, UI improvements, or advanced AI modules—helps make Fintra-AI better.
+### ⭐ If you like this project, please Star the repository!
 
-Happy Coding! 🚀
+Made with ❤️ using Next.js, Prisma, Gemini AI & Machine Learning.
+
+**Happy Coding! 🚀**
+
+</div>
