@@ -72,7 +72,7 @@ Explore the Fintra-AI platform and its core features through the following scree
 
 <p align="center">
   <img src="Screenshots/image3.png" alt="Fintra-AI Financial Analytics" width="48%">
-  <img src="Screenshots/image4.png" alt="Fintra-AI Analytics Dashboard" width="48%">
+  <img src="Screenshots/image.png" alt="Fintra-AI Analytics Dashboard" width="48%">
 </p>
 
 ---
