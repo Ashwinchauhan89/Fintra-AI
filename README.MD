@@ -57,6 +57,30 @@ The platform combines:
 * ☁️ Cloud-native infrastructure
 * 📈 Predictive financial insights
 
+# 📸 Screenshot Showcase
+
+Explore the Fintra-AI platform and its core features through the following screenshots.
+
+## 🏠 Platform Overview
+
+<p align="center">
+  <img src="Screenshots/image1.png" alt="Fintra-AI Dashboard" width="48%">
+  <img src="Screenshots/image2.png" alt="Fintra-AI Platform" width="48%">
+</p>
+
+## 📊 Financial Analytics
+
+<p align="center">
+  <img src="Screenshots/image3.png" alt="Fintra-AI Financial Analytics" width="48%">
+  <img src="Screenshots/image4.png" alt="Fintra-AI Analytics Dashboard" width="48%">
+</p>
+
+---
+
+### 🚀 Fintra-AI in Action
+
+> From expense tracking and financial analytics to AI-powered insights, Fintra-AI provides an intelligent and modern approach to personal finance management.
+
 ### 🎯 Core Objective
 
 > **Turn financial data into intelligent, personalized, and actionable financial decisions.**
