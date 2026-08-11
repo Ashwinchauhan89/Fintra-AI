@@ -1,0 +1,101 @@
+expense_id,amount,merchant,description,category
+EXP1,78.04,Amazon,fuel purchase,shopping
+EXP2,190.39,Apple Store,online shopping,technology
+EXP3,147.74,McDonald's,app purchase,food
+EXP4,121.74,Starbucks,meal,food
+EXP5,35.42,Netflix,fuel purchase,entertainment
+EXP6,35.42,Amazon,ride to work,shopping
+EXP7,16.33,Starbucks,ride to work,food
+EXP8,173.9,McDonald's,ride to work,food
+EXP9,122.22,Uber,fuel purchase,transport
+EXP10,143.07,Starbucks,coffee purchase,food
+EXP11,9.01,Shell,meal,transport
+EXP12,194.13,Amazon,app purchase,shopping
+EXP13,167.33,Netflix,monthly subscription,entertainment
+EXP14,46.41,McDonald's,coffee purchase,food
+EXP15,40.46,Starbucks,fuel purchase,food
+EXP16,40.76,Shell,app purchase,transport
+EXP17,64.33,Amazon,app purchase,shopping
+EXP18,107.33,Starbucks,coffee purchase,food
+EXP19,89.23,McDonald's,ride to work,food
+EXP20,61.79,Apple Store,online shopping,technology
+EXP21,124.31,Uber,online shopping,transport
+EXP22,32.2,Amazon,online shopping,shopping
+EXP23,61.97,Apple Store,app purchase,technology
+EXP24,76.44,Uber,ride to work,transport
+EXP25,93.93,Apple Store,coffee purchase,technology
+EXP26,158.11,Apple Store,meal,technology
+EXP27,43.94,Shell,meal,transport
+EXP28,105.28,Uber,fuel purchase,transport
+EXP29,120.52,Starbucks,ride to work,food
+EXP30,14.06,Shell,meal,transport
+EXP31,123.47,Amazon,coffee purchase,shopping
+EXP32,38.25,McDonald's,ride to work,food
+EXP33,17.69,Starbucks,app purchase,food
+EXP34,190.03,McDonald's,fuel purchase,food
+EXP35,193.3,Amazon,ride to work,shopping
+EXP36,162.64,Amazon,ride to work,shopping
+EXP37,64.4,Netflix,online shopping,entertainment
+EXP38,24.05,Starbucks,online shopping,food
+EXP39,138.43,Starbucks,ride to work,food
+EXP40,90.83,Amazon,meal,shopping
+EXP41,28.8,Amazon,app purchase,shopping
+EXP42,101.56,Apple Store,online shopping,technology
+EXP43,11.71,McDonald's,monthly subscription,food
+EXP44,182.32,Shell,online shopping,transport
+EXP45,55.46,Uber,coffee purchase,transport
+EXP46,134.19,Apple Store,online shopping,technology
+EXP47,65.78,Starbucks,coffee purchase,food
+EXP48,106.41,Shell,online shopping,transport
+EXP49,111.61,Uber,online shopping,transport
+EXP50,41.05,Apple Store,meal,technology
+EXP51,194.07,Amazon,monthly subscription,shopping
+EXP52,156.15,Netflix,monthly subscription,entertainment
+EXP53,188.2,Amazon,monthly subscription,shopping
+EXP54,179.49,McDonald's,app purchase,food
+EXP55,121.59,Starbucks,fuel purchase,food
+EXP56,184.77,Amazon,app purchase,shopping
+EXP57,22.26,Uber,fuel purchase,transport
+EXP58,43.22,Netflix,meal,entertainment
+EXP59,13.82,Shell,meal,transport
+EXP60,68.44,McDonald's,ride to work,food
+EXP61,80.79,Amazon,coffee purchase,shopping
+EXP62,57.91,Apple Store,ride to work,technology
+EXP63,166.6,Amazon,ride to work,shopping
+EXP64,74.57,Shell,ride to work,transport
+EXP65,59.78,Shell,online shopping,transport
+EXP66,110.83,Amazon,meal,shopping
+EXP67,32.48,Shell,coffee purchase,transport
+EXP68,161.43,Netflix,monthly subscription,entertainment
+EXP69,19.54,Shell,coffee purchase,transport
+EXP70,197.44,Netflix,fuel purchase,entertainment
+EXP71,155.59,Starbucks,fuel purchase,food
+EXP72,43.75,Starbucks,ride to work,food
+EXP73,6.08,Amazon,online shopping,shopping
+EXP74,164.01,Netflix,monthly subscription,entertainment
+EXP75,142.84,Netflix,ride to work,entertainment
+EXP76,147.16,McDonald's,fuel purchase,food
+EXP77,155.4,McDonald's,online shopping,food
+EXP78,19.44,McDonald's,ride to work,food
+EXP79,74.9,Uber,online shopping,transport
+EXP80,27.59,Amazon,meal,shopping
+EXP81,173.31,Apple Store,meal,technology
+EXP82,126.54,Netflix,app purchase,entertainment
+EXP83,69.53,McDonald's,fuel purchase,food
+EXP84,17.39,Amazon,ride to work,shopping
+EXP85,65.64,McDonald's,monthly subscription,food
+EXP86,68.41,Netflix,online shopping,entertainment
+EXP87,147.27,Starbucks,online shopping,food
+EXP88,129.32,Shell,ride to work,transport
+EXP89,178.01,Shell,monthly subscription,transport
+EXP90,97.08,Netflix,online shopping,entertainment
+EXP91,28.32,Apple Store,app purchase,technology
+EXP92,144.08,Amazon,ride to work,shopping
+EXP93,153.35,Shell,coffee purchase,transport
+EXP94,114.45,McDonald's,ride to work,food
+EXP95,155.34,Shell,monthly subscription,transport
+EXP96,101.29,Amazon,fuel purchase,shopping
+EXP97,106.93,Uber,app purchase,transport
+EXP98,88.37,Uber,fuel purchase,transport
+EXP99,9.96,Uber,online shopping,transport
+EXP100,26.04,Starbucks,app purchase,food
