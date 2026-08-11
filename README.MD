@@ -1,153 +1,506 @@
-<div align="center">
-
 # 💸 Fintra-AI
 
-### AI-Powered Personal Finance Management Platform
+### 🚀 AI-Powered Personal Finance Management Platform
 
-Manage your income, expenses, budgets, savings, and financial goals with the power of Artificial Intelligence.
+> **Track. Understand. Predict. Improve.**
+> Fintra-AI combines modern web technologies, Artificial Intelligence, Machine Learning, and secure cloud infrastructure to help users make smarter financial decisions.
 
-![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)
-![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)
-![Prisma](https://img.shields.io/badge/Prisma-ORM-2D3748?style=for-the-badge&logo=prisma)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Neon-336791?style=for-the-badge&logo=postgresql)
-![Clerk](https://img.shields.io/badge/Auth-Clerk-6C47FF?style=for-the-badge)
-![Gemini](https://img.shields.io/badge/Google-Gemini-blue?style=for-the-badge)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38BDF8?style=for-the-badge&logo=tailwind-css)
-![License](https://img.shields.io/github/license/Ashwinchauhan89/Fintra-AI?style=for-the-badge)
+![Fintra-AI](https://img.shields.io/badge/Fintra--AI-AI%20Finance-6366F1?style=for-the-badge)
+![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge\&logo=next.js)
+![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge\&logo=react)
+![Prisma](https://img.shields.io/badge/Prisma-ORM-2D3748?style=for-the-badge\&logo=prisma)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-336791?style=for-the-badge\&logo=postgresql)
+![Gemini](https://img.shields.io/badge/Google%20Gemini-AI-4285F4?style=for-the-badge\&logo=google)
+![Vercel](https://img.shields.io/badge/Vercel-Deployment-black?style=for-the-badge\&logo=vercel)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
 ---
 
-⭐ Star this repository if you like the project.
+## 📌 Table of Contents
 
-</div>
+* [Overview](#-overview)
+* [Why Fintra-AI?](#-why-fintra-ai)
+* [Key Features](#-key-features)
+* [AI & Machine Learning](#-ai--machine-learning)
+* [Analytics](#-analytics)
+* [Security](#-security)
+* [Technology Stack](#-technology-stack)
+* [System Architecture](#-system-architecture)
+* [Project Structure](#-project-structure)
+* [Getting Started](#-getting-started)
+* [Environment Variables](#-environment-variables)
+* [Database Setup](#-database-setup)
+* [Development Workflow](#-development-workflow)
+* [Documentation](#-documentation)
+* [Roadmap](#-roadmap)
+* [IEEE Summer of Code 2026](#-ieee-summer-of-code-2026)
+* [Contributing](#-contributing)
+* [Future Vision](#-future-vision)
+* [License](#-license)
+* [Maintainer](#-maintainer)
 
 ---
 
 # 📖 Overview
 
-Fintra-AI is an AI-powered personal finance management platform that helps users manage their finances smarter.
+**Fintra-AI** is an AI-powered personal finance management platform designed to transform raw financial data into actionable insights.
 
-The platform combines modern web technologies with AI to provide intelligent financial insights, budgeting assistance, expense tracking, and security.
+Instead of simply recording transactions, Fintra-AI aims to help users understand **where their money goes, why they spend it, what may happen next, and how they can improve their financial health.**
 
----
+The platform combines:
 
-# ✨ Features
+* 💰 Personal finance management
+* 🤖 Generative AI
+* 🧠 Machine Learning
+* 📊 Financial analytics
+* 🔐 Secure authentication
+* ☁️ Cloud-native infrastructure
+* 📈 Predictive financial insights
 
-## 💰 Finance
+# 📸 Screenshot Showcase
 
-- Expense Tracking
-- Income Management
-- Budget Planner
-- Savings Goals
-- Financial Dashboard
-- Monthly Reports
-- Cash Flow Analytics
-- Financial Health Score
+Explore the Fintra-AI platform and its core features through the following screenshots.
 
----
+## 🏠 Platform Overview
 
-## 🤖 AI Features
+<p align="center">
+  <img src="Screenshots/image1.png" alt="Fintra-AI Dashboard" width="48%">
+  <img src="Screenshots/image2.png" alt="Fintra-AI Platform" width="48%">
+</p>
 
-- AI Financial Advisor
-- AI Budget Generator
-- AI Expense Analysis
-- AI Spending Insights
-- AI Saving Suggestions
-- AI Goal Planner
-- AI Investment Suggestions
+## 📊 Financial Analytics
 
----
-
-## 📊 Analytics
-
-- Interactive Dashboard
-- Expense Charts
-- Income Analytics
-- Budget Tracking
-- Category Analysis
-- Monthly Comparison
+<p align="center">
+  <img src="Screenshots/image3.png" alt="Fintra-AI Financial Analytics" width="48%">
+  <img src="Screenshots/image4.png" alt="Fintra-AI Analytics Dashboard" width="48%">
+</p>
 
 ---
 
-## 🔐 Security
+### 🚀 Fintra-AI in Action
 
-- Clerk Authentication
-- Protected Routes
-- Arcjet Protection
-- Secure APIs
-- Session Management
-- Role-Based Access
+> From expense tracking and financial analytics to AI-powered insights, Fintra-AI provides an intelligent and modern approach to personal finance management.
 
----
+### 🎯 Core Objective
 
-## 📧 Notifications
-
-- Email Notifications
-- Budget Alerts
-- Reminder Emails
-- Monthly Reports
+> **Turn financial data into intelligent, personalized, and actionable financial decisions.**
 
 ---
 
-# 🛠 Tech Stack
+# 💡 Why Fintra-AI?
+
+Traditional expense trackers primarily answer:
+
+> **"Where did my money go?"**
+
+Fintra-AI aims to answer much more:
+
+* Where am I spending the most?
+* What spending patterns are emerging?
+* Am I likely to exceed my budget?
+* How healthy is my financial behavior?
+* What can I do to improve my savings?
+* Which financial goals are achievable?
+* Can AI help me plan my next month?
+* Can machine learning identify unusual financial activity?
+
+This creates a shift from:
+
+**Expense Tracking → Financial Intelligence**
+
+---
+
+# ✨ Key Features
+
+## 💰 Personal Finance Management
+
+* Expense Tracking
+* Income Tracking
+* Budget Management
+* Savings Goals
+* Financial Dashboard
+* Monthly Reports
+* Cash Flow Analysis
+* Category-Based Expenses
+* Transaction Management
+* Financial Summary
+
+---
+
+## 🤖 AI Financial Intelligence
+
+Powered by **Google Gemini AI**, Fintra-AI can provide intelligent financial assistance such as:
+
+* AI Financial Advisor
+* AI Budget Suggestions
+* AI Expense Insights
+* AI Goal Planning
+* AI Spending Analysis
+* AI Financial Chat Assistant
+* Personalized Recommendations
+* Financial Data Summarization
+* Smart Budget Recommendations
+
+---
+
+## 🧠 Machine Learning
+
+The planned ML engine focuses on transforming historical financial data into predictive insights.
+
+### ML Capabilities
+
+| Capability                | Purpose                                     |
+| ------------------------- | ------------------------------------------- |
+| 📂 Expense Classification | Predict appropriate expense categories      |
+| 📈 Spending Forecasting   | Estimate future spending                    |
+| 💰 Budget Prediction      | Predict potential budget overruns           |
+| 🚨 Fraud Detection        | Identify suspicious financial patterns      |
+| ❤️ Financial Health Score | Estimate overall financial behavior         |
+| 🎯 Goal Prediction        | Estimate goal completion probability        |
+| 💡 Recommendation Engine  | Generate personalized financial suggestions |
+| 📊 Trend Detection        | Identify changes in spending behavior       |
+
+---
+
+# 📊 Analytics
+
+Fintra-AI provides a data-driven view of personal finances.
+
+### Analytics Modules
+
+* Expense Analytics
+* Income Analytics
+* Category Distribution
+* Monthly Spending Trends
+* Cash Flow Analysis
+* Budget Utilization
+* Savings Analysis
+* Financial Reports
+* Interactive Charts
+* Historical Comparisons
+
+### Example Financial Intelligence Flow
+
+```text
+Financial Transactions
+        │
+        ▼
+   Data Processing
+        │
+        ▼
+ ┌───────────────────┐
+ │ Feature Extraction│
+ └─────────┬─────────┘
+           │
+           ▼
+    ML / AI Engine
+           │
+     ┌─────┴─────┐
+     ▼           ▼
+Prediction    Insights
+     │           │
+     └─────┬─────┘
+           ▼
+ Personalized
+ Recommendations
+```
+
+---
+
+# 🔐 Security
+
+Security is a core component of Fintra-AI because financial data is highly sensitive.
+
+### Security Stack
+
+* 🔑 Clerk Authentication
+* 🛡️ Arcjet Security
+* 🔒 Protected APIs
+* 👤 Session Management
+* 🗄️ Secure Database Access
+* 🎭 Role-Based Access Control
+* 🔐 Environment-Based Secrets
+* 🚫 No sensitive credentials committed to source control
+
+> **Never commit `.env`, API keys, database credentials, or authentication secrets to Git.**
+
+---
+
+# 📧 Notifications
+
+Fintra-AI can provide timely financial notifications including:
+
+* 📩 Email Notifications
+* ⚠️ Budget Alerts
+* 🎯 Savings Goal Reminders
+* 📊 Monthly Financial Reports
+* 🔔 Financial Activity Notifications
+
+Email infrastructure is powered by **Resend**.
+
+---
+
+# 🏗️ Technology Stack
 
 ## Frontend
 
-- Next.js 15
-- React 19
-- Tailwind CSS
-- Shadcn UI
-- Framer Motion
+* Next.js
+* React
+* Tailwind CSS
+* Shadcn UI
 
 ## Backend
 
-- Next.js Server Actions
-- Prisma ORM
-- PostgreSQL (Neon)
+* Next.js Server Actions
+* Prisma ORM
+* PostgreSQL
+
+## Artificial Intelligence
+
+* Google Gemini API
+
+## Machine Learning
+
+* Scikit-Learn
+* TensorFlow
+* PyTorch
+* XGBoost
+* Prophet
 
 ## Authentication
 
-- Clerk
+* Clerk
 
-## AI
+## Email
 
-- Google Gemini API
+* Resend
 
-## Emails
+## Application Security
 
-- Resend
-
-## Security
-
-- Arcjet
+* Arcjet
 
 ## Deployment
 
-- Vercel
+* Vercel
+
+---
+
+# 🧩 System Architecture
+
+```text
+                        ┌──────────────────────┐
+                        │      User / Client   │
+                        └──────────┬───────────┘
+                                   │
+                                   ▼
+                        ┌──────────────────────┐
+                        │      Next.js App     │
+                        │   UI + Server Logic  │
+                        └──────────┬───────────┘
+                                   │
+                    ┌──────────────┼──────────────┐
+                    │              │              │
+                    ▼              ▼              ▼
+             ┌───────────┐  ┌───────────┐  ┌────────────┐
+             │   Clerk   │  │  Arcjet   │  │  Resend    │
+             │   Auth    │  │ Security  │  │   Email    │
+             └───────────┘  └───────────┘  └────────────┘
+                                   │
+                                   ▼
+                         ┌──────────────────┐
+                         │      Prisma      │
+                         │       ORM        │
+                         └────────┬─────────┘
+                                  │
+                                  ▼
+                         ┌──────────────────┐
+                         │   PostgreSQL     │
+                         │    Database      │
+                         └────────┬─────────┘
+                                  │
+                                  ▼
+                    ┌─────────────────────────┐
+                    │       AI / ML Layer     │
+                    ├─────────────────────────┤
+                    │ Google Gemini           │
+                    │ ML Prediction Models    │
+                    │ Recommendation Engine   │
+                    │ Financial Analytics     │
+                    └─────────────────────────┘
+```
 
 ---
 
 # 📂 Project Structure
 
-```
-Fintra-AI
+## 📁 Fintra-AI — Project Structure
+
+```text
+Fintra-AI/
 │
-├── app
-├── components
-├── hooks
-├── lib
-├── prisma
-├── public
-├── data
-├── emails
-└── README.md
+├── ai-finance-platform/                    # Next.js Frontend Application
+│   ├── app/                                # App Router & Pages
+│   ├── actions/                            # Server Actions
+│   ├── components/                         # Reusable UI Components
+│   ├── hooks/                              # Custom React Hooks
+│   ├── lib/                                # Utilities & Configurations
+│   ├── public/                             # Static Assets
+│   ├── emails/                             # Email Templates
+│   ├── middleware.js                       # Authentication & Middleware
+│   ├── next.config.mjs                     # Next.js Configuration
+│   ├── package.json
+│   └── ...
+│
+├── backend/                                # FastAPI Backend
+│   ├── app/
+│   │   ├── api/
+│   │   │   └── v1/                         # Versioned REST API
+│   │   │       ├── transactions.py        # Transaction Management
+│   │   │       ├── budgets.py              # Budget Management
+│   │   │       ├── analytics.py            # Financial Analytics
+│   │   │       ├── predictions.py          # ML Predictions
+│   │   │       ├── ai.py                   # AI-powered Features
+│   │   │       └── reports.py              # Financial Reports
+│   │   │
+│   │   ├── core/                            # Core Backend Configuration
+│   │   │   ├── config.py                   # Application Configuration
+│   │   │   ├── database.py                 # Database Configuration
+│   │   │   └── security.py                 # Authentication & Security
+│   │   │
+│   │   ├── models/                          # Database Models
+│   │   ├── schemas/                         # Pydantic Schemas
+│   │   │
+│   │   ├── services/                        # Business Logic Layer
+│   │   │   ├── transaction_service.py
+│   │   │   ├── analytics_service.py
+│   │   │   ├── prediction_service.py
+│   │   │   └── ai_service.py
+│   │   │
+│   │   └── main.py                          # FastAPI Application Entry Point
+│   │
+│   ├── tests/                               # Backend Tests
+│   ├── requirements.txt                     # Python Dependencies
+│   └── Dockerfile                           # Backend Container
+│
+├── ml/                                      # Machine Learning Pipeline
+│   ├── datasets/                            # ML Datasets
+│   ├── preprocessing/                       # Data Preprocessing
+│   ├── features/                            # Feature Engineering
+│   ├── training/                            # Model Training
+│   │   ├── train_categorization.py         # Expense Categorization
+│   │   ├── train_forecasting.py            # Financial Forecasting
+│   │   └── train_anomaly.py                # Anomaly Detection
+│   │
+│   ├── inference/                           # Model Inference
+│   ├── evaluation/                          # Model Evaluation
+│   └── models/                              # Trained ML Models
+│
+├── data_pipeline/                           # Data Engineering Pipeline
+│   ├── ingestion/                           # Data Ingestion
+│   ├── preprocessing/                       # Data Cleaning & Processing
+│   └── jobs/                                # Automated Data Jobs
+│
+├── notebooks/                               # Jupyter Notebooks
+│   ├── 01_eda.ipynb                         # Exploratory Data Analysis
+│   ├── 02_categorization.ipynb              # Expense Categorization
+│   └── 03_forecasting.ipynb                 # Financial Forecasting
+│
+├── infrastructure/                         # DevOps & Cloud Infrastructure
+│   ├── docker/                              # Docker Configuration
+│   ├── monitoring/                          # Monitoring & Observability
+│   └── terraform/                           # Infrastructure as Code
+│
+├── .github/
+│   └── workflows/                           # CI/CD Pipelines
+│       ├── frontend-ci.yml                  # Frontend CI
+│       ├── backend-ci.yml                   # Backend CI
+│       └── ml-ci.yml                        # ML CI
+│
+├── docs/                                    # Project Documentation
+├── Screenshots/                             # Application Screenshots
+│
+├── docker-compose.yml                       # Multi-Service Docker Setup
+├── .gitignore                               # Git Ignore Rules
+└── README.md                                # Project Documentation
 ```
+
+## 🏗️ Architecture Overview
+
+Fintra-AI follows a **Full-Stack AI/ML Microservice Architecture**, separating the frontend, backend APIs, machine-learning workloads, data pipelines, and infrastructure into independently maintainable layers.
+
+```text
+                         ┌─────────────────────────┐
+                         │       User / Client     │
+                         └────────────┬────────────┘
+                                      │
+                                      ▼
+                         ┌─────────────────────────┐
+                         │   Next.js Frontend      │
+                         │  ai-finance-platform/   │
+                         └────────────┬────────────┘
+                                      │ REST API
+                                      ▼
+                         ┌─────────────────────────┐
+                         │     FastAPI Backend     │
+                         │       backend/          │
+                         └───────┬─────────┬───────┘
+                                 │         │
+                    ┌────────────┘         └─────────────┐
+                    ▼                                    ▼
+          ┌──────────────────┐                 ┌──────────────────┐
+          │   ML Services    │                 │  Data Pipeline   │
+          │       ml/        │                 │ data_pipeline/   │
+          └────────┬─────────┘                 └────────┬─────────┘
+                   │                                    │
+                   ▼                                    ▼
+          ┌──────────────────┐                 ┌──────────────────┐
+          │ Trained Models   │                 │ Data Processing  │
+          │ Forecasting      │                 │ Ingestion        │
+          │ Categorization   │                 │ ETL Jobs         │
+          │ Anomaly Detection│                 └──────────────────┘
+          └──────────────────┘
+                   │
+                   ▼
+          ┌──────────────────┐
+          │ Database / Data  │
+          │      Layer       │
+          └──────────────────┘
+```
+
+### 🔑 Core Layers
+
+| Layer                | Directory              | Responsibility                                     |
+| -------------------- | ---------------------- | -------------------------------------------------- |
+| **Frontend**         | `ai-finance-platform/` | User interface, dashboards and client interactions |
+| **Backend**          | `backend/`             | REST APIs, authentication and business logic       |
+| **AI/ML**            | `ml/`                  | Training, inference and financial intelligence     |
+| **Data Engineering** | `data_pipeline/`       | Data ingestion, preprocessing and automation       |
+| **Research**         | `notebooks/`           | EDA, experimentation and model research            |
+| **Infrastructure**   | `infrastructure/`      | Docker, monitoring and cloud deployment            |
+| **CI/CD**            | `.github/workflows/`   | Automated testing and deployment                   |
+| **Documentation**    | `docs/`                | Technical and project documentation                |
+
+### 🤖 AI/ML Capabilities
+
+Fintra-AI's ML layer is designed around three primary intelligence modules:
+
+* **Expense Categorization** — Automatically classifies financial transactions.
+* **Financial Forecasting** — Predicts future spending and financial trends.
+* **Anomaly Detection** — Identifies unusual or potentially suspicious transactions.
+
+This separation keeps **model development and experimentation independent from the production FastAPI services**, making the platform easier to scale, test, deploy, and maintain.
+
+```
+
+
 
 ---
 
 # 🚀 Getting Started
 
-## Clone Repository
+Follow these steps to run Fintra-AI locally.
+
+## 1️⃣ Clone the Repository
 
 ```bash
 git clone https://github.com/Ashwinchauhan89/Fintra-AI.git
@@ -155,35 +508,26 @@ git clone https://github.com/Ashwinchauhan89/Fintra-AI.git
 cd Fintra-AI
 ```
 
----
-
-## Install Dependencies
+## 2️⃣ Install Dependencies
 
 ```bash
 npm install
 ```
 
----
+## 3️⃣ Configure Environment Variables
 
-## Environment Variables
-
-Create a `.env` file.
+Create a `.env` file in the project root.
 
 ```env
 DATABASE_URL=
-
 DIRECT_URL=
 
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
-
 CLERK_SECRET_KEY=
 
 NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
-
 NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
-
 NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/onboarding
-
 NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/onboarding
 
 GEMINI_API_KEY=
@@ -193,187 +537,341 @@ RESEND_API_KEY=
 ARCJET_KEY=
 ```
 
----
+> ⚠️ Keep all secrets private and never commit `.env` to Git.
 
-## Prisma
+## 4️⃣ Generate Prisma Client
 
 ```bash
 npx prisma generate
+```
 
+## 5️⃣ Initialize Database
+
+```bash
 npx prisma db push
 ```
 
----
-
-## Run Project
+## 6️⃣ Start Development Server
 
 ```bash
 npm run dev
 ```
 
-Open
+The application will be available at:
 
-```
+```text
 http://localhost:3000
 ```
 
 ---
 
-# 🚀 Roadmap
+# 🗄️ Database Workflow
 
-## Phase 1
+Fintra-AI uses **Prisma ORM** with **PostgreSQL**.
 
-- Authentication
-- Dashboard
-- Expense Tracker
-- Income Tracker
-- Budget Planner
+### Generate Prisma Client
 
----
+```bash
+npx prisma generate
+```
 
-## Phase 2
+### Push Schema Changes
 
-- AI Financial Advisor
-- AI Budget Generator
-- Reports
-- Analytics
+```bash
+npx prisma db push
+```
 
----
+### Open Prisma Studio
 
-## Phase 3
+```bash
+npx prisma studio
+```
 
-- OCR Receipt Scanner
-- Fraud Detection
-- Investment Tracker
-- Financial Health Score
+Prisma Studio can be used to inspect and manage development database records.
 
 ---
 
-## Phase 4
+# 🧪 Development Workflow
 
-- Mobile PWA
-- Notifications
-- Family Wallet
-- Shared Budget
+Recommended development flow:
+
+```text
+Create Issue
+     │
+     ▼
+Create Feature Branch
+     │
+     ▼
+Implement Feature
+     │
+     ▼
+Run Tests / Checks
+     │
+     ▼
+Review Changes
+     │
+     ▼
+Commit
+     │
+     ▼
+Push Branch
+     │
+     ▼
+Open Pull Request
+     │
+     ▼
+Code Review
+     │
+     ▼
+Merge
+```
+
+### Branch Naming
+
+Recommended naming convention:
+
+```text
+feature/expense-analytics
+feature/ai-budget-advisor
+feature/ml-spending-prediction
+
+fix/authentication-error
+fix/dashboard-loading
+
+docs/update-readme
+docs/ml-documentation
+```
 
 ---
 
-# 📌 IEEE Summer of Code 2026
+# 📚 Documentation
 
-We welcome contributors of all experience levels.
-
-## Beginner Friendly
-
-- UI Improvements
-- Documentation
-- Bug Fixes
-- Responsive Design
-- Dashboard Widgets
-
----
-
-## Intermediate
-
-- Expense Features
-- Reports
-- Analytics
-- Notifications
-- APIs
+| Document             | Description                          |
+| -------------------- | ------------------------------------ |
+| `README.md`          | Project overview and setup           |
+| `PLANNING.md`        | Development roadmap and milestones   |
+| `MACHINELEARNING.md` | ML architecture and pipeline         |
+| `ARCHITECTURE.md`    | System architecture and design       |
+| `CONTRIBUTING.md`    | Contribution guidelines              |
+| `SECURITY.md`        | Security policies and best practices |
 
 ---
 
-## Advanced
+# 🛣️ Roadmap
 
-- AI Modules
-- Fraud Detection
-- OCR
-- Investment System
-- Security Features
+## 🟢 Phase 1 — Core Finance
+
+* [x] Authentication
+* [x] Dashboard
+* [x] Expense Management
+* [x] Income Management
+* [ ] Advanced Transaction Management
+
+## 🟡 Phase 2 — Financial Analytics
+
+* [x] Budget Planning
+* [x] Reports
+* [x] Analytics
+* [ ] Advanced Cash Flow Analytics
+* [ ] Financial Trend Detection
+
+## 🔵 Phase 3 — AI Financial Assistant
+
+* [ ] AI Financial Advisor
+* [ ] Gemini Integration
+* [ ] AI Budget Recommendations
+* [ ] Personalized Financial Insights
+* [ ] AI Financial Copilot
+
+## 🟣 Phase 4 — Machine Learning
+
+* [ ] Expense Classification
+* [ ] Spending Prediction
+* [ ] Budget Forecasting
+* [ ] Fraud Detection
+* [ ] Financial Health Score
+* [ ] Goal Completion Prediction
+* [ ] Recommendation Engine
+
+## 🔴 Phase 5 — Advanced Platform
+
+* [ ] OCR Receipt Scanner
+* [ ] Investment Tracker
+* [ ] Family Wallet
+* [ ] Voice Finance Assistant
+* [ ] PWA Support
+* [ ] Multi-Currency Support
+* [ ] Open Banking Integration
+* [ ] Explainable AI
+* [ ] MLOps Pipeline
+
+📄 See `docs/PLANNING.md` for the detailed roadmap.
+
+---
+
+# 🎓 IEEE Summer of Code 2026
+
+Fintra-AI is designed as an **open-source collaboration project** and welcomes contributors interested in software engineering, Artificial Intelligence, Machine Learning, cybersecurity, data analytics, and product development.
+
+### Contribution Levels
+
+| Level           | Suitable Contributions                              |
+| --------------- | --------------------------------------------------- |
+| 🟢 Beginner     | Documentation, UI improvements, testing, bug fixes  |
+| 🟡 Intermediate | APIs, database features, analytics, backend modules |
+| 🔴 Advanced     | AI, ML, fraud detection, predictive analytics, OCR  |
+
+### Potential Contribution Areas
+
+```text
+Frontend
+   ├── Dashboard
+   ├── Charts
+   └── UI/UX
+
+Backend
+   ├── APIs
+   ├── Database
+   └── Server Actions
+
+AI
+   ├── Gemini Integration
+   ├── Financial Advisor
+   └── Recommendations
+
+ML
+   ├── Classification
+   ├── Forecasting
+   ├── Fraud Detection
+   └── Financial Health
+
+DevOps
+   ├── CI/CD
+   ├── Testing
+   └── Deployment
+```
 
 ---
 
 # 🤝 Contributing
 
-We welcome contributions from everyone.
+Contributions are welcome from:
+
+* 👨‍💻 Software Developers
+* 🎨 UI/UX Designers
+* 🤖 AI Engineers
+* 🧠 Machine Learning Engineers
+* 📊 Data Scientists
+* 🔐 Cybersecurity Developers
+* 🧪 QA/Test Engineers
+* 📝 Technical Writers
+
+### Contribution Steps
 
 1. Fork the repository.
 2. Create a feature branch.
-3. Commit your changes.
-4. Push your branch.
-5. Open a Pull Request.
+3. Implement your changes.
+4. Test your changes locally.
+5. Commit your changes.
+6. Push your branch.
+7. Open a Pull Request.
+8. Participate in code review.
 
-Please read the **CONTRIBUTING.md** before contributing.
+Before contributing, please read:
 
----
-
-# 🏷 GitHub Labels
-
-- good first issue
-- beginner
-- easy
-- medium
-- hard
-- frontend
-- backend
-- AI
-- documentation
-- enhancement
-- bug
-- help wanted
+```text
+docs/CONTRIBUTING.md
+```
 
 ---
 
-# 📅 Upcoming Modules
+# 🌟 Future Vision
 
-- AI Copilot
-- Voice Assistant
-- OCR Receipt Scanner
-- Fraud Detection
-- Smart Budget Planner
-- AI Tax Advisor
-- Investment Portfolio
-- Family Wallet
-- Multi Currency
-- Bank Integrations
+Fintra-AI aims to evolve from a traditional finance tracker into a complete **AI Financial Intelligence Platform**.
+
+### Long-Term Vision
+
+```text
+                 ┌──────────────────────┐
+                 │      FINTRA-AI       │
+                 │ Financial Intelligence│
+                 └──────────┬───────────┘
+                            │
+       ┌────────────────────┼────────────────────┐
+       │                    │                    │
+       ▼                    ▼                    ▼
+   AI Advisor          ML Prediction        Analytics
+       │                    │                    │
+       ▼                    ▼                    ▼
+  Personalized       Future Spending      Financial
+  Recommendations      Forecasting         Insights
+       │                    │                    │
+       └────────────────────┼────────────────────┘
+                            ▼
+                  Smarter Financial Decisions
+```
+
+### 🔮 Future Capabilities
+
+* 🤖 AI Financial Copilot
+* 🧠 Advanced ML Prediction Engine
+* 🚨 Real-Time Fraud Detection
+* 🏦 Open Banking Integration
+* 🎙️ Voice Finance Assistant
+* 📷 Smart Receipt OCR
+* 📈 Investment Portfolio Management
+* 🌍 Multi-Currency Support
+* 🔍 Explainable AI
+* ⚙️ Production MLOps Pipeline
+* 👨‍👩‍👧 Family Finance Management
+* 📱 Progressive Web Application
 
 ---
 
-# 🛡 License
+# 📄 License
 
-This project is licensed under the MIT License.
+This project is licensed under the **MIT License**.
+
+See the `LICENSE` file for complete license information.
 
 ---
 
 # 👨‍💻 Maintainer
 
-**Ashwin Chauhan**
+### Ashwin Chauhan
 
-GitHub
+**Project Lead — Fintra-AI**
 
-https://github.com/Ashwinchauhan89
+GitHub: **@Ashwinchauhan89**
 
 ---
 
-# 🌟 Support
+# ⭐ Support the Project
 
-If you like this project:
+If you find **Fintra-AI** useful, interesting, or valuable for learning:
 
-⭐ Star the repository
+### ⭐ Star the repository
 
-🍴 Fork the repository
+### 🍴 Fork the project
 
-🐞 Report issues
+### 🐛 Report bugs
 
-💡 Suggest features
+### 💡 Suggest features
 
-❤️ Contribute to Fintra-AI
+### 🤝 Contribute
+
+Every contribution helps improve the project and grow the open-source community around Fintra-AI.
 
 ---
 
 <div align="center">
 
-### Built with ❤️ using Next.js, Prisma, Clerk & Google Gemini
+## 💸 Fintra-AI
 
-**Happy Coding 🚀**
+### **From Financial Data → Financial Intelligence**
+
+Built with ❤️ using **Next.js · Prisma · PostgreSQL · Gemini AI · Machine Learning**
+
+**Happy Coding! 🚀**
 
 </div>

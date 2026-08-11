@@ -146,7 +146,7 @@ const HeroSection = () => {
               Get Started
             </Button>
           </Link>
-          <Link href="https://www.youtube.com/roadsidecoder">
+          <Link href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer">
             <Button size="lg" variant="outline" className="px-8 border-2 border-gsap-green text-gsap-green hover:bg-gsap-green/10 font-bold text-lg hover:shadow-[0_0_20px_rgba(136,206,2,0.3)] hover:scale-105 transition-all duration-300">
               Watch Demo
             </Button>
