@@ -3,18 +3,27 @@
 ### 🚀 AI-Powered Personal Finance Management Platform
 
 > **Track. Understand. Predict. Improve.**
-> Fintra-AI combines modern web technologies, Artificial Intelligence, Machine Learning, and secure cloud infrastructure to help users make smarter financial decisions.
+
+**Fintra-AI** is an intelligent personal finance management platform designed to help users **track expenses, understand spending behavior, manage budgets, and make data-driven financial decisions**.
+
+By combining **modern full-stack web technologies, Artificial Intelligence, Machine Learning, and secure cloud infrastructure**, Fintra-AI transforms raw financial data into meaningful insights and actionable recommendations.
+
+---
+
+## ✨ Technology Stack
 
 ![Fintra-AI](https://img.shields.io/badge/Fintra--AI-AI%20Finance-6366F1?style=for-the-badge)
 ![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge\&logo=next.js)
 ![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge\&logo=react)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3-38B2AC?style=for-the-badge\&logo=tailwind-css)
 ![Prisma](https://img.shields.io/badge/Prisma-ORM-2D3748?style=for-the-badge\&logo=prisma)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-336791?style=for-the-badge\&logo=postgresql)
-![Gemini](https://img.shields.io/badge/Google%20Gemini-AI-4285F4?style=for-the-badge\&logo=google)
+![Google Gemini](https://img.shields.io/badge/Google_Gemini-AI-4285F4?style=for-the-badge\&logo=google)
 ![Vercel](https://img.shields.io/badge/Vercel-Deployment-black?style=for-the-badge\&logo=vercel)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
 ---
+
 
 ## 📌 Table of Contents
 
