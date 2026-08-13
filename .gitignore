@@ -40,3 +40,19 @@ yarn-error.log*
 next-env.d.ts
 .env
 
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+
+ml/models/*.pkl
+ml/models/*.json
+
+ml/datasets/processed/*.csv
+
+# Jupyter
+.ipynb_checkpoints/
