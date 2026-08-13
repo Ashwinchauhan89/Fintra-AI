@@ -9,8 +9,8 @@ import Image from "next/image";
 const Header = async () => {
   await checkUser();
 
-  return (
-    <header className="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b border-neutral-800">
+  return (                           
+    <header className="fixed top-0 w-full bg-black/10 backdrop-blur-md z-50 border-b border-neutral-800">
       <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
         <Link href="/">
           <Image
@@ -18,7 +18,7 @@ const Header = async () => {
             alt="Fintra - AI Logo"
             width={200}
             height={60}
-            className="h-12 w-auto object-contain brightness-0 invert"
+            className="h-20 w-auto object-contain rounded-full"
           />
         </Link>
 
