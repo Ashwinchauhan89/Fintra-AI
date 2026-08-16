@@ -117,3 +117,59 @@ signature to `source_adapters.py`. Nothing else changes.
   throwaway models on a merchant-level holdout purely to measure
   generalization; it never overwrites the production models saved
   by `training/train.py`.
+
+---
+
+# Expense & Cash Flow Forecasting — ML Module (Phases 4 & 18)
+
+Implements Phase 4 (Expense Forecasting) and Phase 18 (Cash Flow Trajectory Simulation) of `MACHINELEARNING.md`: predicts future daily spending trajectories, category breakdowns, and net account balance projections across 7-day, 30-day, and 90-day horizons.
+
+## Forecasting Pipeline
+
+```bash
+# 1. Preprocess time-series: aggregate continuous daily spend, extract cyclical & lag features
+python preprocessing/preprocess_forecasting.py
+
+# 2. Train: 5-fold expanding-window TimeSeriesSplit CV on Seasonal Baseline, Ridge, Random Forest, XGBoost
+python training/train_forecasting.py
+
+# 3. Evaluate: Out-of-time chronological test evaluation (MAE, RMSE, MAPE, Directional Accuracy)
+python evaluation/evaluate_forecasting.py
+
+# 4. Inference: Multi-day forecast & cash flow simulation
+python inference/predict_forecasting.py --horizon 30 --income 60000 --balance 25000
+```
+
+## Out-of-Time Held-Out Evaluation (796 Days Test Period)
+
+| Model | MAE (INR) | RMSE (INR) | R² | MAPE % | Directional Acc % |
+|---|---|---|---|---|---|
+| **baseline_seasonal** | **66,615.28** | **122,446.88** | **0.473** | **72.4%** | **75.5%** |
+| random_forest | 123,135.02 | 206,696.06 | -0.502 | 96.7% | 72.7% |
+| xgboost | 122,760.86 | 206,447.01 | -0.498 | 96.2% | 63.8% |
+| ridge | 125,706.99 | 209,877.25 | -0.549 | 100.8% | 16.4% |
+
+## Python API Usage
+
+```python
+from ml.inference.predict_forecasting import predict_expense_forecast, predict_cash_flow
+
+# 1. Predict 30-day future expense trajectory & category breakdown
+forecast = predict_expense_forecast(horizon_days=30)
+print("Total Projected Expense:", forecast["total_predicted_expense"])
+print("Weekly Summary:", forecast["weekly_summary"])
+print("Category Breakdown:", forecast["category_breakdown"])
+
+# 2. Simulate Net Cash Flow & Balance Trajectory
+cash_flow = predict_cash_flow(
+    monthly_income=65000.0,
+    current_balance=30000.0,
+    horizon_days=30,
+    payday_of_month=1
+)
+print("Projected Net Savings:", cash_flow["projected_net_savings"])
+print("Savings Rate:", cash_flow["savings_rate_pct"], "%")
+print("AI Health Status:", cash_flow["health_status"])
+print("Recommendation:", cash_flow["recommendation"])
+```
+

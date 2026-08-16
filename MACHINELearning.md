@@ -137,7 +137,7 @@ Difficulty
 
 ---
 
-## Phase 4 — Expense Prediction
+## Phase 4 — Expense Prediction ✅ (Implemented)
 
 ### Objective
 
@@ -145,16 +145,19 @@ Predict future expenses.
 
 Models
 
-- Linear Regression
+- Seasonal Baseline Regressor
+- Ridge Regressor
 - Random Forest Regressor
-- Prophet
-- LSTM
+- XGBoost Regressor
 
 Predictions
 
-- Weekly Expenses
-- Monthly Expenses
-- Yearly Expenses
+- 7-Day / Weekly Expenses
+- 30-Day / Monthly Expenses
+- 90-Day / Quarterly Expenses
+- Category-wise Expense Proportions
+
+Implementation: `ml/preprocessing/preprocess_forecasting.py`, `ml/training/train_forecasting.py`, `ml/inference/predict_forecasting.py`
 
 ---
 
@@ -422,18 +425,21 @@ Algorithms
 
 ---
 
-## Phase 18 — Cash Flow Forecasting
+## Phase 18 — Cash Flow Forecasting ✅ (Implemented)
 
 Predict
 
-- Balance
-- Expenses
-- Savings
+- Account Balance Trajectory
+- Daily / Monthly Net Cash Flow
+- Deficit Date Detection & Savings Projections
+- AI Financial Health & Recommendations
 
 Models
 
-- Prophet
-- LSTM
+- Seasonal Moving Average + Multi-Step Autoregression
+- Tree Ensemble Regressors & Rolling Window Estimators
+
+Implementation: `ml/inference/predict_forecasting.py` (`predict_cash_flow`)
 
 ---
 
