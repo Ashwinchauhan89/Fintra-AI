@@ -199,21 +199,29 @@ python inference/predict_budget.py --mode budget --income 75000 --savings-target
 python inference/predict_budget.py --mode health --income 75000 --balance 150000 --expenses 45000 --debt 10000
 ```
 
-## Held-Out Test Set Benchmarks (1,200 User Profiles)
+## Multi-Model Candidate Leaderboard (Held-Out Test Split)
 
-- **Overall Multi-Target R²**: `0.9924`
-- **Overall Multi-Target MAE**: `INR 215.34`
+| Model Candidate | Test MAE (INR) | Test R² Score | Max Peak Error (INR) | Selection Status |
+|---|---|---|---|---|
+| `ridge` | 696.22 | 0.9766 | 42,690.68 | Baseline |
+| `random_forest` | 211.38 | 0.9926 | 41,505.80 | Contender |
+| `xgboost` | 214.50 | 0.9872 | 46,742.96 | Contender |
+| `gradient_boosting` | 148.49 | 0.9949 | 46,390.60 | Contender |
+| `ensemble` (Voting Stacking) | 107.70 | 0.9965 | 39,968.11 | High Performer |
+| **`extra_trees`** | **102.77** | **0.9963** | **33,404.69** | **Selected Production Model** |
 
-| Category / Target | MAE (INR) | R² Score |
-|---|---|---|
-| Food | INR 365.70 | 0.9941 |
-| Shopping | INR 278.22 | 0.9900 |
-| Transport | INR 135.75 | 0.9943 |
-| Entertainment | INR 186.64 | 0.9897 |
-| Bills | INR 228.29 | 0.9940 |
-| Healthcare | INR 91.10 | 0.9941 |
-| Education | INR 91.10 | 0.9941 |
-| Savings | INR 345.89 | 0.9886 |
+### Category-wise Breakdown (Selected Production Model)
+
+| Category / Target | MAE (INR) | R² Score | Target Type |
+|---|---|---|---|
+| Healthcare | INR 44.13 | 0.9966 | Needs (Essential) |
+| Education | INR 44.13 | 0.9966 | Needs (Essential) |
+| Transport | INR 66.69 | 0.9965 | Needs (Essential) |
+| Entertainment | INR 90.91 | 0.9968 | Wants (Discretionary) |
+| Bills | INR 109.92 | 0.9965 | Needs (Essential) |
+| Shopping | INR 133.55 | 0.9971 | Wants (Discretionary) |
+| Savings | INR 155.57 | 0.9943 | Wealth Building |
+| Food | INR 177.25 | 0.9964 | Needs (Essential) |
 
 ## Python API Usage
 

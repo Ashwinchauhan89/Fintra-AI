@@ -140,3 +140,46 @@ python ml/inference/predict.py --merchant Netflix --description "monthly subscri
 ```json
 {"category": "entertainment", "confidence": 0.9854}
 ```
+
+---
+
+## 6. Budget Recommendation & Financial Health Scoring Benchmarks (Phases 5 & 7)
+
+### Multi-Model Candidate Evaluation (5-Fold Stratified Cross-Validation)
+
+| Candidate Model | CV Mean MAE (INR) | CV R² Score | Max Peak Error (INR) | Selection Status |
+|---|---|---|---|---|
+| `ridge` (L2 Linear Baseline) | 688.97 | 0.9743 | 39,405.20 | Baseline |
+| `random_forest` (150 trees) | 229.80 | 0.9914 | 21,125.85 | Candidate |
+| `xgboost` (250 trees, lr=0.04) | 209.68 | 0.9894 | 24,455.96 | Candidate |
+| `gradient_boosting` (200 trees) | 161.69 | 0.9941 | 19,754.71 | Candidate |
+| `ensemble` (Voting Stacking) | 117.17 | 0.9958 | 17,709.44 | Contender |
+| **`extra_trees` (200 trees, depth=18)** | **111.05** | **0.9957** | **16,607.33** | **Selected Production Model** |
+
+### Held-Out Test Set Evaluation (1,200 User Financial Profiles)
+
+* **Overall Multi-Target Test MAE**: **INR 102.77**
+* **Overall Multi-Target Test R²**: **0.9963**
+
+#### Granular Category Breakdown
+
+| Category / Target | Test MAE (INR) | Test R² Score | Target Type |
+|---|---|---|---|
+| `healthcare` | INR 44.13 | 0.9966 | Needs (Essential) |
+| `education` | INR 44.13 | 0.9966 | Needs (Essential) |
+| `transport` | INR 66.69 | 0.9965 | Needs (Essential) |
+| `entertainment` | INR 90.91 | 0.9968 | Wants (Discretionary) |
+| `bills` | INR 109.92 | 0.9965 | Needs (Essential) |
+| `shopping` | INR 133.55 | 0.9971 | Wants (Discretionary) |
+| `savings` | INR 155.57 | 0.9943 | Wealth Building |
+| `food` | INR 177.25 | 0.9964 | Needs (Essential) |
+
+### Financial Health Score Calibration & Archetypes
+
+| User Persona Archetype | Monthly Income | Savings Rate | Debt Ratio | Financial Health Score | Grade | Diagnostic Status |
+|---|---|---|---|---|---|---|
+| **1. High Saver / Frugal** | ₹100,000 | 66.0% | 0.0% | **100.0 / 100** | **A+** | `EXCEPTIONAL` (14.7 mo runway) |
+| **2. Balanced Professional** | ₹75,000 | 26.7% | 6.7% | **94.5 / 100** | **A+** | `EXCEPTIONAL` (2.3 mo runway) |
+| **3. High Discretionary Spender** | ₹60,000 | - | 6.7% | **53.7 / 100** | **D** | `CRITICAL` (0.5 mo runway) |
+| **4. Overleveraged / In Debt** | ₹50,000 | - | 44.0% | **33.6 / 100** | **D** | `CRITICAL` (0.1 mo runway) |
+
