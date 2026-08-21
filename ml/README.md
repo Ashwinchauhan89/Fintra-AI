@@ -173,3 +173,82 @@ print("AI Health Status:", cash_flow["health_status"])
 print("Recommendation:", cash_flow["recommendation"])
 ```
 
+---
+
+# Budget Recommendation & Financial Health Scoring — ML Module (Phases 5 & 7)
+
+Implements Phase 5 (Budget Recommendation) and Phase 7 (Financial Health Score) of `MACHINELEARNING.md`: calculates optimal 50/30/20 category budget allocations, variance diagnostics, cost-cutting recommendations, and 5-pillar 0–100 composite Financial Health Scores.
+
+## Budget & Health Pipeline
+
+```bash
+# 1. Preprocess: Generate demographic profiles and compute baseline distributions
+python preprocessing/preprocess_budget.py
+
+# 2. Train: 5-Fold cross-validation on multi-output Ridge, Random Forest, and XGBoost models
+python training/train_budget.py
+
+# 3. Evaluate: Out-of-sample evaluation, category MAE/R2, and archetype validation
+python evaluation/evaluate_budget.py
+
+# 4. Live CLI Inference:
+# Recommend optimal budget allocations
+python inference/predict_budget.py --mode budget --income 75000 --savings-target 0.20 --lifestyle balanced
+
+# Calculate 0-100 Financial Health Score
+python inference/predict_budget.py --mode health --income 75000 --balance 150000 --expenses 45000 --debt 10000
+```
+
+## Multi-Model Candidate Leaderboard (Held-Out Test Split)
+
+| Model Candidate | Test MAE (INR) | Test R² Score | Max Peak Error (INR) | Selection Status |
+|---|---|---|---|---|
+| `ridge` | 696.22 | 0.9766 | 42,690.68 | Baseline |
+| `random_forest` | 211.38 | 0.9926 | 41,505.80 | Contender |
+| `xgboost` | 214.50 | 0.9872 | 46,742.96 | Contender |
+| `gradient_boosting` | 148.49 | 0.9949 | 46,390.60 | Contender |
+| `ensemble` (Voting Stacking) | 107.70 | 0.9965 | 39,968.11 | High Performer |
+| **`extra_trees`** | **102.77** | **0.9963** | **33,404.69** | **Selected Production Model** |
+
+### Category-wise Breakdown (Selected Production Model)
+
+| Category / Target | MAE (INR) | R² Score | Target Type |
+|---|---|---|---|
+| Healthcare | INR 44.13 | 0.9966 | Needs (Essential) |
+| Education | INR 44.13 | 0.9966 | Needs (Essential) |
+| Transport | INR 66.69 | 0.9965 | Needs (Essential) |
+| Entertainment | INR 90.91 | 0.9968 | Wants (Discretionary) |
+| Bills | INR 109.92 | 0.9965 | Needs (Essential) |
+| Shopping | INR 133.55 | 0.9971 | Wants (Discretionary) |
+| Savings | INR 155.57 | 0.9943 | Wealth Building |
+| Food | INR 177.25 | 0.9964 | Needs (Essential) |
+
+## Python API Usage
+
+```python
+from ml.inference.predict_budget import recommend_budget, calculate_financial_health_score
+
+# 1. Recommend optimal budget allocations & analyze overspending
+budget = recommend_budget(
+    monthly_income=75000.0,
+    historical_expenses={"food": 18000, "shopping": 22000, "bills": 9000, "entertainment": 6000, "transport": 5000},
+    savings_target_pct=0.20,
+    lifestyle="balanced"
+)
+print("Allocations:", budget["recommended_allocations"])
+print("50/30/20 Rule:", budget["rule_50_30_20"])
+print("AI Optimizations:", budget["optimization_insights"])
+
+# 2. Calculate 0-100 Financial Health Score with diagnostic recommendations
+health = calculate_financial_health_score(
+    monthly_income=75000.0,
+    current_balance=150000.0,
+    monthly_expenses=45000.0,
+    debt_obligations=10000.0
+)
+print("Score:", health["financial_health_score"], "/ 100")
+print("Grade:", health["grade"], "-", health["status"])
+print("Pillars:", health["pillars"])
+print("Recommendations:", health["recommendations"])
+```
+
