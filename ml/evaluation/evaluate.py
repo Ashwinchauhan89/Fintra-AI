@@ -21,10 +21,11 @@ from utils.text_utils import build_text_feature  # noqa: E402
 from utils.amount_bucketizer import AmountBucketizer  # noqa: E402
 from preprocessing.source_adapters import load_and_unify  # noqa: E402
 from training.train import (  # noqa: E402
-    build_baseline_pipeline,
-    build_random_forest_pipeline,
-    build_xgboost_pipeline,
-    HAS_XGBOOST,
+    build_candidate_pipelines,
+    FEATURE_COLS,
+    TEXT_COL,
+    CAT_FEATURE_COLS,
+    TARGET_COL,
 )
 
 DEFAULT_RAW_DIR = os.path.join(os.path.dirname(__file__), "..", "datasets", "raw")
@@ -33,23 +34,18 @@ DEFAULT_TEST_PATH = os.path.join(
 )
 DEFAULT_MODEL_DIR = os.path.join(os.path.dirname(__file__), "..", "models")
 
-TEXT_COL = "text_feature"
-CAT_FEATURE_COLS = ["amount_bucket", "day_of_week"]
-TARGET_COL = "category_encoded"
-
 
 def is_text_only_pipeline(pipeline) -> bool:
-    """Baseline pipeline's first step is 'tfidf' and takes raw text;
-    feature pipelines' first step is 'features' and take a DataFrame."""
-    return list(pipeline.named_steps.keys())[0] == "tfidf"
+    """Check if pipeline expects 1D Series or full DataFrame."""
+    first_step = list(pipeline.named_steps.keys())[0]
+    return first_step in ("tfidf", "text") and not hasattr(pipeline.named_steps[first_step], "transformers")
 
 
 def evaluate_model(name: str, model_path: str, df: pd.DataFrame,
                     label_encoder) -> dict:
     pipeline = joblib.load(model_path)
 
-    X = df[TEXT_COL] if is_text_only_pipeline(pipeline) else \
-        df[[TEXT_COL] + CAT_FEATURE_COLS]
+    X = df[TEXT_COL] if is_text_only_pipeline(pipeline) else df[FEATURE_COLS]
     y_true = df[TARGET_COL]
 
     y_pred = pipeline.predict(X)
@@ -65,7 +61,7 @@ def evaluate_model(name: str, model_path: str, df: pd.DataFrame,
     print(f"\n{'=' * 60}")
     print(f"Model: {name}")
     print(f"{'=' * 60}")
-    print(f"Accuracy: {acc:.3f}")
+    print(f"Accuracy: {acc:.4f}")
     print()
     print(classification_report(
         y_true, y_pred, target_names=target_names, zero_division=0,
@@ -83,10 +79,7 @@ def run_grouped_generalization_check(raw_dir: str) -> pd.DataFrame:
     the test set was ever seen during training, then trains fresh
     models on that split and evaluates them. This measures actual
     generalization to unfamiliar transactions, which the standard
-    random split does not — see module docstring.
-
-    Trains temporary models for this check only; does not touch or
-    overwrite the production models saved by training/train.py.
+    random split does not.
     """
     print("\n" + "=" * 60)
     print("GROUPED-SPLIT GENERALIZATION CHECK (merchant-level holdout)")
@@ -121,27 +114,17 @@ def run_grouped_generalization_check(raw_dir: str) -> pd.DataFrame:
     train_g["amount_bucket"] = bucketizer.fit_transform(train_g["amount"])
     test_g["amount_bucket"] = bucketizer.transform(test_g["amount"])
 
-    # xgboost requires numeric labels; encode here (baseline/RF work
-    # fine with either, so this keeps all three consistent).
     from sklearn.preprocessing import LabelEncoder
     le = LabelEncoder()
     y_train = le.fit_transform(train_g["category"])
     y_test = le.transform(test_g["category"])
 
-    candidates = {
-        "baseline": build_baseline_pipeline(),
-        "random_forest": build_random_forest_pipeline(),
-    }
-    if HAS_XGBOOST:
-        candidates["xgboost"] = build_xgboost_pipeline()
+    candidates = build_candidate_pipelines()
 
     results = {}
     for name, pipeline in candidates.items():
-        is_text_only = name == "baseline"
-        X_train = train_g["text_feature"] if is_text_only else \
-            train_g[["text_feature", "amount_bucket", "day_of_week"]]
-        X_test = test_g["text_feature"] if is_text_only else \
-            test_g[["text_feature", "amount_bucket", "day_of_week"]]
+        X_train = train_g[TEXT_COL] if is_text_only_pipeline(pipeline) else train_g[FEATURE_COLS]
+        X_test = test_g[TEXT_COL] if is_text_only_pipeline(pipeline) else test_g[FEATURE_COLS]
 
         pipeline.fit(X_train, y_train)
         pred = pipeline.predict(X_test)
@@ -149,10 +132,11 @@ def run_grouped_generalization_check(raw_dir: str) -> pd.DataFrame:
         acc = accuracy_score(y_test, pred)
         macro_f1 = f1_score(y_test, pred, average="macro")
         results[name] = {"accuracy": acc, "macro_f1": macro_f1}
-        print(f"[result] {name:15s} unseen-merchant accuracy={acc:.3f}  "
-              f"macro_f1={macro_f1:.3f}")
+        print(f"[result] {name:20s} unseen-merchant accuracy={acc:.4f}  "
+              f"macro_f1={macro_f1:.4f}")
 
     return pd.DataFrame(results).T
+
 
 
 def main():
@@ -182,9 +166,10 @@ def main():
         )
 
         model_paths = sorted(glob.glob(os.path.join(args.model_dir, "*.pkl")))
+        CLASSIFICATION_MODELS = {"baseline", "logistic_regression", "random_forest", "xgboost", "ensemble"}
         model_paths = [
             p for p in model_paths
-            if os.path.basename(p) not in ("label_encoder.pkl", "best_model.pkl")
+            if os.path.splitext(os.path.basename(p))[0] in CLASSIFICATION_MODELS
         ]
 
         if not model_paths:
