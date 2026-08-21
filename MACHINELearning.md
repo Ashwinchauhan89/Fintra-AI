@@ -161,31 +161,37 @@ Implementation: `ml/preprocessing/preprocess_forecasting.py`, `ml/training/train
 
 ---
 
-## Phase 5 — Budget Recommendation
+## Phase 5 — Budget Recommendation ✅ (Implemented)
 
-Predict optimal budgets.
+Predict optimal budgets & 50/30/20 category allocations.
 
 Input
 
-- Salary
-- Expenses
-- Savings
-- Lifestyle
+- Salary / Monthly Income
+- Expenses / Category-wise historical spending
+- Savings Target / Desired Savings Rate
+- Lifestyle (Conservative, Balanced, Growth-Oriented, Flexible)
 
 Output
 
-Recommended budgets for
+Recommended budgets for:
 
 - Food
-- Travel
+- Travel / Transport
 - Bills
 - Entertainment
+- Shopping
+- Healthcare
+- Education
 - Savings
+- Category variance diagnostics & overspending optimization recommendations
 
 Models
 
-- XGBoost
-- Regression
+- Multi-Output Random Forest & XGBoost Regressors
+- 50/30/20 Constrained Allocation Solver
+
+Implementation: `ml/preprocessing/preprocess_budget.py`, `ml/training/train_budget.py`, `ml/evaluation/evaluate_budget.py`, `ml/inference/predict_budget.py`
 
 ---
 
@@ -204,23 +210,28 @@ Models
 
 ---
 
-## Phase 7 — Financial Health Score
+## Phase 7 — Financial Health Score ✅ (Implemented)
 
-Generate
+Generate explainable 0–100 composite Financial Health Score and letter grade (`A+` to `D`).
 
 ```
 Financial Health
 
-82 /100
+92.4 / 100  (Grade A+ - EXCEPTIONAL)
 ```
 
-Factors
+5 Calibrated Health Pillars:
 
-- Savings Ratio
-- Debt Ratio
-- Investment Ratio
-- Spending Behaviour
-- Emergency Fund
+- **Savings Ratio (25%)**: Savings vs 20%+ target benchmark
+- **Debt & Fixed Obligation Ratio (25%)**: Debt + bills vs safe threshold
+- **Discretionary Spending Control (20%)**: Ratio of wants (shopping, entertainment) to total spend
+- **Emergency Runway & Liquidity (15%)**: Months of living expenses covered by current liquid balance
+- **Spending Buffer & Solvency (15%)**: Net cash cushion ratio
+
+Engine:
+- Multi-Pillar Composite Scoring & Diagnostic Engine with Explainable AI Insights
+
+Implementation: `ml/inference/predict_budget.py` (`calculate_financial_health_score`), `ml/evaluation/evaluate_budget.py`
 
 ---
 
