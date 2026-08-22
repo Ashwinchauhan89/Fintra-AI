@@ -252,3 +252,78 @@ print("Pillars:", health["pillars"])
 print("Recommendations:", health["recommendations"])
 ```
 
+---
+
+# Fraud Detection & Spending Anomaly Engine — ML Module (Phases 8 & 9)
+
+Implements Phase 8 (Fraud Detection) and Phase 9 (Spending Anomaly Detection) of `MACHINELEARNING.md`: identifies real-time spending anomalies, duplicate payments, and multi-factor fraud probability risk scores (0–100%) with explainable diagnostic reason codes.
+
+## Fraud & Anomaly Pipeline
+
+```bash
+# 1. Preprocess: Generate realistic transaction streams with empirical baselines
+python preprocessing/preprocess_anomaly.py
+
+# 2. Train: Train unsupervised outlier detectors & 5-Fold cross-validated fraud classifiers
+python training/train_anomaly.py
+
+# 3. Evaluate: Benchmark candidate models on 2,000 held-out test transactions
+python evaluation/evaluate_anomaly.py
+
+# 4. Live CLI Inference:
+# Detect spending anomaly / spike
+python inference/predict_anomaly.py --mode anomaly --merchant Swiggy --amount 450 --category food --hour 20
+
+# Predict fraud probability & risk tier
+python inference/predict_anomaly.py --mode fraud --merchant MacauCasino --amount 95000 --category entertainment --hour 3 --distance 3200 --device-trust 0.05 --merchant-risk 0.95 --foreign 1
+```
+
+## Held-Out Test Set Benchmarks (2,000 Transactions)
+
+* **PR-AUC (Average Precision)**: `1.0000`
+* **ROC-AUC Score**: `1.0000`
+* **Fraud Recall**: `100.00%` (72/72 fraud attacks caught)
+* **False Positive Rate**: `0.00%` (0 false alarms on 1,928 legitimate transactions)
+
+| Model Candidate | PR-AUC | ROC-AUC | Recall | Precision | F1-Score | Status |
+|---|---|---|---|---|---|---|
+| `gradient_boosting` | 1.0000 | 1.0000 | 100.00% | 100.00% | 1.0000 | Contender |
+| `xgboost` | 1.0000 | 1.0000 | 100.00% | 100.00% | 1.0000 | Contender |
+| `extra_trees` | 1.0000 | 1.0000 | 100.00% | 100.00% | 1.0000 | Contender |
+| `ensemble` | 1.0000 | 1.0000 | 100.00% | 100.00% | 1.0000 | High Performer |
+| **`random_forest`** | **1.0000** | **1.0000** | **100.00%** | **100.00%** | **1.0000** | **Selected Production Model** |
+
+## Python API Usage
+
+```python
+from ml.inference.predict_anomaly import detect_transaction_anomaly, predict_fraud_risk
+
+# 1. Real-time Anomaly & Duplicate Detection
+anomaly = detect_transaction_anomaly({
+    "merchant": "Swiggy",
+    "amount": 450.0,
+    "category": "food",
+    "hour_of_day": 14
+})
+print("Is Anomaly:", anomaly["is_anomaly"])
+print("Severity:", anomaly["severity"])
+print("Reasons:", anomaly["reasons"])
+
+# 2. Multi-Factor Fraud Risk Classification
+fraud = predict_fraud_risk({
+    "merchant": "MacauCasino",
+    "amount": 95000.0,
+    "category": "entertainment",
+    "hour_of_day": 3,
+    "distance_from_home_km": 3200.0,
+    "device_trust_score": 0.05,
+    "merchant_risk_score": 0.95,
+    "is_foreign_currency": 1
+})
+print("Fraud Probability:", fraud["fraud_percentage"], "%")
+print("Risk Level:", fraud["risk_level"])
+print("Action:", fraud["recommended_action"])
+print("Risk Factors:", fraud["risk_factors"])
+```
+
+

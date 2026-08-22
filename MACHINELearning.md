@@ -235,49 +235,63 @@ Implementation: `ml/inference/predict_budget.py` (`calculate_financial_health_sc
 
 ---
 
-## Phase 8 — Fraud Detection
+## Phase 8 — Fraud Detection ✅ (Implemented)
 
 ### Objective
 
-Detect suspicious transactions.
+Detect unauthorized or high-risk fraudulent transactions with probability scoring (0–100%) and tiering (`LOW`, `MEDIUM`, `HIGH`).
 
 Features
 
-- Large Amount
-- Unknown Device
-- Geo Distance
-- Login Time
-- Merchant Risk
+- Large / Disproportionate Amount (Relative to category baseline)
+- Unknown / Untrusted Device
+- Geo-Distance Deviation (km)
+- Off-hours / Night-time Activity (11 PM - 5 AM)
+- Merchant Risk Index & Foreign Currency Flag
+- 1-Hour Transaction Velocity Burst
 
 Models
 
-- Isolation Forest
-- AutoEncoder
-- XGBoost
-- Random Forest
+- Balanced Random Forest Classifier
+- Tuned XGBoost Classifier (with `scale_pos_weight`)
+- Extra Trees & Gradient Boosting Classifiers
+- Soft-Voting Stacking Ensemble
 
 Output
 
 ```
-Fraud Probability
-
-96%
+Fraud Probability: 100.0%  (Risk Tier: HIGH - Action: BLOCK_TRANSACTION)
 ```
+
+Implementation: `ml/preprocessing/preprocess_anomaly.py`, `ml/training/train_anomaly.py`, `ml/evaluation/evaluate_anomaly.py`, `ml/inference/predict_anomaly.py` (`predict_fraud_risk`)
 
 ---
 
-## Phase 9 — Spending Anomaly Detection
+## Phase 9 — Spending Anomaly Detection ✅ (Implemented)
+
+### Objective
+
+Identify real-time out-of-pattern spending anomalies, duplicate payments, and sudden category spikes.
 
 Detect
 
-- Abnormal Expenses
-- Duplicate Payments
-- Unexpected Purchases
+- Abnormal Expense Spikes (Z-Score & Isolation Outlier Scoring)
+- Potential Duplicate Charges (Same Merchant & Exact Amount within short intervals)
+- Unprecedented Category Drift & Night-time Bursts
 
 Models
 
-- Isolation Forest
-- One-Class SVM
+- Isolation Forest (Unsupervised partition isolation)
+- One-Class SVM (RBF kernel boundary estimation)
+
+Output
+
+```
+Anomaly Status: Flagged (Severity: CRITICAL)
+Reasons: ["Potential duplicate payment", "Amount is 12.5x higher than category median"]
+```
+
+Implementation: `ml/inference/predict_anomaly.py` (`detect_transaction_anomaly`), `ml/training/train_anomaly.py`
 
 ---
 

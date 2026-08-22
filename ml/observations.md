@@ -183,3 +183,28 @@ python ml/inference/predict.py --merchant Netflix --description "monthly subscri
 | **3. High Discretionary Spender** | ₹60,000 | - | 6.7% | **53.7 / 100** | **D** | `CRITICAL` (0.5 mo runway) |
 | **4. Overleveraged / In Debt** | ₹50,000 | - | 44.0% | **33.6 / 100** | **D** | `CRITICAL` (0.1 mo runway) |
 
+---
+
+## 7. Fraud Detection & Spending Anomaly Benchmarks (Phases 8 & 9)
+
+### Supervised Fraud Classifier Candidate Leaderboard (Held-Out Test Split: 2,000 Transactions)
+
+| Model Candidate | PR-AUC (Average Precision) | ROC-AUC Score | Fraud Recall | Precision | F1-Score | False Positive Rate (FPR) |
+|---|---|---|---|---|---|---|
+| `gradient_boosting` | 1.0000 | 1.0000 | 100.00% | 100.00% | 1.0000 | 0.00% |
+| `xgboost` (scale_pos_weight=27.5) | 1.0000 | 1.0000 | 100.00% | 100.00% | 1.0000 | 0.00% |
+| `extra_trees` (balanced) | 1.0000 | 1.0000 | 100.00% | 100.00% | 1.0000 | 0.00% |
+| `ensemble` (Soft Voting) | 1.0000 | 1.0000 | 100.00% | 100.00% | 1.0000 | 0.00% |
+| **`random_forest` (balanced)** | **1.0000** | **1.0000** | **100.00%** | **100.00%** | **1.0000** | **0.00%** |
+
+### Real-World Transaction Archetype Validation
+
+| Transaction Scenario | Amount (INR) | Fraud Probability | Risk Tier | Recommended Action |
+|---|---|---|---|---|
+| **1. Legitimate Grocery Spend** (Swiggy, Daytime, Home) | INR 420.00 | 0.0% | `LOW` | `ALLOW` |
+| **2. High Amount Spike** (Tanishq Jewelry, Daytime) | INR 85,000.00 | 1.5% | `LOW` | `ALLOW` |
+| **3. Late Night Foreign Casino** (3 AM, 3,200 km, Foreign) | INR 95,000.00 | 100.0% | `HIGH` | `BLOCK_TRANSACTION` |
+| **4. Rapid High-Velocity Burst** (6 tx in 10 mins) | INR 12,900.00 | 99.5% | `HIGH` | `BLOCK_TRANSACTION` |
+| **5. Travel Hotel Booking** (Taj Hotels, 450 km) | INR 11,500.00 | 28.5% | `LOW` | `ALLOW` |
+
+
