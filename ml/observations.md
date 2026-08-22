@@ -207,4 +207,37 @@ python ml/inference/predict.py --merchant Netflix --description "monthly subscri
 | **4. Rapid High-Velocity Burst** (6 tx in 10 mins) | INR 12,900.00 | 99.5% | `HIGH` | `BLOCK_TRANSACTION` |
 | **5. Travel Hotel Booking** (Taj Hotels, 450 km) | INR 11,500.00 | 28.5% | `LOW` | `ALLOW` |
 
+---
+
+## 8. Savings Capacity & Goal Timeline Prediction Benchmarks (Phases 6 & 11)
+
+### Multi-Model Candidate Leaderboard (Held-Out Test Split: 1,500 Goal Profiles)
+
+| Model Candidate | Architecture / Specs | Test MAE (INR) | Test R² Score | Max Peak Error (INR) | Status |
+|---|---|---|---|---|---|
+| `ridge` | Linear L2 Baseline | INR 10,271.94 | 0.7035 | INR 460,477.13 | Baseline |
+| `random_forest` | 150 trees, depth=16 | INR 776.59 | 0.9844 | INR 126,737.55 | Contender |
+| `xgboost` | 250 trees, depth=6, lr=0.04 | INR 769.19 | 0.9903 | INR 68,701.36 | Contender |
+| `extra_trees` | 200 trees, depth=18 | INR 604.19 | 0.9851 | INR 129,932.79 | Contender |
+| `gradient_boosting` | 200 trees, depth=6 | INR 592.18 | 0.9913 | INR 102,797.76 | High Performer |
+| **`ensemble`** | **Soft-Weighted Stacking Blend** | **INR 548.21** | **0.9897** | **INR 104,486.75** | **Selected Production Model** |
+
+### Granular Target Accuracy Breakdown (Selected Production Model)
+
+* **Monthly Net Savings Capacity Error**: **INR 191.04** MAE
+* **Goal Completion Timeline Error**: **2.56 months** MAE
+* **Required Monthly SIP Error**: **INR 1,451.03** MAE
+* **Overall Multi-Target R² Score**: **0.9897**
+
+### Real-World Goal Persona Archetype Validation
+
+| Goal Persona Archetype | Target (INR) | Saved (INR) | Monthly Income | Savings/Mo | Predicted Timeline | Feasibility | Milestone Date |
+|---|---|---|---|---|---|---|---|
+| **MacBook Pro M3** (Tech Gadget) | INR 85,000 | INR 25,000 | INR 55,000 | INR 19,890 | **3.0 months** | `ON_TRACK` | 2026-11-22 |
+| **Emergency Fund (6-Mo Living Buffer)** | INR 180,000 | INR 40,000 | INR 75,000 | INR 28,036 | **4.9 months** | `ON_TRACK` | 2027-01-19 |
+| **Electric Scooter / Commute Vehicle** | INR 120,000 | INR 30,000 | INR 45,000 | INR 14,901 | **5.9 months** | `ON_TRACK` | 2027-02-18 |
+| **Europe Vacation Trip** | INR 250,000 | INR 50,000 | INR 110,000 | INR 41,691 | **4.7 months** | `ON_TRACK` | 2027-01-13 |
+| **House Downpayment Reserve** | INR 1,200,000 | INR 350,000 | INR 150,000 | INR 59,246 | **13.0 months** | `ON_TRACK` | 2027-09-22 |
+
+
 
