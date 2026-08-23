@@ -17,6 +17,13 @@ export function ReceiptScanner({ onScanComplete }) {
   } = useFetch(scanReceipt);
 
   const handleReceiptScan = async (file) => {
+    const supportedTypes = ["image/jpeg", "image/png", "image/gif", "image/webp"];
+
+    if (!supportedTypes.includes(file.type)) {
+      toast.error("Please select a JPEG, PNG, GIF, or WebP image");
+      return;
+    }
+
     if (file.size > 5 * 1024 * 1024) {
       toast.error("File size should be less than 5MB");
       return;
@@ -30,7 +37,7 @@ export function ReceiptScanner({ onScanComplete }) {
       onScanComplete(scannedData);
       toast.success("Receipt scanned successfully");
     }
-  }, [scanReceiptLoading, scannedData]);
+  }, [onScanComplete, scanReceiptLoading, scannedData]);
 
   return (
     <div className="flex items-center gap-4">
@@ -38,7 +45,7 @@ export function ReceiptScanner({ onScanComplete }) {
         type="file"
         ref={fileInputRef}
         className="hidden"
-        accept="image/*"
+        accept="image/jpeg,image/png,image/gif,image/webp"
         capture="environment"
         onChange={(e) => {
           const file = e.target.files?.[0];
