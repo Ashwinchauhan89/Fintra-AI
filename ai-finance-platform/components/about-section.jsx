@@ -115,7 +115,7 @@ const AboutSection = () => {
               How you manage finances will change.
             </div>
             <div className="about-text-line text-neutral-500 transform-style-3d mb-8">
-              How you track them shouldn't.
+              How you track them shouldn&apos;t.
             </div>
             <div className="about-text-line transform-style-3d text-3xl md:text-5xl lg:text-6xl text-neutral-300 leading-tight">
               Fintra AI moves predictive intelligence and
