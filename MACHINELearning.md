@@ -396,15 +396,36 @@ Predict credit score using
 
 ---
 
-## Phase 14 — Subscription Detection
+## Phase 14 — Subscription Detection ✅ (Implemented)
 
-Automatically identify
+### Objective
 
-- Netflix
-- Prime
-- Spotify
-- Gym
-- Other recurring subscriptions
+Automatically identify recurring charges, predict billing cadence (`MONTHLY`, `ANNUAL`, `WEEKLY`, `QUARTERLY`), calculate next renewal dates, and flag silent price hikes.
+
+Features
+
+- Subword Character n-grams & TF-IDF Merchant Representation
+- Recurring Interval Mean & Standard Deviation (Periodic consistency)
+- Charge Amount Variance & Fixed Flag
+- Historical Cycle Frequency Count
+- Base Transaction Category
+
+Models
+
+- Regularized Logistic Regression & Soft-Voting Stacking Ensemble Classifiers
+- Interval & Cadence Estimators (`estimate_cadence`)
+- Silent Price Hike & Anomaly Tracker (`detect_price_hike`)
+
+Output
+
+```
+Active Subscriptions: Netflix (INR 649/mo), Spotify (INR 119/mo), JioFiber (INR 825/mo)
+Total Monthly Burn: INR 1,593.00
+Upcoming Renewals: JioFiber on Aug 31 (7 days remaining), Netflix on Sep 22 (29 days remaining)
+Alerts: Spotify increased by 25.2% (+INR 30.00) compared to previous cycle.
+```
+
+Implementation: `ml/preprocessing/preprocess_subscriptions.py`, `ml/training/train_subscriptions.py`, `ml/evaluation/evaluate_subscriptions.py`, `ml/inference/predict_subscriptions.py`
 
 ---
 

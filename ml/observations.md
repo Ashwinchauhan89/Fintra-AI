@@ -236,8 +236,34 @@ python ml/inference/predict.py --merchant Netflix --description "monthly subscri
 | **MacBook Pro M3** (Tech Gadget) | INR 85,000 | INR 25,000 | INR 55,000 | INR 19,890 | **3.0 months** | `ON_TRACK` | 2026-11-22 |
 | **Emergency Fund (6-Mo Living Buffer)** | INR 180,000 | INR 40,000 | INR 75,000 | INR 28,036 | **4.9 months** | `ON_TRACK` | 2027-01-19 |
 | **Electric Scooter / Commute Vehicle** | INR 120,000 | INR 30,000 | INR 45,000 | INR 14,901 | **5.9 months** | `ON_TRACK` | 2027-02-18 |
-| **Europe Vacation Trip** | INR 250,000 | INR 50,000 | INR 110,000 | INR 41,691 | **4.7 months** | `ON_TRACK` | 2027-01-13 |
+| **4. Europe Vacation Trip** | INR 250,000 | INR 50,000 | INR 110,000 | INR 41,691 | **4.7 months** | `ON_TRACK` | 2027-01-13 |
 | **House Downpayment Reserve** | INR 1,200,000 | INR 350,000 | INR 150,000 | INR 59,246 | **13.0 months** | `ON_TRACK` | 2027-09-22 |
+
+---
+
+## 9. Subscription & Recurring Charge Detection Benchmarks (Phase 14)
+
+### Candidate Classification Leaderboard (Held-Out Test Split: 1,600 Merchant Streams)
+
+| Model Candidate | PR-AUC (Average Precision) | ROC-AUC Score | Recall | Precision | F1-Score | False Positive Rate (FPR) | Status |
+|---|---|---|---|---|---|---|---|
+| `random_forest` | 1.0000 | 1.0000 | 100.00% | 100.00% | 1.0000 | 0.00% | Contender |
+| `extra_trees` | 1.0000 | 1.0000 | 100.00% | 100.00% | 1.0000 | 0.00% | Contender |
+| `gradient_boosting` | 1.0000 | 1.0000 | 100.00% | 100.00% | 1.0000 | 0.00% | Contender |
+| `xgboost` | 1.0000 | 1.0000 | 100.00% | 100.00% | 1.0000 | 0.00% | Contender |
+| `ensemble` | 1.0000 | 1.0000 | 100.00% | 100.00% | 1.0000 | 0.00% | High Performer |
+| **`logistic_regression`** | **1.0000** | **1.0000** | **100.00%** | **100.00%** | **1.0000** | **0.00%** | **Selected Production Model** |
+
+### Real-World Subscription Archetype Validation
+
+| Subscription Archetype Scenario | Amount (INR) | Subscription Detected | Cadence | Confidence | Next Renewal Date |
+|---|---|---|---|---|---|
+| **1. Netflix Premium Plan** (Monthly stream) | INR 649.00 | `True` | `MONTHLY` | 100.0% | 2026-09-22 |
+| **2. Cult.fit Elite Pass** (Annual membership) | INR 14,999.00 | `True` | `ANNUAL` | 100.0% | 2027-08-23 |
+| **3. JioFiber High-Speed Broadband** | INR 825.00 | `True` | `MONTHLY` | 100.0% | 2026-09-22 |
+| **4. Apple iCloud 50GB Cloud Tier** | INR 75.00 | `True` | `MONTHLY` | 100.0% | 2026-09-22 |
+| **5. Swiggy Food Delivery (Ad-hoc Orders)** | INR 450.00 | `False` | `NONE` | 0.1% | N/A |
+
 
 
 

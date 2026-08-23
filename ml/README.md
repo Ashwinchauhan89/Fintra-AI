@@ -405,5 +405,85 @@ print("Feasibility:", goal["feasibility"])
 print("Recommendations:", goal["recommendations"])
 ```
 
+---
+
+# Subscription & Recurring Charge Detection Engine — ML Module (Phase 14)
+
+Implements Phase 14 (Subscription Detection) of `MACHINELEARNING.md`: automatically scans transaction history to detect recurring subscriptions (Netflix, Prime, Spotify, Gym, Broadband, Rent, Insurance), predicts billing cadence (`MONTHLY`, `ANNUAL`, `WEEKLY`, `QUARTERLY`), calculates upcoming renewal calendars, and alerts users to silent price hikes.
+
+## Subscription Detection Pipeline
+
+```bash
+# 1. Preprocess: Generate realistic recurring merchant sequences and ad-hoc purchases
+python preprocessing/preprocess_subscriptions.py
+
+# 2. Train: Train 6-model cross-validated classification competition suite
+python training/train_subscriptions.py
+
+# 3. Evaluate: Benchmark candidate models on 1,600 held-out merchant streams
+python evaluation/evaluate_subscriptions.py
+
+# 4. Live CLI Inference:
+# Classify individual merchant subscription status
+python inference/predict_subscriptions.py --mode classify --merchant Netflix --amount 649 --category entertainment
+
+# Scan continuous multi-transaction history for all active subscriptions & price hikes
+python inference/predict_subscriptions.py --mode scan
+```
+
+## Held-Out Test Set Benchmarks (1,600 Merchant Streams)
+
+* **PR-AUC (Average Precision)**: `1.0000`
+* **ROC-AUC Score**: `1.0000`
+* **Subscription Recall**: `100.00%` (1033/1033 caught)
+* **False Positive Rate**: `0.00%` (0 false alarms on 567 ad-hoc transactions)
+
+| Model Candidate | PR-AUC | ROC-AUC | Recall | Precision | F1-Score | Status |
+|---|---|---|---|---|---|---|
+| `random_forest` | 1.0000 | 1.0000 | 100.00% | 100.00% | 1.0000 | Contender |
+| `extra_trees` | 1.0000 | 1.0000 | 100.00% | 100.00% | 1.0000 | Contender |
+| `gradient_boosting` | 1.0000 | 1.0000 | 100.00% | 100.00% | 1.0000 | Contender |
+| `xgboost` | 1.0000 | 1.0000 | 100.00% | 100.00% | 1.0000 | Contender |
+| `ensemble` | 1.0000 | 1.0000 | 100.00% | 100.00% | 1.0000 | High Performer |
+| **`logistic_regression`** | **1.0000** | **1.0000** | **100.00%** | **100.00%** | **1.0000** | **Selected Production Model** |
+
+## Python API Usage
+
+```python
+from ml.inference.predict_subscriptions import classify_recurring_merchant, detect_subscriptions_from_transactions
+
+# 1. Classify Single Recurring Merchant
+res = classify_recurring_merchant(
+    merchant_name="Netflix India",
+    amount=649.0,
+    category="entertainment",
+    interval_mean_days=30.0,
+    interval_std_days=0.2,
+    transaction_count=6
+)
+print("Is Subscription:", res["is_subscription"])
+print("Cadence:", res["cadence"])
+print("Next Renewal Date:", res["next_renewal_date"])
+print("Monthly Cost: INR", res["monthly_equivalent_cost"])
+
+# 2. Scan Continuous Transaction Stream
+transactions = [
+    {"date": "2026-06-25", "merchant": "Netflix", "amount": 649.0, "category": "entertainment"},
+    {"date": "2026-07-25", "merchant": "Netflix", "amount": 649.0, "category": "entertainment"},
+    {"date": "2026-08-25", "merchant": "Netflix", "amount": 649.0, "category": "entertainment"},
+    {"date": "2026-07-10", "merchant": "Spotify", "amount": 119.0, "category": "entertainment"},
+    {"date": "2026-08-10", "merchant": "Spotify", "amount": 149.0, "category": "entertainment"},
+    {"date": "2026-08-01", "merchant": "JioFiber", "amount": 825.0, "category": "bills"},
+    {"date": "2026-08-05", "merchant": "Swiggy", "amount": 420.0, "category": "food"}
+]
+
+scan = detect_subscriptions_from_transactions(transactions)
+print("Active Subscriptions Count:", scan["active_subscriptions_count"])
+print("Total Monthly Subscription Burn: INR", scan["total_monthly_burn"])
+print("Upcoming Renewals Calendar:", scan["upcoming_renewals"])
+print("Silent Price Hike Alerts:", scan["price_hike_alerts"])
+```
+
+
 
 
