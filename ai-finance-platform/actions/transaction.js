@@ -6,8 +6,34 @@ import { revalidatePath } from "next/cache";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import aj from "@/lib/arcjet";
 import { request } from "@arcjet/next";
+import { z } from "zod";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const MAX_RECEIPT_SIZE = 5 * 1024 * 1024;
+const RECEIPT_CATEGORIES = [
+  "housing",
+  "transportation",
+  "groceries",
+  "utilities",
+  "entertainment",
+  "food",
+  "shopping",
+  "healthcare",
+  "education",
+  "personal",
+  "travel",
+  "insurance",
+  "gifts",
+  "bills",
+  "other-expense",
+];
+const receiptSchema = z.object({
+  amount: z.coerce.number().finite().positive(),
+  date: z.string().trim().min(1),
+  description: z.string().trim().min(1).max(240),
+  merchantName: z.string().trim().min(1).max(160),
+  category: z.enum(RECEIPT_CATEGORIES),
+});
 
 const serializeDecimalFields = (obj) => {
   const serialized = { ...obj };
@@ -275,23 +301,60 @@ export async function getUserTransactions(query = {}) {
 }
 
 // Scan Receipt
+const hasSupportedImageSignature = (bytes, mimeType) => {
+  if (mimeType === "image/jpeg") {
+    return bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff;
+  }
+  if (mimeType === "image/png") {
+    return bytes.slice(0, 8).join(",") === "137,80,78,71,13,10,26,10";
+  }
+  if (mimeType === "image/gif") {
+    return new TextDecoder().decode(bytes.slice(0, 4)) === "GIF8";
+  }
+  if (mimeType === "image/webp") {
+    return (
+      new TextDecoder().decode(bytes.slice(0, 4)) === "RIFF" &&
+      new TextDecoder().decode(bytes.slice(8, 12)) === "WEBP"
+    );
+  }
+  return false;
+};
+
 export async function scanReceipt(file) {
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const { userId } = await auth();
+    if (!userId) throw new Error("Unauthorized");
 
-    // Convert File to ArrayBuffer
+    const req = await request();
+    const decision = await aj.protect(req, { userId, requested: 1 });
+    if (decision.isDenied()) throw new Error("Receipt scan request blocked");
+
+    if (!file || typeof file.arrayBuffer !== "function") {
+      throw new Error("A receipt image is required");
+    }
+    if (!file.size || file.size > MAX_RECEIPT_SIZE) {
+      throw new Error("Receipt image must be between 1 byte and 5 MB");
+    }
+    if (!["image/jpeg", "image/png", "image/gif", "image/webp"].includes(file.type)) {
+      throw new Error("Only JPEG, PNG, GIF, and WebP receipts are supported");
+    }
+
     const arrayBuffer = await file.arrayBuffer();
-    // Convert ArrayBuffer to Base64
-    const base64String = Buffer.from(arrayBuffer).toString("base64");
+    const bytes = new Uint8Array(arrayBuffer);
+    if (!hasSupportedImageSignature(bytes, file.type)) {
+      throw new Error("Receipt content does not match its image type");
+    }
 
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const base64String = Buffer.from(arrayBuffer).toString("base64");
     const prompt = `
       Analyze this receipt image and extract the following information in JSON format:
       - Total amount (just the number)
       - Date (in ISO format)
       - Description or items purchased (brief summary)
       - Merchant/store name
-      - Suggested category (one of: housing,transportation,groceries,utilities,entertainment,food,shopping,healthcare,education,personal,travel,insurance,gifts,bills,other-expense )
-      
+      - Suggested category (one of: ${RECEIPT_CATEGORIES.join(", ")})
+
       Only respond with valid JSON in this exact format:
       {
         "amount": number,
@@ -300,40 +363,27 @@ export async function scanReceipt(file) {
         "merchantName": "string",
         "category": "string"
       }
-
-      If its not a recipt, return an empty object
     `;
 
     const result = await model.generateContent([
-      {
-        inlineData: {
-          data: base64String,
-          mimeType: file.type,
-        },
-      },
+      { inlineData: { data: base64String, mimeType: file.type } },
       prompt,
     ]);
-
     const response = await result.response;
-    const text = response.text();
-    const cleanedText = text.replace(/```(?:json)?\n?/g, "").trim();
+    const cleanedText = response.text().replace(/```(?:json)?\n?/g, "").trim();
+    const parsed = receiptSchema.safeParse(JSON.parse(cleanedText));
 
-    try {
-      const data = JSON.parse(cleanedText);
-      return {
-        amount: parseFloat(data.amount),
-        date: new Date(data.date),
-        description: data.description,
-        category: data.category,
-        merchantName: data.merchantName,
-      };
-    } catch (parseError) {
-      console.error("Error parsing JSON response:", parseError);
-      throw new Error("Invalid response format from Gemini");
+    if (!parsed.success || Number.isNaN(new Date(parsed.data?.date).getTime())) {
+      throw new Error("Invalid receipt data returned by Gemini");
     }
+
+    return {
+      ...parsed.data,
+      date: new Date(parsed.data.date),
+    };
   } catch (error) {
     console.error("Error scanning receipt:", error);
-    throw new Error("Failed to scan receipt");
+    throw new Error(error.message || "Failed to scan receipt");
   }
 }
 
