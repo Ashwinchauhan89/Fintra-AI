@@ -4,7 +4,7 @@ import { db } from "@/lib/prisma";
 import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 
-export async function getCurrentBudget(accountId) {
+export async function getCurrentBudget() {
   try {
     const { userId } = await auth();
     if (!userId) throw new Error("Unauthorized");
@@ -17,10 +17,8 @@ export async function getCurrentBudget(accountId) {
       throw new Error("User not found");
     }
 
-    const budget = await db.budget.findFirst({
-      where: {
-        userId: user.id,
-      },
+    const budget = await db.budget.findUnique({
+      where: { userId: user.id },
     });
 
     // Get current month's expenses
@@ -30,10 +28,10 @@ export async function getCurrentBudget(accountId) {
       currentDate.getMonth(),
       1
     );
-    const endOfMonth = new Date(
+    const startOfNextMonth = new Date(
       currentDate.getFullYear(),
       currentDate.getMonth() + 1,
-      0
+      1
     );
 
     const expenses = await db.transaction.aggregate({
@@ -42,9 +40,8 @@ export async function getCurrentBudget(accountId) {
         type: "EXPENSE",
         date: {
           gte: startOfMonth,
-          lte: endOfMonth,
+          lt: startOfNextMonth,
         },
-        accountId,
       },
       _sum: {
         amount: true,
@@ -65,6 +62,11 @@ export async function getCurrentBudget(accountId) {
 
 export async function updateBudget(amount) {
   try {
+    const numericAmount = Number(amount);
+    if (!Number.isFinite(numericAmount) || numericAmount <= 0) {
+      throw new Error("Budget amount must be a positive number");
+    }
+
     const { userId } = await auth();
     if (!userId) throw new Error("Unauthorized");
 
@@ -80,11 +82,11 @@ export async function updateBudget(amount) {
         userId: user.id,
       },
       update: {
-        amount,
+        amount: numericAmount,
       },
       create: {
         userId: user.id,
-        amount,
+        amount: numericAmount,
       },
     });
 
