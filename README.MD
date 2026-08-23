@@ -435,7 +435,9 @@ Fintra-AI/
 
 ## 🏗️ Architecture Overview
 
-Fintra-AI follows a **Full-Stack AI/ML Microservice Architecture**, separating the frontend, backend APIs, machine-learning workloads, data pipelines, and infrastructure into independently maintainable layers.
+> **Current implementation note:** The runnable product is the Next.js/Prisma application in `ai-finance-platform/`. The `ml/` directory contains separate Python research and inference pipelines. The FastAPI backend, data-pipeline jobs, Terraform/monitoring infrastructure, and CI services shown in the roadmap are planned surfaces and are not currently implemented as production services.
+
+Fintra-AI currently uses a **Next.js application with server actions and a separate ML research layer**. The application integrates Clerk, Prisma/PostgreSQL, Gemini-assisted receipt/report features, Resend email, and Inngest jobs. Future backend, data-engineering, and MLOps layers should be added only when their source code and deployment instructions are committed.
 
 ```text
                          ┌─────────────────────────┐
@@ -519,13 +521,16 @@ cd Fintra-AI
 
 ## 2️⃣ Install Dependencies
 
+The runnable application is located in `ai-finance-platform/`. Install its dependencies from that directory:
+
 ```bash
-npm install
+cd ai-finance-platform
+npm ci
 ```
 
 ## 3️⃣ Configure Environment Variables
 
-Create a `.env` file in the project root.
+Create `ai-finance-platform/.env.local` from the committed `ai-finance-platform/.env.example` template.
 
 ```env
 DATABASE_URL=
@@ -657,12 +662,12 @@ docs/ml-documentation
 
 | Document             | Description                          |
 | -------------------- | ------------------------------------ |
-| `README.md`          | Project overview and setup           |
-| `PLANNING.md`        | Development roadmap and milestones   |
-| `MACHINELEARNING.md` | ML architecture and pipeline         |
-| `ARCHITECTURE.md`    | System architecture and design       |
-| `CONTRIBUTING.md`    | Contribution guidelines              |
-| `SECURITY.md`        | Security policies and best practices |
+| `README.MD` | Project overview and setup |
+| `CONTRIBUTION.MD` | Contribution guidelines |
+| `PLANNING.MD` | Development roadmap and milestones |
+| `MACHINELearning.md` | ML architecture and pipeline |
+| `ai-finance-platform/README.md` | Frontend environment variables |
+| `ml/README.md` | ML pipeline setup and usage |
 
 ---
 
@@ -687,7 +692,7 @@ docs/ml-documentation
 ## 🔵 Phase 3 — AI Financial Assistant
 
 * [ ] AI Financial Advisor
-* [ ] Gemini Integration
+* [x] Gemini Integration (receipt scanning and monthly reports)
 * [ ] AI Budget Recommendations
 * [ ] Personalized Financial Insights
 * [ ] AI Financial Copilot
@@ -704,7 +709,7 @@ docs/ml-documentation
 
 ## 🔴 Phase 5 — Advanced Platform
 
-* [ ] OCR Receipt Scanner
+* [x] OCR Receipt Scanner (Gemini-assisted)
 * [ ] Investment Tracker
 * [ ] Family Wallet
 * [ ] Voice Finance Assistant
@@ -714,7 +719,7 @@ docs/ml-documentation
 * [ ] Explainable AI
 * [ ] MLOps Pipeline
 
-📄 See `docs/PLANNING.md` for the detailed roadmap.
+📄 See `PLANNING.MD` for the detailed roadmap.
 
 ---
 
@@ -789,7 +794,7 @@ Contributions are welcome from:
 Before contributing, please read:
 
 ```text
-docs/CONTRIBUTING.md
+CONTRIBUTION.MD
 ```
 
 ---
