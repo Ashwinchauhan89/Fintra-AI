@@ -104,6 +104,8 @@ export async function bulkDeleteTransactions(transactionIds) {
       }
     });
 
+    
+
     revalidatePath("/dashboard");
     revalidatePath("/account/[id]");
 
