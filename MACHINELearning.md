@@ -195,18 +195,34 @@ Implementation: `ml/preprocessing/preprocess_budget.py`, `ml/training/train_budg
 
 ---
 
-## Phase 6 — Savings Prediction
+## Phase 6 — Savings Prediction ✅ (Implemented)
 
-Predict
+### Objective
 
-- Monthly Savings
-- Annual Savings
-- Goal Completion Time
+Predict forward-looking monthly savings capacity, discretionary cut potential, and multi-horizon (1/3/5-year) compounding wealth growth.
+
+Features
+
+- Monthly Income & Disposable Margin
+- Essential (Needs) vs Discretionary (Wants) Breakdown
+- Debt Obligations & Baseline Savings Rate
+- Liquid Buffer Multiples
 
 Models
 
-- Regression
-- LSTM
+- Multi-Output Stacking Ensemble Regressor
+- Gradient Boosting & Extra Trees Regressors
+- Compounding Wealth Growth Projector
+
+Output
+
+```
+Monthly Savings Capacity: INR 24,747.21 (33.0% Savings Rate)
+Discretionary Cut Potential: INR 4,725.00/month
+5-Year Compounded Wealth: INR 1,842,605.83
+```
+
+Implementation: `ml/preprocessing/preprocess_goals.py`, `ml/training/train_goals.py`, `ml/evaluation/evaluate_goals.py`, `ml/inference/predict_goals.py` (`predict_savings_growth`)
 
 ---
 
@@ -319,29 +335,37 @@ Models
 
 ---
 
-## Phase 11 — Goal Prediction
+## Phase 11 — Goal Prediction ✅ (Implemented)
 
-Predict
+### Objective
+
+Predict exact fractional goal completion timeline, target milestone completion date, required monthly SIP contribution, and feasibility tiering (`ON_TRACK`, `FEASIBLE`, `STRETCH`, `AT_RISK`).
+
+Features
+
+- Target Goal Amount & Current Saved Balance
+- Disposable Savings Capacity
+- User Intended Horizon Months
+- Expected Compounding Return (%)
+- Goal Archetype Preset (`emergency_fund`, `tech_gadget`, `vehicle`, `travel_vacation`, `home_downpayment`, `education_fund`)
+
+Models
+
+- Multi-Output Stacking Ensemble Regressor
+- Non-Linear Future Value Logarithmic Timeline Solver
+- Discretionary Acceleration Optimization Engine
+
+Output
 
 ```
-Goal
-
-Laptop
-
-Current
-
-₹25,000
-
-Target
-
-₹80,000
-
-↓
-
-Prediction
-
-6 Months
+Goal: MacBook Pro M3 (Target: INR 85,000 | Saved: INR 25,000)
+Predicted Completion: 2.6 months (Milestone Date: 2026-11-10)
+Feasibility Status: ON_TRACK
+Required Monthly SIP: INR 9,709.32
+Acceleration Tip: Reallocating INR 2,500/mo from discretionary spend achieves goal 0.4 months earlier.
 ```
+
+Implementation: `ml/preprocessing/preprocess_goals.py`, `ml/training/train_goals.py`, `ml/evaluation/evaluate_goals.py`, `ml/inference/predict_goals.py` (`predict_goal_timeline`)
 
 ---
 

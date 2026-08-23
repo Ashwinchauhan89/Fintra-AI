@@ -326,4 +326,84 @@ print("Action:", fraud["recommended_action"])
 print("Risk Factors:", fraud["risk_factors"])
 ```
 
+---
+
+# Savings Prediction & Goal Timeline Engine — ML Module (Phases 6 & 11)
+
+Implements Phase 6 (Savings Prediction) and Phase 11 (Goal Prediction) of `MACHINELEARNING.md`: forecasts personalized forward-looking monthly savings capacity, discretionary cut potential, multi-year compounding wealth accumulation, and fractional goal completion timelines with feasibility grading (`ON_TRACK`, `FEASIBLE`, `STRETCH`, `AT_RISK`).
+
+## Savings & Goals Pipeline
+
+```bash
+# 1. Preprocess: Generate realistic financial profiles and goal targets
+python preprocessing/preprocess_goals.py
+
+# 2. Train: Train 6-model cross-validated regression competition suite
+python training/train_goals.py
+
+# 3. Evaluate: Benchmark candidate models on 1,500 held-out goal profiles
+python evaluation/evaluate_goals.py
+
+# 4. Live CLI Inference:
+# Forecast multi-year savings growth & discretionary cut potential
+python inference/predict_goals.py --mode savings --income 75000 --expenses 45000 --debt 5000 --saved 50000
+
+# Predict goal completion timeline, milestone date, and required monthly SIP
+python inference/predict_goals.py --mode goal --goal "MacBook Pro M3" --target 85000 --saved 25000 --income 60000 --expenses 36000 --debt 4000 --intended-months 6
+```
+
+## Held-Out Test Set Benchmarks (1,500 Goal Profiles)
+
+* **Overall Multi-Target R² Score**: `0.9897`
+* **Monthly Savings Capacity MAE**: `INR 191.04`
+* **Goal Completion Timeline MAE**: `2.56 months`
+* **Required Monthly SIP MAE**: `INR 1,451.03`
+
+| Model Candidate | Architecture / Specs | Test MAE (INR) | Test R² Score | Max Peak Error (INR) | Status |
+|---|---|---|---|---|---|
+| `ridge` | Linear L2 Baseline | INR 10,271.94 | 0.7035 | INR 460,477.13 | Baseline |
+| `random_forest` | 150 trees, depth=16 | INR 776.59 | 0.9844 | INR 126,737.55 | Contender |
+| `xgboost` | 250 trees, depth=6, lr=0.04 | INR 769.19 | 0.9903 | INR 68,701.36 | Contender |
+| `extra_trees` | 200 trees, depth=18 | INR 604.19 | 0.9851 | INR 129,932.79 | Contender |
+| `gradient_boosting` | 200 trees, depth=6 | INR 592.18 | 0.9913 | INR 102,797.76 | High Performer |
+| **`ensemble`** | **Soft-Weighted Stacking Blend** | **INR 548.21** | **0.9897** | **INR 104,486.75** | **Selected Production Model** |
+
+## Python API Usage
+
+```python
+from ml.inference.predict_goals import predict_savings_growth, predict_goal_timeline
+
+# 1. Multi-Year Savings Capacity & Compounding Wealth Forecast (Phase 6)
+savings = predict_savings_growth(
+    monthly_income=75000.0,
+    monthly_expenses={"food": 16000, "bills": 9000, "shopping": 12000, "entertainment": 5000, "transport": 3000},
+    debt_obligations=5000.0,
+    current_balance=50000.0,
+    expected_annual_return_pct=7.0
+)
+print("Monthly Savings Capacity:", savings["predicted_monthly_savings"])
+print("Savings Rate:", savings["savings_rate_pct"], "%")
+print("Unlockable Discretionary Cut:", savings["discretionary_optimization_potential"])
+print("5-Year Compounded Wealth:", savings["wealth_growth_projections"]["5_year"]["invested_wealth"])
+
+# 2. Goal Completion Timeline & Required SIP Prediction (Phase 11)
+goal = predict_goal_timeline(
+    goal_name="MacBook Pro M3",
+    target_amount=85000.0,
+    current_saved=25000.0,
+    monthly_income=65000.0,
+    monthly_expenses=38000.0,
+    debt_obligations=4000.0,
+    intended_months=6,
+    expected_annual_return_pct=7.0
+)
+print("Goal:", goal["goal_name"])
+print("Months to Complete:", goal["predicted_months_to_completion"])
+print("Milestone Completion Date:", goal["estimated_completion_date"])
+print("Required Monthly SIP:", goal["required_monthly_savings"])
+print("Feasibility:", goal["feasibility"])
+print("Recommendations:", goal["recommendations"])
+```
+
+
 
