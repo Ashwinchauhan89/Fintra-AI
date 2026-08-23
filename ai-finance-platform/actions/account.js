@@ -1,6 +1,7 @@
 "use server";
 
 import { db } from "@/lib/prisma";
+import { Prisma } from "@prisma/client";
 import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 
@@ -25,7 +26,7 @@ export async function getAccountWithTransactions(accountId) {
 
   if (!user) throw new Error("User not found");
 
-  const account = await db.account.findUnique({
+  const account = await db.account.findFirst({
     where: {
       id: accountId,
       userId: user.id,
@@ -69,11 +70,12 @@ export async function bulkDeleteTransactions(transactionIds) {
 
     // Group transactions by account to update balances
     const accountBalanceChanges = transactions.reduce((acc, transaction) => {
-      const change =
+      const currentBalanceChange =
+        acc[transaction.accountId] || new Prisma.Decimal(0);
+      acc[transaction.accountId] =
         transaction.type === "EXPENSE"
-          ? transaction.amount
-          : -transaction.amount;
-      acc[transaction.accountId] = (acc[transaction.accountId] || 0) + change;
+          ? currentBalanceChange.plus(transaction.amount)
+          : currentBalanceChange.minus(transaction.amount);
       return acc;
     }, {});
 
@@ -124,26 +126,35 @@ export async function updateDefaultAccount(accountId) {
       throw new Error("User not found");
     }
 
-    // First, unset any existing default account
-    await db.account.updateMany({
-      where: {
-        userId: user.id,
-        isDefault: true,
-      },
-      data: { isDefault: false },
-    });
+    const account = await db.$transaction(async (tx) => {
+      const targetAccount = await tx.account.findFirst({
+        where: {
+          id: accountId,
+          userId: user.id,
+        },
+        select: { id: true },
+      });
 
-    // Then set the new default account
-    const account = await db.account.update({
-      where: {
-        id: accountId,
-        userId: user.id,
-      },
-      data: { isDefault: true },
+      if (!targetAccount) {
+        throw new Error("Account not found");
+      }
+
+      await tx.account.updateMany({
+        where: {
+          userId: user.id,
+          isDefault: true,
+        },
+        data: { isDefault: false },
+      });
+
+      return tx.account.update({
+        where: { id: targetAccount.id },
+        data: { isDefault: true },
+      });
     });
 
     revalidatePath("/dashboard");
-    return { success: true, data: serializeTransaction(account) };
+    return { success: true, data: serializeDecimal(account) };
   } catch (error) {
     return { success: false, error: error.message };
   }
