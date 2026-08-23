@@ -37,7 +37,7 @@ def load_forecasting_artifacts(model_dir: str = DEFAULT_MODEL_DIR):
     """
     best_model_path = os.path.join(model_dir, "forecasting_best_model.pkl")
     cat_models_path = os.path.join(model_dir, "forecasting_categories.pkl")
-    meta_path = os.path.join(model_dir, "forecasting_meta.json")
+    meta_path = os.path.join(model_dir, "forecasting_train_metrics.json")
 
     if not os.path.exists(best_model_path):
         raise FileNotFoundError(
@@ -70,13 +70,10 @@ def get_recent_history(
     elif os.path.exists(train_path):
         df = pd.read_csv(train_path)
     else:
-        # Fallback synthetic seed if no processed files exist
-        dates = pd.date_range(end=datetime.now(), periods=lookback_days, freq="D")
-        df = pd.DataFrame({
-            "date": dates,
-            "total_spend": np.random.uniform(500, 3000, size=lookback_days),
-        })
-        return df
+        raise FileNotFoundError(
+            f"No processed forecasting history found in {processed_dir}. "
+            "Run preprocessing/preprocess_forecasting.py first."
+        )
 
     df["date"] = pd.to_datetime(df["date"])
     df = df.sort_values("date").tail(lookback_days).copy()
@@ -102,14 +99,27 @@ def predict_expense_forecast(
         Structured dictionary containing total predicted spend, daily trajectory,
         category breakdown, and weekly summaries.
     """
+    if not isinstance(horizon_days, int) or horizon_days <= 0:
+        raise ValueError("horizon_days must be a positive integer")
+
     model, category_models, meta = load_forecasting_artifacts(model_dir)
 
     if history_df is None:
         history = get_recent_history(lookback_days=60)
     else:
         history = history_df.copy()
-        history["date"] = pd.to_datetime(history["date"])
-        history = history.sort_values("date")
+        required_columns = {"date", "total_spend"}
+        missing_columns = required_columns - set(history.columns)
+        if missing_columns:
+            raise ValueError(
+                f"history_df is missing required columns: {sorted(missing_columns)}"
+            )
+        history["date"] = pd.to_datetime(history["date"], errors="coerce")
+        history["total_spend"] = pd.to_numeric(history["total_spend"], errors="coerce")
+        history = history.dropna(subset=["date", "total_spend"]).sort_values("date")
+
+    if history.empty:
+        raise ValueError("At least one valid historical spending row is required")
 
     history_series = list(history["total_spend"].values)
     history_dates = list(history["date"].values)
@@ -120,6 +130,7 @@ def predict_expense_forecast(
         current_date = pd.to_datetime(history_dates[-1]) + timedelta(days=1)
 
     daily_predictions = []
+    feature_rows = []
     feature_cols = extract_forecasting_feature_names()
 
     # Recursive multi-step forward projection
@@ -142,6 +153,10 @@ def predict_expense_forecast(
 
         pred_row = combined.iloc[[-1]]
         X_step = pred_row[[c for c in feature_cols if c in pred_row.columns]]
+        if X_step.shape[1] != len(feature_cols):
+            missing_features = sorted(set(feature_cols) - set(X_step.columns))
+            raise ValueError(f"Forecast feature columns are missing: {missing_features}")
+        feature_rows.append(X_step.copy())
 
         pred_val = float(np.maximum(0.0, model.predict(X_step)[0]))
 
@@ -169,9 +184,8 @@ def predict_expense_forecast(
     if category_models:
         for cat, cat_model in category_models.items():
             cat_preds = []
-            for d in daily_predictions:
-                # Use category proportion heuristics and models
-                cat_spend = float(np.maximum(0.0, cat_model.predict(X_step)[0]))
+            for X_day in feature_rows:
+                cat_spend = float(np.maximum(0.0, cat_model.predict(X_day)[0]))
                 cat_preds.append(cat_spend)
             cat_sum = sum(cat_preds)
             category_forecast[cat] = round(cat_sum, 2)
@@ -222,7 +236,7 @@ def predict_expense_forecast(
             "end_date": daily_predictions[-1]["date"],
         },
         "total_predicted_expense": round(total_predicted, 2),
-        "daily_average_expense": round(total_predicted / horizon_days, 2),
+        "daily_average_expense": round(total_predicted / horizon_days, 2) if horizon_days else 0.0,
         "weekly_summary": weekly_buckets,
         "category_breakdown": category_breakdown,
         "daily_forecast": daily_predictions,
