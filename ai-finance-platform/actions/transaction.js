@@ -9,10 +9,33 @@ import { request } from "@arcjet/next";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
-const serializeAmount = (obj) => ({
-  ...obj,
-  amount: obj.amount.toNumber(),
-});
+const serializeDecimalFields = (obj) => {
+  const serialized = { ...obj };
+
+  if (obj.amount?.toNumber) {
+    serialized.amount = obj.amount.toNumber();
+  }
+
+  if (obj.balance?.toNumber) {
+    serialized.balance = obj.balance.toNumber();
+  }
+
+  return serialized;
+};
+
+const validateTransactionData = (data) => {
+  const amount = Number(data.amount);
+
+  if (!Number.isFinite(amount) || amount <= 0) {
+    throw new Error("Transaction amount must be a positive number");
+  }
+
+  if (!data.accountId || !["INCOME", "EXPENSE"].includes(data.type)) {
+    throw new Error("Invalid transaction account or type");
+  }
+
+  return { ...data, amount };
+};
 
 // Create Transaction
 export async function createTransaction(data) {
@@ -54,37 +77,43 @@ export async function createTransaction(data) {
       throw new Error("User not found");
     }
 
-    const account = await db.account.findUnique({
-      where: {
-        id: data.accountId,
-        userId: user.id,
-      },
-    });
+    const validatedData = validateTransactionData(data);
 
-    if (!account) {
-      throw new Error("Account not found");
-    }
-
-    // Calculate new balance
-    const balanceChange = data.type === "EXPENSE" ? -data.amount : data.amount;
-    const newBalance = account.balance.toNumber() + balanceChange;
-
-    // Create transaction and update account balance
+    // Create the transaction and update the balance atomically.
     const transaction = await db.$transaction(async (tx) => {
+      const account = await tx.account.findFirst({
+        where: {
+          id: validatedData.accountId,
+          userId: user.id,
+        },
+        select: { id: true },
+      });
+
+      if (!account) {
+        throw new Error("Account not found");
+      }
+
       const newTransaction = await tx.transaction.create({
         data: {
-          ...data,
+          ...validatedData,
           userId: user.id,
           nextRecurringDate:
-            data.isRecurring && data.recurringInterval
-              ? calculateNextRecurringDate(data.date, data.recurringInterval)
+            validatedData.isRecurring && validatedData.recurringInterval
+              ? calculateNextRecurringDate(validatedData.date, validatedData.recurringInterval)
               : null,
         },
       });
 
       await tx.account.update({
-        where: { id: data.accountId },
-        data: { balance: newBalance },
+        where: { id: account.id },
+        data: {
+          balance: {
+            increment:
+              validatedData.type === "EXPENSE"
+                ? -validatedData.amount
+                : validatedData.amount,
+          },
+        },
       });
 
       return newTransaction;
@@ -93,7 +122,7 @@ export async function createTransaction(data) {
     revalidatePath("/dashboard");
     revalidatePath(`/account/${transaction.accountId}`);
 
-    return { success: true, data: serializeAmount(transaction) };
+    return { success: true, data: serializeDecimalFields(transaction) };
   } catch (error) {
     throw new Error(error.message);
   }
@@ -109,7 +138,7 @@ export async function getTransaction(id) {
 
   if (!user) throw new Error("User not found");
 
-  const transaction = await db.transaction.findUnique({
+  const transaction = await db.transaction.findFirst({
     where: {
       id,
       userId: user.id,
@@ -118,7 +147,7 @@ export async function getTransaction(id) {
 
   if (!transaction) throw new Error("Transaction not found");
 
-  return serializeAmount(transaction);
+  return serializeDecimalFields(transaction);
 }
 
 export async function updateTransaction(id, data) {
@@ -132,63 +161,73 @@ export async function updateTransaction(id, data) {
 
     if (!user) throw new Error("User not found");
 
-    // Get original transaction to calculate balance change
-    const originalTransaction = await db.transaction.findUnique({
-      where: {
-        id,
-        userId: user.id,
-      },
-      include: {
-        account: true,
-      },
-    });
+    const validatedData = validateTransactionData(data);
 
-    if (!originalTransaction) throw new Error("Transaction not found");
-
-    // Calculate balance changes
-    const oldBalanceChange =
-      originalTransaction.type === "EXPENSE"
-        ? -originalTransaction.amount.toNumber()
-        : originalTransaction.amount.toNumber();
-
-    const newBalanceChange =
-      data.type === "EXPENSE" ? -data.amount : data.amount;
-
-    const netBalanceChange = newBalanceChange - oldBalanceChange;
-
-    // Update transaction and account balance in a transaction
+    // Re-read and mutate all affected records in one transaction so the
+    // original transaction and account balances cannot drift apart.
     const transaction = await db.$transaction(async (tx) => {
-      const updated = await tx.transaction.update({
+      const originalTransaction = await tx.transaction.findFirst({
+        where: { id, userId: user.id },
+      });
+
+      if (!originalTransaction) throw new Error("Transaction not found");
+
+      const destinationAccount = await tx.account.findFirst({
         where: {
-          id,
+          id: validatedData.accountId,
           userId: user.id,
         },
+        select: { id: true },
+      });
+
+      if (!destinationAccount) throw new Error("Account not found");
+
+      const oldBalanceChange =
+        originalTransaction.type === "EXPENSE"
+          ? -originalTransaction.amount.toNumber()
+          : originalTransaction.amount.toNumber();
+      const newBalanceChange =
+        validatedData.type === "EXPENSE"
+          ? -validatedData.amount
+          : validatedData.amount;
+
+      if (originalTransaction.accountId === destinationAccount.id) {
+        await tx.account.update({
+          where: { id: destinationAccount.id },
+          data: {
+            balance: { increment: newBalanceChange - oldBalanceChange },
+          },
+        });
+      } else {
+        await tx.account.update({
+          where: { id: originalTransaction.accountId },
+          data: { balance: { increment: -oldBalanceChange } },
+        });
+        await tx.account.update({
+          where: { id: destinationAccount.id },
+          data: { balance: { increment: newBalanceChange } },
+        });
+      }
+
+      return tx.transaction.update({
+        where: { id },
         data: {
-          ...data,
+          ...validatedData,
           nextRecurringDate:
-            data.isRecurring && data.recurringInterval
-              ? calculateNextRecurringDate(data.date, data.recurringInterval)
+            validatedData.isRecurring && validatedData.recurringInterval
+              ? calculateNextRecurringDate(validatedData.date, validatedData.recurringInterval)
               : null,
         },
       });
-
-      // Update account balance
-      await tx.account.update({
-        where: { id: data.accountId },
-        data: {
-          balance: {
-            increment: netBalanceChange,
-          },
-        },
-      });
-
-      return updated;
     });
 
     revalidatePath("/dashboard");
-    revalidatePath(`/account/${data.accountId}`);
+    revalidatePath(`/account/${transaction.accountId}`);
+    if (transaction.accountId !== data.accountId) {
+      revalidatePath(`/account/${data.accountId}`);
+    }
 
-    return { success: true, data: serializeAmount(transaction) };
+    return { success: true, data: serializeDecimalFields(transaction) };
   } catch (error) {
     throw new Error(error.message);
   }
@@ -210,8 +249,8 @@ export async function getUserTransactions(query = {}) {
 
     const transactions = await db.transaction.findMany({
       where: {
-        userId: user.id,
         ...query,
+        userId: user.id,
       },
       include: {
         account: true,
@@ -221,7 +260,15 @@ export async function getUserTransactions(query = {}) {
       },
     });
 
-    return { success: true, data: transactions };
+    return {
+      success: true,
+      data: transactions.map((transaction) => ({
+        ...serializeDecimalFields(transaction),
+        account: transaction.account
+          ? serializeDecimalFields(transaction.account)
+          : transaction.account,
+      })),
+    };
   } catch (error) {
     throw new Error(error.message);
   }
