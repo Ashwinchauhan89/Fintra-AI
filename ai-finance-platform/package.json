@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "test:ml": "cd .. && python3 -m unittest discover -s ml/tests -p 'test_*.py'",
     "email": "email dev",
     "postinstall": "prisma generate",
     "inngest": "npx inngest-cli@latest dev"
