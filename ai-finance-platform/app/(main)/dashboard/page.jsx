@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import { getUserAccounts } from "@/actions/dashboard";
 import { getDashboardData } from "@/actions/dashboard";
 import { getCurrentBudget } from "@/actions/budget";
@@ -15,13 +14,8 @@ export default async function DashboardPage() {
     getDashboardData(),
   ]);
 
-  const defaultAccount = accounts?.find((account) => account.isDefault);
-
-  // Get budget for default account
-  let budgetData = null;
-  if (defaultAccount) {
-    budgetData = await getCurrentBudget(defaultAccount.id);
-  }
+  // Budgets are user-level and include transactions from all accounts.
+  const budgetData = await getCurrentBudget();
 
   return (
     <div className="space-y-8">
