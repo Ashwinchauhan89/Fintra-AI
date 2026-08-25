@@ -24,27 +24,41 @@ export const processRecurringTransaction = inngest.createFunction(
     }
 
     await step.run("process-transaction", async () => {
-      const transaction = await db.transaction.findUnique({
-        where: {
-          id: event.data.transactionId,
-          userId: event.data.userId,
-        },
-        include: {
-          account: true,
-        },
-      });
-
-      if (!transaction || !isTransactionDue(transaction)) return;
-
-      // Create new transaction and update account balance in a transaction
       await db.$transaction(async (tx) => {
-        // Create new transaction
+        const transaction = await tx.transaction.findFirst({
+          where: {
+            id: event.data.transactionId,
+            userId: event.data.userId,
+          },
+        });
+
+        if (!transaction || !isTransactionDue(transaction)) return;
+
+        const processedAt = new Date();
+        const claimed = await tx.transaction.updateMany({
+          where: {
+            id: transaction.id,
+            userId: transaction.userId,
+            lastProcessed: transaction.lastProcessed,
+          },
+          data: {
+            lastProcessed: processedAt,
+            nextRecurringDate: calculateNextRecurringDate(
+              transaction.nextRecurringDate || processedAt,
+              transaction.recurringInterval
+            ),
+          },
+        });
+
+        // A concurrent/retried event has already claimed this occurrence.
+        if (claimed.count !== 1) return;
+
         await tx.transaction.create({
           data: {
             type: transaction.type,
             amount: transaction.amount,
             description: `${transaction.description} (Recurring)`,
-            date: new Date(),
+            date: processedAt,
             category: transaction.category,
             userId: transaction.userId,
             accountId: transaction.accountId,
@@ -52,7 +66,6 @@ export const processRecurringTransaction = inngest.createFunction(
           },
         });
 
-        // Update account balance
         const balanceChange =
           transaction.type === "EXPENSE"
             ? -transaction.amount.toNumber()
@@ -61,18 +74,6 @@ export const processRecurringTransaction = inngest.createFunction(
         await tx.account.update({
           where: { id: transaction.accountId },
           data: { balance: { increment: balanceChange } },
-        });
-
-        // Update last processed date and next recurring date
-        await tx.transaction.update({
-          where: { id: transaction.id },
-          data: {
-            lastProcessed: new Date(),
-            nextRecurringDate: calculateNextRecurringDate(
-              new Date(),
-              transaction.recurringInterval
-            ),
-          },
         });
       });
     });
@@ -220,11 +221,7 @@ export const checkBudgetAlerts = inngest.createFunction(
         include: {
           user: {
             include: {
-              accounts: {
-                where: {
-                  isDefault: true,
-                },
-              },
+              accounts: true,
             },
           },
         },
@@ -232,18 +229,16 @@ export const checkBudgetAlerts = inngest.createFunction(
     });
 
     for (const budget of budgets) {
-      const defaultAccount = budget.user.accounts[0];
-      if (!defaultAccount) continue; // Skip if no default account
+      if (budget.user.accounts.length === 0) continue; // Skip if no accounts
 
       await step.run(`check-budget-${budget.id}`, async () => {
-        const startDate = new Date();
-        startDate.setDate(1); // Start of current month
+        const now = new Date();
+        const startDate = new Date(now.getFullYear(), now.getMonth(), 1); // Start of current month
 
-        // Calculate total expenses for the default account only
+        // Calculate total expenses across all accounts for this user
         const expenses = await db.transaction.aggregate({
           where: {
             userId: budget.userId,
-            accountId: defaultAccount.id, // Only consider default account
             type: "EXPENSE",
             date: {
               gte: startDate,
@@ -255,8 +250,10 @@ export const checkBudgetAlerts = inngest.createFunction(
         });
 
         const totalExpenses = expenses._sum.amount?.toNumber() || 0;
-        const budgetAmount = budget.amount;
-        const percentageUsed = (totalExpenses / budgetAmount) * 100;
+        const budgetAmount = budget.amount.toNumber();
+        const percentageUsed = budgetAmount > 0
+          ? (totalExpenses / budgetAmount) * 100
+          : 0;
 
         // Check if we should send an alert
         if (
@@ -266,15 +263,15 @@ export const checkBudgetAlerts = inngest.createFunction(
         ) {
           await sendEmail({
             to: budget.user.email,
-            subject: `Budget Alert for ${defaultAccount.name}`,
+            subject: `Budget Alert for ${budget.user.accounts.length} Account${budget.user.accounts.length === 1 ? "" : "s"}`,
             react: EmailTemplate({
               userName: budget.user.name,
               type: "budget-alert",
               data: {
                 percentageUsed,
-                budgetAmount: parseInt(budgetAmount).toFixed(1),
-                totalExpenses: parseInt(totalExpenses).toFixed(1),
-                accountName: defaultAccount.name,
+                budgetAmount: budgetAmount.toFixed(2),
+                totalExpenses: totalExpenses.toFixed(2),
+                accountName: "All Accounts",
               },
             }),
           });
@@ -302,6 +299,8 @@ function isTransactionDue(transaction) {
   // If no lastProcessed date, transaction is due
   if (!transaction.lastProcessed) return true;
 
+  if (!transaction.nextRecurringDate) return true;
+
   const today = new Date();
   const nextDue = new Date(transaction.nextRecurringDate);
 
@@ -324,20 +323,26 @@ function calculateNextRecurringDate(date, interval) {
     case "YEARLY":
       next.setFullYear(next.getFullYear() + 1);
       break;
+    default:
+      throw new Error("Unsupported recurring interval");
   }
   return next;
 }
 
 async function getMonthlyStats(userId, month) {
   const startDate = new Date(month.getFullYear(), month.getMonth(), 1);
-  const endDate = new Date(month.getFullYear(), month.getMonth() + 1, 0);
+  const startOfNextMonth = new Date(
+    month.getFullYear(),
+    month.getMonth() + 1,
+    1
+  );
 
   const transactions = await db.transaction.findMany({
     where: {
       userId,
       date: {
         gte: startDate,
-        lte: endDate,
+        lt: startOfNextMonth,
       },
     },
   });
