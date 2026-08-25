@@ -10,7 +10,7 @@ We welcome contributions from developers, designers, AI/ML engineers, data scien
 
 ---
 
-# 📚 Table of Contents
+#  Table of Contents
 
 * [Code of Conduct](#-code-of-conduct)
 * [Project Vision](#-project-vision)
@@ -36,7 +36,7 @@ We welcome contributions from developers, designers, AI/ML engineers, data scien
 
 ---
 
-# 📜 Code of Conduct
+#   Code of Conduct
 
 We want Fintra-AI to be a welcoming and professional open-source community.
 
@@ -54,7 +54,7 @@ Unacceptable behavior may result in removal from the project.
 
 ---
 
-# 🎯 Project Vision
+#  Project Vision
 
 Fintra-AI aims to evolve from a simple expense-management application into an intelligent **Financial Intelligence Platform**.
 
@@ -90,7 +90,7 @@ Major development areas include:
 
 ---
 
-# 👥 Who Can Contribute?
+#   Who Can Contribute?
 
 You do **not** need to be an expert to contribute.
 
