@@ -252,7 +252,7 @@ git remote -v
 
 Before starting development, install:
 
-* Node.js 18+
+* Node.js 24.5+ (required by the current Arcjet SDK)
 * npm
 * Git
 * PostgreSQL
