@@ -90,7 +90,7 @@ Major development areas include:
 
 ---
 
-#   Who Can Contribute?
+#  Who Can Contribute?
 
 You do **not** need to be an expert to contribute.
 
@@ -111,9 +111,9 @@ Fintra-AI welcomes:
 
 ---
 
-# 🧩 Contribution Areas
+#  Contribution Areas
 
-## 🖥️ Frontend
+## Frontend
 
 Technologies:
 
@@ -136,7 +136,7 @@ Potential contributions:
 
 ---
 
-## ⚙️ Backend
+##  Backend
 
 Technologies:
 
@@ -156,7 +156,7 @@ Potential contributions:
 
 ---
 
-## 🤖 Artificial Intelligence
+##  Artificial Intelligence
 
 Potential AI contributions:
 
@@ -171,7 +171,7 @@ Potential AI contributions:
 
 ---
 
-## 🧠 Machine Learning
+##  Machine Learning
 
 Potential ML contributions:
 
@@ -187,7 +187,7 @@ Potential ML contributions:
 
 ---
 
-## 📊 Analytics
+##  Analytics
 
 Potential contributions:
 
@@ -201,7 +201,7 @@ Potential contributions:
 
 ---
 
-## 🔐 Security
+##   Security
 
 Potential security contributions:
 
