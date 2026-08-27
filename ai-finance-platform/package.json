@@ -13,7 +13,7 @@
     "inngest": "npx inngest-cli@latest dev"
   },
   "dependencies": {
-    "@arcjet/next": "^1.0.0-alpha.34",
+    "@arcjet/next": "1.11.0",
     "@clerk/nextjs": "^6.6.0",
     "@google/generative-ai": "^0.21.0",
     "@gsap/react": "^2.1.2",
