@@ -269,36 +269,24 @@ Depending on the feature, you may also need:
 
 ## Install Dependencies
 
+The runnable Next.js application is inside `ai-finance-platform/`:
+
 ```bash
-npm install
+cd ai-finance-platform
+npm ci
 ```
 
 ---
 
 ## Configure Environment Variables
 
-Create a `.env` file:
+Create the local environment file from the committed template and fill in the values for the services used by your contribution:
 
-```env
-DATABASE_URL=
-DIRECT_URL=
-
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
-CLERK_SECRET_KEY=
-
-NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
-NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
-NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/onboarding
-NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/onboarding
-
-GEMINI_API_KEY=
-
-RESEND_API_KEY=
-
-ARCJET_KEY=
+```bash
+cp .env.example .env.local
 ```
 
-Never commit `.env` to Git.
+Run this command from inside `ai-finance-platform/`. Never commit `.env`, `.env.local`, or any API keys to Git.
 
 ---
 
@@ -337,26 +325,23 @@ http://localhost:3000
 ```text
 Fintra-AI/
 │
-├── app/
-├── components/
-├── data/
-├── emails/
-├── hooks/
-├── lib/
-├── prisma/
-├── public/
-│
-├── docs/
-│   ├── PLANNING.md
-│   ├── MACHINELEARNING.md
-│   ├── ARCHITECTURE.md
-│   ├── CONTRIBUTING.md
-│   └── SECURITY.md
-│
-├── .env.example
-├── package.json
-├── README.md
-└── LICENSE
+├── ai-finance-platform/
+│   ├── app/                 # Next.js App Router pages
+│   ├── actions/             # Server Actions
+│   ├── components/         # Shared UI components
+│   ├── data/               # Application data and categories
+│   ├── emails/             # Email templates
+│   ├── hooks/              # React hooks
+│   ├── lib/                # Prisma, auth, Arcjet, and jobs
+│   ├── prisma/             # Schema and migrations
+│   ├── public/              # Static assets
+│   ├── package.json
+│   └── .env.example
+├── ml/                     # Separate Python ML pipeline
+├── docs/                   # Supporting project documents
+├── README.MD
+├── CONTRIBUTION.MD
+└── PLANNING.MD
 ```
 
 Before modifying a directory, understand its responsibility and avoid introducing unnecessary architectural changes.
