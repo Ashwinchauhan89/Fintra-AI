@@ -1,0 +1,56 @@
+name: Quality
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ai-finance-platform
+    env:
+      DATABASE_URL: postgresql://ci:ci@localhost:5432/fintra_ci
+      DIRECT_URL: postgresql://ci:ci@localhost:5432/fintra_ci
+      NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: pk_test_ZmludHJhLWFpLTEuY2xlcmsuYWNjb3VudHMuZGV2JA==
+      CLERK_SECRET_KEY: sk_test_ci_placeholder
+      GEMINI_API_KEY: ci_placeholder
+      RESEND_API_KEY: re_ci_placeholder
+      ARCJET_KEY: ajkey_ci_placeholder
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24.5
+          cache: npm
+          cache-dependency-path: ai-finance-platform/package-lock.json
+      - name: Install dependencies
+        run: npm ci
+      - name: Generate Prisma client
+        run: npx prisma generate
+      - name: Lint
+        run: npm run lint
+      - name: Build
+        run: npm run build
+  ml:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install ML dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r ml/requirements.txt
+      - name: Run ML regression tests
+        run: python -m unittest discover -s ml/tests -p 'test_*.py'
+      - name: Compile ML modules
+        run: python -m compileall -q ml
