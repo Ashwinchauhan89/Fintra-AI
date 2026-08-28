@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const Footer = () => {
   return (
@@ -18,7 +19,7 @@ const Footer = () => {
         </div>
 
         {/* Footer Links Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-8 mb-20">
           
           {/* Column 1 */}
           <div className="flex flex-col gap-10">
@@ -78,20 +79,25 @@ const Footer = () => {
               </ul>
             </div>
             
-            {/* Compliance Badge */}
+            {/* Brand Logo & Compliance Info */}
             <div className="mt-4 flex items-center gap-4">
-              <div className="w-16 h-16 rounded-full border-4 border-neutral-800 flex items-center justify-center bg-black overflow-hidden relative flex-shrink-0">
-                {/* Simulated SOC2 Badge styling */}
-                <div className="absolute inset-0 border-[3px] border-blue-500 rounded-full m-1"></div>
-                <div className="flex flex-col items-center leading-none mt-1">
-                  <span className="text-[8px] font-bold text-blue-500">AICPA</span>
-                  <span className="text-xs font-black text-white">SOC 2</span>
-                </div>
+              <div className="w-14 h-14 rounded-full overflow-hidden border border-white/20 shadow-inner bg-black flex items-center justify-center flex-shrink-0 hover:scale-105 transition-transform">
+                <Image
+                  src="/logo.png"
+                  alt="Fintra AI Logo"
+                  width={56}
+                  height={56}
+                  className="object-cover w-full h-full"
+                />
               </div>
-              <p className="text-xs text-neutral-400 max-w-[150px] font-medium leading-relaxed">
-                Fintra AI is SOC 2 Type II compliant.
-              </p>
+              <div>
+                <span className="font-bold text-white text-sm block">Fintra AI</span>
+                <p className="text-xs text-neutral-400 max-w-[180px] font-medium leading-relaxed">
+                  SOC 2 Type II certified & bank-grade 256-bit encrypted.
+                </p>
+              </div>
             </div>
+
           </div>
 
         </div>

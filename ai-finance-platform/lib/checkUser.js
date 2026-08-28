@@ -2,13 +2,20 @@ import { currentUser } from "@clerk/nextjs/server";
 import { db } from "./prisma";
 
 export const checkUser = async () => {
-  const user = await currentUser();
-
-  if (!user) {
+  if (
+    !process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY ||
+    process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY.includes("ZXhhbXBs")
+  ) {
     return null;
   }
 
   try {
+    const user = await currentUser();
+
+    if (!user) {
+      return null;
+    }
+
     const loggedInUser = await db.user.findUnique({
       where: {
         clerkUserId: user.id,
@@ -33,5 +40,6 @@ export const checkUser = async () => {
     return newUser;
   } catch (error) {
     console.log(error.message);
+    return null;
   }
 };
