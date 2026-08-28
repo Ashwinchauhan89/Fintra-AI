@@ -264,6 +264,49 @@ python ml/inference/predict.py --merchant Netflix --description "monthly subscri
 | **4. Apple iCloud 50GB Cloud Tier** | INR 75.00 | `True` | `MONTHLY` | 100.0% | 2026-09-22 |
 | **5. Swiggy Food Delivery (Ad-hoc Orders)** | INR 450.00 | `False` | `NONE` | 0.1% | N/A |
 
+---
+
+## 10. Investment Recommendation & Portfolio Allocation Benchmarks (Phase 10)
+
+### Multi-Model Candidate Leaderboard (5-Fold Stratified Cross-Validation)
+
+| Candidate Architecture | CV Mean MAE (%) | CV Median AE (%) | CV R² Score | Max Peak Error (%) | Composite Selection Score | Status |
+|---|---|---|---|---|---|---|
+| `ridge` (L2 Linear Baseline) | 1.5691% | 1.2548% | 0.9423 | 13.79% | 2.2586 | Baseline |
+| `xgboost` (300 trees, subsample=0.9) | 0.4476% | 0.3664% | 0.9910 | 6.21% | 0.7581 | High Performer |
+| `random_forest` (200 trees, depth=18) | 0.4431% | 0.3640% | 0.9911 | 6.01% | 0.7435 | Contender |
+| `extra_trees` (250 trees, depth=20) | 0.4545% | 0.3747% | 0.9908 | 4.73% | 0.6909 | High Performer |
+| `slsqp_stacking_ensemble` (ET+XGB+RF+GB) | 0.4524% | 0.3717% | 0.9909 | 4.75% | 0.6898 | Contender |
+| **`gradient_boosting` (250 trees, lr=0.05)** | **0.4447%** | **0.3657%** | **0.9910** | **4.74%** | **0.6816** | **Selected Production Model** |
+
+### Held-Out Test Set Evaluation (1,199 User Investment Profiles)
+
+* **Overall Multi-Target Allocation MAE**: **0.4498%**
+* **Overall Multi-Target Allocation Median AE**: **0.3801%**
+* **Overall Multi-Target Allocation RMSE**: **0.6167%**
+* **Overall Multi-Target Allocation R²**: **0.9912**
+* **Overall Max Single-Target Peak Error**: **6.36%** (Cut down by >33% from raw trees)
+* **Simplex Constraint Violation**: **0.000000% (Strictly sums to 100.00%)**
+
+#### Granular Asset Class Breakdown
+
+| Asset Class Target | Test MAE (%) | Test Median AE (%) | Test R² Score | Max Error (%) | Mean Allocation (%) |
+|---|---|---|---|---|---|
+| `EQUITY` | 0.654% | 0.555% | 0.9982 | 5.82% | 47.78% |
+| `DEBT` | 0.656% | 0.550% | 0.9980 | 6.36% | 32.05% |
+| `GOLD` | 0.319% | 0.276% | 0.9829 | 1.21% | 9.51% |
+| `REIT` | 0.302% | 0.250% | 0.9859 | 1.53% | 5.06% |
+| `CASH` | 0.319% | 0.270% | 0.9910 | 1.44% | 5.60% |
+
+### Real-World Investor Archetype Validation
+
+| User Scenario | Age | Income | Surplus | Risk Profile | Equity % | Debt % | Gold % | REIT % | Cash % | Expected CAGR | Projected Wealth (Horizon) |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| **1. Young Tech Aggressive** | 24 | ₹100,000 | ₹45,000 | `AGGRESSIVE` | **71.7%** | 4.3% | 4.1% | 8.0% | 12.0% | **11.76%** | **₹58.55 Lakhs** (7 yrs) |
+| **2. Balanced Mid-Career Family** | 38 | ₹150,000 | ₹35,000 | `BALANCED` | **51.8%** | 27.2% | 8.9% | 7.1% | 5.0% | **10.82%** | **₹29.98 Lakhs** (5 yrs) |
+| **3. Conservative Pre-Retirement** | 56 | ₹90,000 | ₹25,000 | `CONSERVATIVE` | **9.9%** | **69.9%** | 15.0% | 0.1% | 5.0% | **8.03%** | **₹10.79 Lakhs** (3 yrs) |
+
+
 
 
 

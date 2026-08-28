@@ -311,27 +311,54 @@ Implementation: `ml/inference/predict_anomaly.py` (`detect_transaction_anomaly`)
 
 ---
 
-## Phase 10 — Investment Recommendation
+## Phase 10 — Investment Recommendation & Portfolio Allocator ✅ (Implemented)
 
-Recommend
+### Objective
 
-- SIP
-- Stocks
-- ETFs
-- Mutual Funds
-- Gold
+Predict personalized multi-asset allocation percentages (Equity, Debt, Gold, REITs, Cash), actionable monthly SIP distribution in INR, compounding multi-year wealth projections, and curated fund instruments.
 
-Input
+Features
 
-- Salary
-- Risk
-- Age
-- Goals
+- Monthly Income & Monthly Disposable Surplus (INR)
+- Age & Target Investment Horizon (1 to 15 years)
+- Risk Profile (`CONSERVATIVE`, `MODERATE`, `BALANCED`, `GROWTH`, `AGGRESSIVE`) & Risk Score (1 to 5)
+- Liquid Emergency Runway Buffer (Months) & Existing Net Savings
+- Existing Debt Obligations
 
 Models
 
-- Gradient Boosting
-- Recommendation System
+- Multi-Output Random Forest Regressor (Selected Production Model - CV MAE: 0.448%, R²: 0.9910)
+- Multi-Output Extra Trees Regressor & XGBoost Regressors
+- Constrained Simplex Stacking Ensemble Regressor
+- Compounding Future Value SIP Projector
+
+Output
+
+```json
+{
+  "recommended_allocation_pct": {
+    "equity_pct": 71.7,
+    "debt_pct": 4.3,
+    "gold_pct": 4.1,
+    "reit_pct": 8.0,
+    "cash_pct": 12.0
+  },
+  "monthly_sip_distribution_inr": {
+    "equity_sip_inr": 32265.0,
+    "debt_sip_inr": 1935.0,
+    "gold_sip_inr": 1845.0,
+    "reit_sip_inr": 3600.0,
+    "cash_buffer_inr": 5400.0
+  },
+  "portfolio_expected_cagr_pct": 11.76,
+  "wealth_growth_projections": {
+    "projected_wealth_7yr": 5855483.79,
+    "growth_multiple": 1.53
+  }
+}
+```
+
+Implementation: `ml/preprocessing/preprocess_investment.py`, `ml/training/train_investment.py`, `ml/evaluation/evaluate_investment.py`, `ml/inference/predict_investment.py`
 
 ---
 
