@@ -15,29 +15,39 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const isClerkConfigured =
+    process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY &&
+    !process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY.includes("ZXhhbXBs");
+
+  const layoutContent = (
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="dark"
+      enableSystem
+      disableTransitionOnChange
+    >
+      <Header />
+      <SmoothScroll>
+        <main className="min-h-screen pt-28">{children}</main>
+      </SmoothScroll>
+
+      <Toaster richColors />
+
+    </ThemeProvider>
+  );
+
   return (
     <html lang="en" suppressHydrationWarning>
-        <head>
-          <link rel="icon" href="/logo-sm.png" sizes="any" />
-        </head>
-        <body className={`${inter.className}`}>
-          <ClerkProvider>
-            <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <Header />
-            <SmoothScroll>
-              <main className="min-h-screen pt-24">{children}</main>
-              
-              <Footer />
-            </SmoothScroll>
-            <Toaster richColors />
-            </ThemeProvider>
-          </ClerkProvider>
-        </body>
-      </html>
+      <head>
+        <link rel="icon" href="/logo-sm.png" sizes="any" />
+      </head>
+      <body className={`${inter.className}`}>
+        {isClerkConfigured ? (
+          <ClerkProvider>{layoutContent}</ClerkProvider>
+        ) : (
+          layoutContent
+        )}
+      </body>
+    </html>
   );
 }
