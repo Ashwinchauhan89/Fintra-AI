@@ -1,6 +1,6 @@
-# 💸 Fintra-AI
+# Fintra-AI
 
-### 🚀 AI-Powered Personal Finance Management Platform
+###  AI-Powered Personal Finance Management Platform
 
 > **Track. Understand. Predict. Improve.**
 
@@ -10,7 +10,7 @@ By combining **modern full-stack web technologies, Artificial Intelligence, Mach
 
 ---
 
-## ✨ Technology Stack
+##  Technology Stack
 
 ![Fintra-AI](https://img.shields.io/badge/Fintra--AI-AI%20Finance-6366F1?style=for-the-badge)
 ![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge\&logo=next.js)
@@ -25,7 +25,7 @@ By combining **modern full-stack web technologies, Artificial Intelligence, Mach
 ---
 
 
-## 📌 Table of Contents
+##  Table of Contents
 
 * [Overview](#-overview)
 * [Why Fintra-AI?](#-why-fintra-ai)
@@ -50,7 +50,7 @@ By combining **modern full-stack web technologies, Artificial Intelligence, Mach
 
 ---
 
-# 📖 Overview
+#  Overview
 
 **Fintra-AI** is an AI-powered personal finance management platform designed to transform raw financial data into actionable insights.
 
@@ -58,26 +58,26 @@ Instead of simply recording transactions, Fintra-AI aims to help users understan
 
 The platform combines:
 
-* 💰 Personal finance management
-* 🤖 Generative AI
-* 🧠 Machine Learning
-* 📊 Financial analytics
-* 🔐 Secure authentication
-* ☁️ Cloud-native infrastructure
-* 📈 Predictive financial insights
+*   Personal finance management
+*   Generative AI
+*   Machine Learning
+*   Financial analytics
+*   Secure authentication
+*   Cloud-native infrastructure
+*   Predictive financial insights
 
-# 📸 Screenshot Showcase
+#  Screenshot Showcase
 
 Explore the Fintra-AI platform and its core features through the following screenshots.
 
-## 🏠 Platform Overview
+##   Platform Overview
 
 <p align="center">
   <img src="Screenshots/image1.png" alt="Fintra-AI Dashboard" width="48%">
   <img src="Screenshots/image2.png" alt="Fintra-AI Platform" width="48%">
 </p>
 
-## 📊 Financial Analytics
+##  Financial Analytics
 
 <p align="center">
   <img src="Screenshots/image3.png" alt="Fintra-AI Financial Analytics" width="48%">
@@ -86,17 +86,17 @@ Explore the Fintra-AI platform and its core features through the following scree
 
 ---
 
-### 🚀 Fintra-AI in Action
+###   Fintra-AI in Action
 
 > From expense tracking and financial analytics to AI-powered insights, Fintra-AI provides an intelligent and modern approach to personal finance management.
 
-### 🎯 Core Objective
+###   Core Objective
 
 > **Turn financial data into intelligent, personalized, and actionable financial decisions.**
 
 ---
 
-# 💡 Why Fintra-AI?
+#   Why Fintra-AI?
 
 Traditional expense trackers primarily answer:
 
@@ -119,9 +119,9 @@ This creates a shift from:
 
 ---
 
-# ✨ Key Features
+#   Key Features
 
-## 💰 Personal Finance Management
+##   Personal Finance Management
 
 * Expense Tracking
 * Income Tracking
@@ -136,7 +136,7 @@ This creates a shift from:
 
 ---
 
-## 🤖 AI Financial Intelligence
+##   AI Financial Intelligence
 
 Powered by **Google Gemini AI**, Fintra-AI can provide intelligent financial assistance such as:
 
@@ -152,7 +152,7 @@ Powered by **Google Gemini AI**, Fintra-AI can provide intelligent financial ass
 
 ---
 
-## 🧠 Machine Learning
+##   Machine Learning
 
 The planned ML engine focuses on transforming historical financial data into predictive insights.
 
