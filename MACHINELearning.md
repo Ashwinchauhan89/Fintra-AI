@@ -396,18 +396,53 @@ Implementation: `ml/preprocessing/preprocess_goals.py`, `ml/training/train_goals
 
 ---
 
-## Phase 12 — Loan Eligibility Prediction
+## Phase 12 — Loan Underwriting & Credit Risk Engine ✅ (Implemented)
+
+### Objective
+
+Predict loan eligibility verdicts (`APPROVED` vs `DECLINED`), credit risk tiers (`LOW_RISK`, `MODERATE_RISK`, `HIGH_RISK`), calibrated default probabilities (0–100%), exact amortized EMIs, maximum safe borrowing limits, and actionable remediation advice.
+
+Features
+
+- Monthly Income & Essential Living Expenses (INR)
+- Requested Loan Amount & Loan Tenure (Months: 12 to 240)
+- Loan Purpose (`HOME_LOAN`, `PERSONAL_LOAN`, `AUTO_VEHICLE_LOAN`, `EDUCATION_LOAN`, `BUSINESS_EXPANSION`)
+- Existing Monthly EMIs & Total Outstanding Debt
+- Credit Score (300 to 900) & Employment Stability Index
+- Liquid Savings Reserve & Post-EMI Disposable Cushion
+- FOIR / DTI Ratio ($\le 50\%$ banking ceiling)
 
 Models
 
-- Logistic Regression
-- XGBoost
+- Tuned XGBoost Classifier (Selected Production Model - PR-AUC: 0.9499, ROC-AUC: 0.9642, F1: 0.9527)
+- Balanced Random Forest Classifier (Subsample class weighting)
+- Gradient Boosting & Extra Trees Classifiers
+- Soft-Voting Stacking Ensemble with Isotonic Probability Calibration
 
 Output
 
-- Eligible
-- High Risk
-- Medium Risk
+```json
+{
+  "verdict": "ELIGIBLE",
+  "approval_status": "APPROVED",
+  "risk_tier": "LOW_RISK",
+  "default_probability_pct": 1.91,
+  "credit_health_grade": "PRIME_TIER",
+  "proposed_loan_terms": {
+    "requested_amount_inr": 3500000.0,
+    "annual_interest_rate_pct": 7.75,
+    "calculated_monthly_emi_inr": 32944.65,
+    "foir_ratio_pct": 26.36
+  },
+  "max_safe_borrowing_limit_inr": 7303917.03,
+  "actionable_underwriting_tips": [
+    "Loan sanctioned: FOIR is healthy at 26.36% (below the 55% ceiling).",
+    "Prime credit score (780) unlocks a preferential interest rate of 7.75% p.a."
+  ]
+}
+```
+
+Implementation: `ml/preprocessing/preprocess_loan.py`, `ml/training/train_loan.py`, `ml/evaluation/evaluate_loan.py`, `ml/inference/predict_loan.py`
 
 ---
 
