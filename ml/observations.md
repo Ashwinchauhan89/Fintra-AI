@@ -306,6 +306,41 @@ python ml/inference/predict.py --merchant Netflix --description "monthly subscri
 | **2. Balanced Mid-Career Family** | 38 | ₹150,000 | ₹35,000 | `BALANCED` | **51.8%** | 27.2% | 8.9% | 7.1% | 5.0% | **10.82%** | **₹29.98 Lakhs** (5 yrs) |
 | **3. Conservative Pre-Retirement** | 56 | ₹90,000 | ₹25,000 | `CONSERVATIVE` | **9.9%** | **69.9%** | 15.0% | 0.1% | 5.0% | **8.03%** | **₹10.79 Lakhs** (3 yrs) |
 
+---
+
+## 11. Loan Eligibility & Credit Risk Underwriting Benchmarks (Phase 12)
+
+### Multi-Model Candidate Leaderboard (5-Fold Stratified Cross-Validation)
+
+| Candidate Classifier | PR-AUC (Average Precision) | ROC-AUC Score | Macro F1-Score | Accuracy | Brier Calibration Loss | Optimal Decision Threshold | Composite Score | Status |
+|---|---|---|---|---|---|---|---|---|
+| `logistic_regression` (Balanced) | 0.8805 | 0.9248 | 0.8551 | 85.86% | 0.1086 | 0.509 | 0.7898 | Baseline |
+| `extra_trees` (250 trees, depth=18) | 0.9280 | 0.9555 | 0.9174 | 92.02% | 0.0800 | 0.498 | 0.8333 | Candidate |
+| `random_forest` (Balanced Subsample) | 0.9453 | 0.9625 | 0.9426 | 94.50% | 0.0528 | 0.502 | 0.8501 | Contender |
+| `soft_voting_ensemble` | 0.9474 | 0.9653 | 0.9509 | 95.29% | 0.0487 | 0.505 | 0.8538 | High Performer |
+| `gradient_boosting` (250 trees) | 0.9498 | 0.9645 | 0.9509 | 95.29% | 0.0430 | 0.508 | 0.8551 | Contender |
+| **`xgboost` (scale_pos_weight=1.5)** | **0.9499** | **0.9642** | **0.9527** | **95.46%** | **0.0426** | **0.506** | **0.8555** | **Selected Production Model** |
+
+### Held-Out Test Set Evaluation (1,199 Loan Applications)
+
+* **ROC-AUC Score**: **0.9695**
+* **PR-AUC (Average Precision)**: **0.9505**
+* **Macro F1-Score**: **0.9541**
+* **Overall Accuracy**: **95.58%**
+* **Approval Safety (Precision)**: **93.65%**
+* **Eligible Capture (Recall)**: **95.41%**
+* **False Positive Rate on Bad Loans (FPR)**: **4.31%**
+* **Brier Score Calibration Loss**: **0.0404** (Well-calibrated credit risk probabilities)
+
+### Real-World Underwriting Archetype Validation
+
+| Borrower Scenario | Monthly Income | Requested Loan | Purpose | Credit Score | Existing EMI | Verdict | Risk Tier | Default Prob | Max Safe Borrowing Limit | Actionable Tip |
+|---|---|---|---|---|---|---|---|---|---|---|
+| **1. Prime Salaried Homebuyer** | ₹125,000 | ₹3,500,000 (15 yrs) | `HOME_LOAN` | 780 | ₹0 | **APPROVED** | `LOW_RISK` | **1.91%** | **₹73.04 Lakhs** | 26.36% FOIR (Healthy); Prime 7.75% preferential rate |
+| **2. Overleveraged Unsecured Applicant** | ₹35,000 | ₹800,000 (3 yrs) | `PERSONAL_LOAN` | 590 | ₹12,000 | **DECLINED** | `HIGH_RISK` | **98.21%** | **₹1.08 Lakhs** | FOIR 113.5% exceeds 45% ceiling; negative cashflow (₹-20.4k) |
+| **3. Moderate Near-Prime Auto Buyer** | ₹75,000 | ₹900,000 (5 yrs) | `AUTO_LOAN` | 695 | ₹8,000 | **APPROVED** | `MODERATE_RISK` | **14.20%** | **₹14.80 Lakhs** | FOIR 35.8%; Auto collateral verified |
+
+
 
 
 
