@@ -340,6 +340,48 @@ python ml/inference/predict.py --merchant Netflix --description "monthly subscri
 | **2. Overleveraged Unsecured Applicant** | ₹35,000 | ₹800,000 (3 yrs) | `PERSONAL_LOAN` | 590 | ₹12,000 | **DECLINED** | `HIGH_RISK` | **98.21%** | **₹1.08 Lakhs** | FOIR 113.5% exceeds 45% ceiling; negative cashflow (₹-20.4k) |
 | **3. Moderate Near-Prime Auto Buyer** | ₹75,000 | ₹900,000 (5 yrs) | `AUTO_LOAN` | 695 | ₹8,000 | **APPROVED** | `MODERATE_RISK` | **14.20%** | **₹14.80 Lakhs** | FOIR 35.8%; Auto collateral verified |
 
+---
+
+## 12. Credit Score Estimator & 5-Pillar Diagnostics Benchmarks (Phase 13)
+
+### Multi-Model Candidate Leaderboard (5-Fold Stratified Cross-Validation)
+
+| Candidate Architecture | CV Mean MAE (pts) | CV Median AE (pts) | CV R² Score | Max Peak Error (pts) | Training Latency | Status |
+|---|---|---|---|---|---|---|
+| `random_forest` (180 trees) | 7.26 pts | 5.20 pts | 0.9855 | 55.0 pts | 1.8s | Contender |
+| `ridge` (L2 Baseline) | 7.84 pts | 6.80 pts | 0.9855 | 39.0 pts | 0.1s | Baseline |
+| `extra_trees` (200 trees) | 5.66 pts | 4.20 pts | 0.9911 | 50.0 pts | 1.6s | High Performer |
+| `xgboost_hist` (350 trees) | 4.45 pts | 3.40 pts | 0.9949 | 36.0 pts | 0.8s | High Performer |
+| **`hist_gradient_boosting`** | **4.32 pts** | **3.40 pts** | **0.9953** | **31.0 pts** | **0.6s** | **Selected Production Model** |
+
+### Held-Out Test Set Evaluation (1,200 Credit Records)
+
+* **Mean Absolute Error (MAE)**: **3.89 points** (Relative error only **0.65%** on 600-pt scale)
+* **Median Absolute Error (MedAE)**: **3.00 points**
+* **Root Mean Squared Error (RMSE)**: **5.03 points**
+* **R² Score**: **0.9962**
+* **Max Outlier Error**: **21.0 points**
+* **Within $\pm 10$ Points Accuracy**: **95.67%**
+* **Within $\pm 20$ Points Accuracy**: **99.92%**
+* **Credit Tier Categorization Accuracy**: **95.50%** (Macro F1: **0.9519**)
+
+### Real-World Persona Validation
+
+| Persona Scenario | Limit / Used | Utilization | On-Time | Missed | Credit Age | Inquiries | Estimated Score | Tier | Risk Grade | Simulated Gain Action |
+|---|---|---|---|---|---|---|---|---|---|---|
+### Extreme Stress-Testing & Corner-Case Boundary Validation
+
+| Extreme Scenario Archetype | Key Risk Signals & Inputs | Ground Truth Constraint | Predicted Score | Result Tier | Risk Grade | Stress-Test Status |
+|---|---|---|---|---|---|---|
+| **1. Perfect Prime Ceiling** | ₹3.5L income, 1% util, 18 yrs age, 0 inq, 0 missed | $850 \le \text{Score} \le 900$ | **889** | `EXCELLENT` | **A+** | ✅ **PASS** |
+| **2. Catastrophic Default Floor** | ₹18k income, 100% util, 6 missed, 7 hard inq | $300 \le \text{Score} \le 520$ | **300** | `VERY_POOR` | **D** | ✅ **PASS** |
+| **3. Thin-File Fresh Graduate** | 100% on-time, 15% util, but **only 6 months age** | $660 \le \text{Score} \le 730$ | **708** | `FAIR` | **B** | ✅ **PASS** |
+| **4. High-Earner Card Churner** | ₹2.5L income, but **87.5% util + 6 hard inq** | $580 \le \text{Score} \le 680$ | **617** | `POOR` | **C** | ✅ **PASS** |
+| **5. Sudden Delinquency Shock** | Prime profile hit by **2 missed payments in 2 yrs** | $550 \le \text{Score} \le 660$ | **598** | `POOR` | **C** | ✅ **PASS** |
+| **6. Over-Limit Anomaly** | 110% over-limit utilization, 2 missed payments | $300 \le \text{Score} \le 560$ | **383** | `VERY_POOR` | **D** | ✅ **PASS** |
+
+
+
 
 
 
