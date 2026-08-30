@@ -380,6 +380,54 @@ python ml/inference/predict.py --merchant Netflix --description "monthly subscri
 | **5. Sudden Delinquency Shock** | Prime profile hit by **2 missed payments in 2 yrs** | $550 \le \text{Score} \le 660$ | **598** | `POOR` | **C** | ✅ **PASS** |
 | **6. Over-Limit Anomaly** | 110% over-limit utilization, 2 missed payments | $300 \le \text{Score} \le 560$ | **383** | `VERY_POOR` | **D** | ✅ **PASS** |
 
+---
+
+## 13. Customer Financial Persona & Archetype Segmentation Benchmarks (Phase 17)
+
+### Unsupervised Clustering Model Leaderboard (5-Fold Validated)
+
+| Architecture | Silhouette Score (Separation) | Davies-Bouldin Index (Compactness) | Calinski-Harabasz Index | Training Latency | Status |
+|---|---|---|---|---|---|
+| `gmm_diagonal` (6 Components) | 0.4691 | 1.0020 | 5,208.8 | 12.2 ms | Candidate |
+| `minibatch_kmeans` (Batch=256) | 0.5104 | 0.7271 | 5,250.1 | 30.9 ms | Contender |
+| `standard_kmeans` (Euclidean) | 0.5104 | 0.7271 | 5,250.1 | 1,935.9 ms | Baseline |
+| **`pca_kmeans_plus_plus` (Fast Pipeline)** | **0.5961** | **0.5592** | **7,904.4** | **17.6 ms** | **Selected Production Pipeline** |
+
+### Held-Out Test Set Evaluation (1,200 User Profiles)
+
+* **Silhouette Score (Cluster Separation)**: **0.6025** (Benchmark: $\ge 0.50$)
+* **Davies-Bouldin Index (Cluster Overlap)**: **0.5431** (Benchmark: $\le 0.85$)
+* **Calinski-Harabasz Variance Ratio**: **2,072.6**
+* **Adjusted Rand Index (ARI Ground-Truth Purity)**: **0.9940** (99.40% cluster purity)
+* **Adjusted Mutual Information (AMI)**: **0.9927**
+* **Homogeneity / V-Measure**: **0.9927**
+* **Inference Response Latency**: **`< 0.2 milliseconds`**
+
+### Real-World Persona Archetype Validation
+
+| Archetype Scenario | Monthly Income | Savings Rate | Equity SIP | Debt EMI | Card Util | Primary Persona | Confidence | Secondary Affinity |
+|---|---|---|---|---|---|---|---|---|
+| **1. Early Starter Student** | ₹20,000 | 25.0% | ₹1,000 | ₹0 | 10.0% | `BUDGET_CONSCIOUS_STUDENT` | **74.7%** | Family Homemaker (16.8%) |
+| **2. Young Tech Professional** | ₹160,000 | 41.9% | ₹45,000 | ₹5,000 | 14.2% | `YOUNG_TECH_PROFESSIONAL` | **59.7%** | HNI Investor (24.0%) |
+| **3. Balanced Family Homemaker** | ₹95,000 | 29.5% | ₹10,000 | ₹22,000 | 18.0% | `BALANCED_FAMILY_HOMEMAKER` | **67.3%** | Early Student (18.9%) |
+| **4. HNI Wealth Accumulator** | ₹450,000 | 57.8% | ₹220,000 | ₹20,000 | 6.0% | `HIGH_NET_WORTH_INVESTOR` | **81.0%** | Young Tech Pro (15.4%) |
+| **5. SMB Business Owner** | ₹220,000 (CV 0.58) | 34.1% | ₹30,000 | ₹35,000 | 32.0% | `SMB_BUSINESS_OWNER` | **100.0%** | Young Tech Pro (0.01%) |
+| **6. Overleveraged Distressed** | ₹42,000 | -28.6% | ₹0 | ₹22,000 | 87.5% | `DEBT_REHABILITATION_SEEKER` | **91.5%** | Family Homemaker (4.8%) |
+
+### Extreme Stress-Testing & High-Throughput Validation
+
+| Extreme Stress Scenario | Stress Constraints | Ground Truth Expectation | Model Verdict | Confidence | Status |
+|---|---|---|---|---|---|
+| **1. Acute Unemployment Crisis** | Zero monthly income, 96% card util | `DEBT_REHABILITATION_SEEKER` | `DEBT_REHABILITATION_SEEKER` | **99.8%** | ✅ **PASS** (Zero division immune) |
+| **2. Multi-Crore HNI Outlier** | ₹25L/mo income, ₹4.5 Cr savings | `HIGH_NET_WORTH_INVESTOR` | `HIGH_NET_WORTH_INVESTOR` | **98.5%** | ✅ **PASS** (Magnitude invariant) |
+| **3. 50/50 Hybrid Borderline** | ₹2.2L income, ₹85k SIP | `YOUNG_TECH_PRO / HNI` | `HIGH_NET_WORTH_INVESTOR` | **59.6%** | ✅ **PASS** (Soft transition verified) |
+| **4. Hyper-Volatile Merchant** | CV = 1.15 revenue swings | `SMB_BUSINESS_OWNER` | `SMB_BUSINESS_OWNER` | **100.0%** | ✅ **PASS** (Volatility capture) |
+| **5. Frugal Minimum Wage** | ₹14k income, ₹1.5k micro-SIP | `BUDGET_CONSCIOUS_STUDENT` | `BUDGET_CONSCIOUS_STUDENT` | **75.3%** | ✅ **PASS** (Discipline recognized) |
+| **6. Luxury Leverage Trap** | ₹1.5L income, 63% EMI, 96% util | `DEBT_REHABILITATION_SEEKER` | `DEBT_REHABILITATION_SEEKER` | **93.8%** | ✅ **PASS** (Debt overrides income) |
+| **7. 1,000 Batch Throughput** | 1,000 continuous requests | Latency $< 1.0\text{ms}$ | **555 microseconds / call** | **1,800 req/s** | ✅ **PASS** (Sub-millisecond speed) |
+
+
+
 
 
 
