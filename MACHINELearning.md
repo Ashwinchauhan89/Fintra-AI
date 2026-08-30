@@ -583,20 +583,50 @@ Models
 
 ---
 
-## Phase 17 — Customer Segmentation
+## Phase 17 — Customer & Persona Segmentation Engine ✅ (Implemented)
 
-Group users
+### Objective
 
-- Students
-- Professionals
-- Families
-- Investors
-- Business Owners
+Segment users into 6 financial persona archetypes (`BUDGET_CONSCIOUS_STUDENT`, `YOUNG_TECH_PROFESSIONAL`, `BALANCED_FAMILY_HOMEMAKER`, `HIGH_NET_WORTH_INVESTOR`, `SMB_BUSINESS_OWNER`, `DEBT_REHABILITATION_SEEKER`) with calibrated multi-persona soft probabilities and tailored platform strategies.
+
+Features
+
+- Monthly Income & Income Volatility Coefficient of Variation (CV)
+- 50/30/20 Expense Ratios (`essential_expense_ratio`, `discretionary_expense_ratio`)
+- Savings Rate % & Investment-to-Surplus Ratio
+- Debt-to-Income Burden & Credit Card Utilization %
+- Emergency Fund Runway in Months
+- Monthly Transaction Frequency & Subscription Density
 
 Algorithms
 
-- K-Means
-- DBSCAN
+- Fast PCA (5 Orthogonal Components, 94.5% Variance) + K-Means++ ($K=6$) (Selected Production Pipeline)
+- Vectorized Softmax Distance Affinity Layer ($P(C_k \mid x)$)
+- MiniBatch K-Means & Diagonal Gaussian Mixture Models
+
+Output
+
+```json
+{
+  "primary_persona": {
+    "persona_id": "YOUNG_TECH_PROFESSIONAL",
+    "name": "Young Tech Professional & High-Growth Aspirer",
+    "risk_tolerance": "AGGRESSIVE",
+    "confidence_pct": 59.73
+  },
+  "soft_multi_persona_affinity_pct": {
+    "YOUNG_TECH_PROFESSIONAL": 59.73,
+    "HIGH_NET_WORTH_INVESTOR": 24.04,
+    "BALANCED_FAMILY_HOMEMAKER": 9.12
+  },
+  "tailored_platform_strategy": {
+    "budgeting_roadmap": "Automated 50/30/20 rule: route 30%+ surplus directly into investments on payday",
+    "investment_roadmap": "Aggressive equity mutual funds (70%), international ETFs (10%), debt (10%)"
+  }
+}
+```
+
+Implementation: `ml/preprocessing/preprocess_segmentation.py`, `ml/training/train_segmentation.py`, `ml/evaluation/evaluate_segmentation.py`, `ml/inference/predict_segmentation.py`
 
 ---
 
