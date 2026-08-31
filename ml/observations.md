@@ -426,6 +426,41 @@ python ml/inference/predict.py --merchant Netflix --description "monthly subscri
 | **6. Luxury Leverage Trap** | ₹1.5L income, 63% EMI, 96% util | `DEBT_REHABILITATION_SEEKER` | `DEBT_REHABILITATION_SEEKER` | **93.8%** | ✅ **PASS** (Debt overrides income) |
 | **7. 1,000 Batch Throughput** | 1,000 continuous requests | Latency $< 1.0\text{ms}$ | **555 microseconds / call** | **1,800 req/s** | ✅ **PASS** (Sub-millisecond speed) |
 
+---
+
+## 14. Financial Product Recommendation & Smart Marketplace Benchmarks (Phase 16)
+
+### Recommender Architecture Leaderboard (5-Fold Validated)
+
+| Recommender Architecture | NDCG@5 Score | Precision@3 (%) | Hit Rate@5 (%) | Mean Reciprocal Rank (MRR) | Query Latency | Status |
+|---|---|---|---|---|---|---|
+| `content_cosine_matcher` | 0.2801 | 36.1% | 41.8% | 0.2986 | 67.2 µs | Baseline |
+| `matrix_factorization_svd` | 0.6263 | 69.0% | 94.6% | 0.5296 | 69.0 µs | Candidate |
+| `popularity_baseline` | 0.6658 | 79.7% | 94.6% | 0.5808 | 43.3 µs | Baseline |
+| **`multi_stage_hybrid_ranker`** | **0.9742** | **99.85%** | **100.0%** | **0.9653** | **31.1 µs** | **Selected Production Pipeline** |
+
+### Held-Out Test Set Evaluation (1,200 User Profiles)
+
+* **NDCG@5 Score**: **0.9737** (Benchmark target: $\ge 0.90$)
+* **Top-1 Recommendation Accuracy**: **93.25%**
+* **Precision@3 (Top 3 Capture)**: **100.00%**
+* **Hit Rate@5 (Top 5 Coverage)**: **100.00%**
+* **Mean Reciprocal Rank (MRR)**: **0.9644**
+* **Eligibility Safety Violations**: **0 (0.00% Safety Purity)**
+* **Average Inference Query Latency**: **`31.1 microseconds (0.031 ms)`**
+* **Throughput Capacity**: **`32,204 queries / second`** (Pure CPU)
+
+### Real-World Consumer Persona Matchmaking Validation
+
+| User Scenario | Spending Profile Highlights | Top Recommended Product | Net Annual Benefit (₹) | Value Justification |
+|---|---|---|---|---|
+| **1. Student Credit Starter** | ₹18k income, zero credit score | `IDFC FIRST WOW Card` | **₹876 / yr** | Lifetime free FD-backed card (7.5% FD interest + CIBIL building) |
+| **2. High-Flyer Tech HNI** | ₹3.5L income, ₹85k/mo travel | `HDFC Infinia Metal Card` | **₹2,74,992 / yr** | 16.5% flight/hotel reward rate on SmartBuy + Unlimited global lounge access |
+| **3. Heavy Foodie Spender** | ₹85k income, ₹15k dining, ₹20k shopping | `Airtel Axis Card` | **₹42,600 / yr** | 10% on Swiggy/Zomato/BigBasket + 25% on Airtel utility bills |
+| **4. Debt-Distressed User** | ₹45k income, ₹1.8L card debt at 38% | `SBI Debt Consolidation Loan` | **₹47,700 / yr** | Saves ₹47.7k interest by replacing 38% card APR with 11.5% fixed loan |
+| **5. Family Utility Optimizer** | ₹70k income, ₹12k/mo electricity & DTH | `Airtel Axis Card` | **₹59,880 / yr** | 25% utility bill cashback (₹3k/mo) + 10% groceries on BigBasket |
+
+
 
 
 
