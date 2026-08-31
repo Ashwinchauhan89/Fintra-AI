@@ -566,20 +566,50 @@ Libraries
 
 ---
 
-## Phase 16 — Financial Recommendation Engine
+## Phase 16 — Financial Product Recommendation Engine ✅ (Implemented)
 
-Recommend
+### Objective
 
-- Budgets
-- Investments
-- Insurance
-- Savings Plans
-- Credit Cards
+Deliver hyper-personalized financial product recommendations across **5 major marketplace categories** (`CREDIT_CARDS`, `SAVINGS_AND_DEPOSITS`, `INSURANCE_PRODUCTS`, `INVESTMENT_PRODUCTS`, `LOAN_REFINANCING`) with exact Net Annual Value (NAV in INR ₹) calculations and strict anti-predatory eligibility guardrails.
 
-Models
+Features
 
-- Collaborative Filtering
-- Content-Based Recommendation
+- Monthly Category Spends (Dining, Shopping, Groceries, Travel, Fuel, Utilities)
+- Monthly Income & Liquid Savings Buffer (INR)
+- Credit Score (300 to 900) & Persona Archetype ID
+- Existing Revolving Credit Card Debt (INR)
+- Product Catalog Reward Multipliers, Annual Fees & Welcome Bonuses
+
+Algorithms
+
+- 4-Stage Multi-Stage Hybrid Ranker (Guardrails Filter + Spend Dot-Product + Net Annual Value Calculator) (Selected Production Pipeline)
+- Matrix Factorization (TruncatedSVD Collaborative Filtering)
+- Content-Based Cosine Embedding Matcher
+
+Output
+
+```json
+{
+  "total_projected_annual_value_inr": 42600.0,
+  "top_recommendations": [
+    {
+      "product_id": "CC_AIRTEL_AXIS",
+      "name": "Airtel Axis Bank Utility & Food Card",
+      "category": "CREDIT_CARDS",
+      "annual_fee_inr": 500.0,
+      "estimated_net_annual_value_inr": 42600.0,
+      "match_reason": "Earns ~INR 42,600/yr in cashbacks (led by dining) + INR 500 bonus - INR 500 fee.",
+      "key_perks": [
+        "25% cashback on Airtel mobile/DTH/broadband",
+        "10% on BigBasket, Swiggy, Zomato",
+        "10% on electricity/gas bills"
+      ]
+    }
+  ]
+}
+```
+
+Implementation: `ml/preprocessing/preprocess_recommendation.py`, `ml/training/train_recommendation.py`, `ml/evaluation/evaluate_recommendation.py`, `ml/inference/predict_recommendation.py`
 
 ---
 
