@@ -488,11 +488,35 @@ python ml/inference/predict.py --merchant Netflix --description "monthly subscri
 
 | Scenario Description | Raw Input Text Highlights | Extracted Amount (₹) | Extracted Date | Extracted Merchant | Payment Mode | Result |
 |---|---|---|---|---|---|---|
-| **1. Noisy Supermarket Slip** | No currency symbol, messy line items | **₹568.00** | `2026-04-14` | `RELIANCE FRESH RETAIL` | `UPI` | ✅ **PASS** |
-| **2. Cafe Bill with Taxes & Tips** | CGST + SGST + 10% Discount | **₹472.50** | `2026-12-28` | `BLUE TOKAI COFFEE` | `CREDIT_CARD` | ✅ **PASS** |
-| **3. Electronics Invoice** | Multiple tax lines, HDFC Netbanking | **₹144,432.00** | `2026-09-15` | `APPLE AUTHORIZED` | `NET_BANKING` | ✅ **PASS** |
-| **4. Petrol Pump Slip** | 18.50 LTR @ 104.20 / LTR | **₹1,927.70** | `2026-06-02` | `BHARAT PETROLEUM` | `DEBIT_CARD` | ✅ **PASS** |
 | **5. Pharmacy Prescription** | Medicine names, cash paid + change | **₹365.00** | `2026-11-19` | `MEDPLUS PHARMACY` | `CASH` | ✅ **PASS** |
+
+---
+
+## 16. AI + ML Hybrid Copilot & FastAPI REST Microservice (Phase 19)
+
+### Production Endpoint Verification Matrix (18 Endpoints Live Tested)
+
+| HTTP Method & Endpoint | Core ML Pipeline / Engine | HTTP Status | Live Payload Verification |
+|---|---|---|---|
+| `GET /health` | Health & Loaded Model Inventory | `200 OK` | 13/13 ML Model Checkpoints Loaded |
+| `POST /api/v1/expenses/classify` | Phase 3 Expense Category Classifier | `200 OK` | Category: `food` (Swiggy meal) |
+| `POST /api/v1/ocr/scan` | Phase 15 OCR Receipt Scanner | `200 OK` | Scanned Total: ₹362.25 (`STARBUCKS`) |
+| `POST /api/v1/budget/recommend` | Phase 5 50/30/20 Budget Allocator | `200 OK` | 7 Category Budgets Tailored |
+| `POST /api/v1/savings/project` | Phase 6 Savings Growth Projector | `200 OK` | Monthly Capacity: ₹35,000 |
+| `POST /api/v1/health-score/diagnose`| Phase 7 Composite Health Score | `200 OK` | Composite Score: `97.1 / 100` (`A+`) |
+| `POST /api/v1/fraud/check` | Phase 8 Real-time Fraud Detection | `200 OK` | Risk Level: `MEDIUM` (Action: `MANUAL_REVIEW`) |
+| `POST /api/v1/anomaly/detect` | Phase 9 Spending Anomaly Detector | `200 OK` | Anomaly Spike Flag: `True` |
+| `POST /api/v1/loans/underwrite` | Phase 12 Loan Underwriting Engine | `200 OK` | Decision: `APPROVED` (`ELIGIBLE`) |
+| `POST /api/v1/credit/estimate` | Phase 13 5-Pillar Credit Estimator | `200 OK` | Score: `817` (`EXCELLENT`) |
+| `POST /api/v1/investments/recommend`| Phase 10 Simplex Portfolio Allocator| `200 OK` | Expected Portfolio CAGR: `12.37%` |
+| `POST /api/v1/goals/timeline` | Phase 11 Goal Timeline Predictor | `200 OK` | Estimated Completion: `6.96 months` |
+| `POST /api/v1/cashflow/forecast` | Phase 18 Cash Flow Forecaster | `200 OK` | 30-Day Forward Trajectory Projected |
+| `POST /api/v1/marketplace/recommend`| Phase 16 Product Matchmaker Ranker | `200 OK` | Top 3 Products Matched with NAV |
+| `POST /api/v1/persona/segment` | Phase 17 Persona Segmentation (PCA)| `200 OK` | Persona: `BUDGET_CONSCIOUS_STUDENT` |
+| `POST /api/v1/subscriptions/detect` | Phase 14 Subscription Identifier | `200 OK` | Netflix India (Cadence: `MONTHLY`) |
+| `POST /api/v1/copilot/ask` | Phase 19 Gemini Hybrid Copilot | `200 OK` | Conversational ML Diagnostic Advisory |
+| `POST /api/v1/copilot/affordability`| Phase 19 Affordability Solver | `200 OK` | Verdict: `AFFORDABLE_NO_COST_EMI` |
+
 
 
 
