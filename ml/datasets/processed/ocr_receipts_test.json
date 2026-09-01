@@ -1,0 +1,2402 @@
+[
+  {
+    "id": "receipt_0900",
+    "raw_text": "*** TAX INVOICE ***\nINDIANOIL AUTO FUEL PUMP\nGSTIN: 27AABCT2562A1Z2\nDate: 2026-04-20   Time: 21:25\nBill No: INV-53345\n--------------------------------\nPetrol Speed 25.4 Litres  2580.00\n--------------------------------\nSubtotal:               INR  2580.00\nGST (5%):              INR   129.00\nGRAND TOTAL:            INR  2709.00\n--------------------------------\nPaid via DEBIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "IndianOil Auto Fuel Pump",
+      "category": "transport",
+      "total_amount": 2709.0,
+      "tax_amount": 129.0,
+      "date": "2026-04-20",
+      "payment_mode": "DEBIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0901",
+    "raw_text": "*** TAX INVOICE ***\nSTARBUCKS COFFEE\nGSTIN: 27AABCT2879A1Z3\nDate: 2026-11-14   Time: 16:58\nBill No: INV-73728\n--------------------------------\n1x Caffe Latte (Venti)   345.00\n1x Blueberry Muffin      240.00\n1x Java Chip Frappuccino   390.00\n--------------------------------\nSubtotal:               INR   975.00\nGST (5%):              INR    48.75\nGRAND TOTAL:            INR  1023.75\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Starbucks Coffee",
+      "category": "food",
+      "total_amount": 1023.75,
+      "tax_amount": 48.75,
+      "date": "2026-11-14",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0902",
+    "raw_text": "*** TAX INVOICE ***\nINDIANOIL AUTO FUEL PUMP\nGSTIN: 27AABCT8879A1Z2\nDate: 09 Nov 2026   Time: 19:19\nBill No: INV-99132\n--------------------------------\nPetrol Speed 25.4 Litres  2580.00\n--------------------------------\nSubtotal:               INR  2580.00\nGST (5%):              INR   129.00\nGRAND TOTAL:            INR  2709.00\n--------------------------------\nPaid via DEBIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "IndianOil Auto Fuel Pump",
+      "category": "transport",
+      "total_amount": 2709.0,
+      "tax_amount": 129.0,
+      "date": "2026-11-09",
+      "payment_mode": "DEBIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0903",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT5757A1Z8\nDate: 02/11/2026   Time: 12:45\nBill No: INV-35386\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-11-02",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_0904",
+    "raw_text": "*** TAX INVOICE ***\nMCDONALD'S FAMILY RESTAURANT\nGSTIN: 27AABCT9385A1Z7\nDate: 2026-10-23   Time: 19:54\nBill No: INV-17136\n--------------------------------\n2x McSpicy Chicken Burger   360.00\n1x Large Fries           125.00\n2x Coke Float            140.00\n--------------------------------\nSubtotal:               INR   625.00\nGST (5%):              INR    31.25\nGRAND TOTAL:            INR   656.25\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "McDonald's Family Restaurant",
+      "category": "food",
+      "total_amount": 656.25,
+      "tax_amount": 31.25,
+      "date": "2026-10-23",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_0905",
+    "raw_text": "*** TAX INVOICE ***\nCROMA ELECTRONICS STORE\nGSTIN: 27AABCT9819A1Z8\nDate: 2026-06-22   Time: 19:11\nBill No: INV-27856\n--------------------------------\nSanDisk 1TB SSD         6499.00\nLogitech MX Master 3S   7995.00\nType-C Braided Cable     499.00\n--------------------------------\nSubtotal:               INR 14993.00\nGST (5%):              INR   749.65\nGRAND TOTAL:            INR 15742.65\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Croma Electronics Store",
+      "category": "shopping",
+      "total_amount": 15742.65,
+      "tax_amount": 749.65,
+      "date": "2026-06-22",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0906",
+    "raw_text": "*** TAX INVOICE ***\nCROMA ELECTRONICS STORE\nGSTIN: 27AABCT2219A1Z5\nDate: 2026-05-01   Time: 14:35\nBill No: INV-54134\n--------------------------------\nSanDisk 1TB SSD         6499.00\nLogitech MX Master 3S   7995.00\nType-C Braided Cable     499.00\n--------------------------------\nSubtotal:               INR 14993.00\nGST (5%):              INR   749.65\nGRAND TOTAL:            INR 15742.65\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Croma Electronics Store",
+      "category": "shopping",
+      "total_amount": 15742.65,
+      "tax_amount": 749.65,
+      "date": "2026-05-01",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0907",
+    "raw_text": "*** TAX INVOICE ***\nCROMA ELECTRONICS STORE\nGSTIN: 27AABCT3521A1Z5\nDate: 23/07/2026   Time: 14:40\nBill No: INV-31039\n--------------------------------\nSanDisk 1TB SSD         6499.00\nLogitech MX Master 3S   7995.00\nType-C Braided Cable     499.00\n--------------------------------\nSubtotal:               INR 14993.00\nGST (5%):              INR   749.65\nGRAND TOTAL:            INR 15742.65\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Croma Electronics Store",
+      "category": "shopping",
+      "total_amount": 15742.65,
+      "tax_amount": 749.65,
+      "date": "2026-07-23",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0908",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT4023A1Z1\nDate: 21 Jan 2026   Time: 14:50\nBill No: INV-57052\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-01-21",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_0909",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT4488A1Z4\nDate: 07 Nov 2026   Time: 10:58\nBill No: INV-91855\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-11-07",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_0910",
+    "raw_text": "*** TAX INVOICE ***\nINDIANOIL AUTO FUEL PUMP\nGSTIN: 27AABCT2422A1Z5\nDate: 20 Oct 2026   Time: 14:17\nBill No: INV-99253\n--------------------------------\nPetrol Speed 25.4 Litres  2580.00\n--------------------------------\nSubtotal:               INR  2580.00\nGST (5%):              INR   129.00\nGRAND TOTAL:            INR  2709.00\n--------------------------------\nPaid via DEBIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "IndianOil Auto Fuel Pump",
+      "category": "transport",
+      "total_amount": 2709.0,
+      "tax_amount": 129.0,
+      "date": "2026-10-20",
+      "payment_mode": "DEBIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0911",
+    "raw_text": "*** TAX INVOICE ***\nCROMA ELECTRONICS STORE\nGSTIN: 27AABCT3175A1Z3\nDate: 15 Jul 2026   Time: 18:58\nBill No: INV-40558\n--------------------------------\nSanDisk 1TB SSD         6499.00\nLogitech MX Master 3S   7995.00\nType-C Braided Cable     499.00\n--------------------------------\nSubtotal:               INR 14993.00\nGST (5%):              INR   749.65\nGRAND TOTAL:            INR 15742.65\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Croma Electronics Store",
+      "category": "shopping",
+      "total_amount": 15742.65,
+      "tax_amount": 749.65,
+      "date": "2026-07-15",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0912",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT4091A1Z9\nDate: 2026-12-17   Time: 16:50\nBill No: INV-31096\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-12-17",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_0913",
+    "raw_text": "*** TAX INVOICE ***\nAPOLLO PHARMACY OUTLET #42\nGSTIN: 27AABCT6396A1Z6\nDate: 04 Jan 2026   Time: 16:34\nBill No: INV-36872\n--------------------------------\nParacetamol 650mg 15s     45.00\nVitamin C Chewables      180.00\nDigital Thermometer      250.00\n--------------------------------\nSubtotal:               INR   475.00\nGST (5%):              INR    23.75\nGRAND TOTAL:            INR   498.75\n--------------------------------\nPaid via CASH - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Apollo Pharmacy Outlet #42",
+      "category": "healthcare",
+      "total_amount": 498.75,
+      "tax_amount": 23.75,
+      "date": "2026-01-04",
+      "payment_mode": "CASH"
+    }
+  },
+  {
+    "id": "receipt_0914",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT3927A1Z6\nDate: 02/05/2026   Time: 12:14\nBill No: INV-94952\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-05-02",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_0915",
+    "raw_text": "*** TAX INVOICE ***\nCROMA ELECTRONICS STORE\nGSTIN: 27AABCT8916A1Z1\nDate: 2026-05-06   Time: 14:37\nBill No: INV-71644\n--------------------------------\nSanDisk 1TB SSD         6499.00\nLogitech MX Master 3S   7995.00\nType-C Braided Cable     499.00\n--------------------------------\nSubtotal:               INR 14993.00\nGST (5%):              INR   749.65\nGRAND TOTAL:            INR 15742.65\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Croma Electronics Store",
+      "category": "shopping",
+      "total_amount": 15742.65,
+      "tax_amount": 749.65,
+      "date": "2026-05-06",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0916",
+    "raw_text": "*** TAX INVOICE ***\nAPOLLO PHARMACY OUTLET #42\nGSTIN: 27AABCT9629A1Z2\nDate: 22-10-2026   Time: 18:44\nBill No: INV-90981\n--------------------------------\nParacetamol 650mg 15s     45.00\nVitamin C Chewables      180.00\nDigital Thermometer      250.00\n--------------------------------\nSubtotal:               INR   475.00\nGST (5%):              INR    23.75\nGRAND TOTAL:            INR   498.75\n--------------------------------\nPaid via CASH - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Apollo Pharmacy Outlet #42",
+      "category": "healthcare",
+      "total_amount": 498.75,
+      "tax_amount": 23.75,
+      "date": "2026-10-22",
+      "payment_mode": "CASH"
+    }
+  },
+  {
+    "id": "receipt_0917",
+    "raw_text": "*** TAX INVOICE ***\nAPOLLO PHARMACY OUTLET #42\nGSTIN: 27AABCT1863A1Z2\nDate: 28/09/2026   Time: 20:46\nBill No: INV-67324\n--------------------------------\nParacetamol 650mg 15s     45.00\nVitamin C Chewables      180.00\nDigital Thermometer      250.00\n--------------------------------\nSubtotal:               INR   475.00\nGST (5%):              INR    23.75\nGRAND TOTAL:            INR   498.75\n--------------------------------\nPaid via CASH - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Apollo Pharmacy Outlet #42",
+      "category": "healthcare",
+      "total_amount": 498.75,
+      "tax_amount": 23.75,
+      "date": "2026-09-28",
+      "payment_mode": "CASH"
+    }
+  },
+  {
+    "id": "receipt_0918",
+    "raw_text": "*** TAX INVOICE ***\nCROMA ELECTRONICS STORE\nGSTIN: 27AABCT2410A1Z3\nDate: 28 Dec 2026   Time: 15:57\nBill No: INV-11984\n--------------------------------\nSanDisk 1TB SSD         6499.00\nLogitech MX Master 3S   7995.00\nType-C Braided Cable     499.00\n--------------------------------\nSubtotal:               INR 14993.00\nGST (5%):              INR   749.65\nGRAND TOTAL:            INR 15742.65\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Croma Electronics Store",
+      "category": "shopping",
+      "total_amount": 15742.65,
+      "tax_amount": 749.65,
+      "date": "2026-12-28",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0919",
+    "raw_text": "*** TAX INVOICE ***\nCROMA ELECTRONICS STORE\nGSTIN: 27AABCT5679A1Z4\nDate: 2026-09-22   Time: 18:25\nBill No: INV-32678\n--------------------------------\nSanDisk 1TB SSD         6499.00\nLogitech MX Master 3S   7995.00\nType-C Braided Cable     499.00\n--------------------------------\nSubtotal:               INR 14993.00\nGST (5%):              INR   749.65\nGRAND TOTAL:            INR 15742.65\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Croma Electronics Store",
+      "category": "shopping",
+      "total_amount": 15742.65,
+      "tax_amount": 749.65,
+      "date": "2026-09-22",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0920",
+    "raw_text": "*** TAX INVOICE ***\nMCDONALD'S FAMILY RESTAURANT\nGSTIN: 27AABCT3465A1Z6\nDate: 20 Jun 2026   Time: 12:11\nBill No: INV-88631\n--------------------------------\n2x McSpicy Chicken Burger   360.00\n1x Large Fries           125.00\n2x Coke Float            140.00\n--------------------------------\nSubtotal:               INR   625.00\nGST (5%):              INR    31.25\nGRAND TOTAL:            INR   656.25\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "McDonald's Family Restaurant",
+      "category": "food",
+      "total_amount": 656.25,
+      "tax_amount": 31.25,
+      "date": "2026-06-20",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_0921",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT2319A1Z3\nDate: 12 Jun 2026   Time: 10:24\nBill No: INV-96042\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-06-12",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_0922",
+    "raw_text": "*** TAX INVOICE ***\nPVR CINEMAS MULTIPLEX\nGSTIN: 27AABCT4206A1Z4\nDate: 02 Sep 2026   Time: 21:14\nBill No: INV-41602\n--------------------------------\n2x Recliner Movie Tickets   900.00\n1x Large Caramel Popcorn   420.00\n2x Pepsi 500ml           260.00\n--------------------------------\nSubtotal:               INR  1580.00\nGST (18%):              INR   284.40\nGRAND TOTAL:            INR  1864.40\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "PVR Cinemas Multiplex",
+      "category": "entertainment",
+      "total_amount": 1864.4,
+      "tax_amount": 284.4,
+      "date": "2026-09-02",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_0923",
+    "raw_text": "*** TAX INVOICE ***\nINDIANOIL AUTO FUEL PUMP\nGSTIN: 27AABCT7073A1Z9\nDate: 27-08-2026   Time: 21:49\nBill No: INV-98794\n--------------------------------\nPetrol Speed 25.4 Litres  2580.00\n--------------------------------\nSubtotal:               INR  2580.00\nGST (5%):              INR   129.00\nGRAND TOTAL:            INR  2709.00\n--------------------------------\nPaid via DEBIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "IndianOil Auto Fuel Pump",
+      "category": "transport",
+      "total_amount": 2709.0,
+      "tax_amount": 129.0,
+      "date": "2026-08-27",
+      "payment_mode": "DEBIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0924",
+    "raw_text": "*** TAX INVOICE ***\nSTARBUCKS COFFEE\nGSTIN: 27AABCT2094A1Z7\nDate: 19 Jun 2026   Time: 20:26\nBill No: INV-92418\n--------------------------------\n1x Caffe Latte (Venti)   345.00\n1x Blueberry Muffin      240.00\n1x Java Chip Frappuccino   390.00\n--------------------------------\nSubtotal:               INR   975.00\nGST (5%):              INR    48.75\nGRAND TOTAL:            INR  1023.75\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Starbucks Coffee",
+      "category": "food",
+      "total_amount": 1023.75,
+      "tax_amount": 48.75,
+      "date": "2026-06-19",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0925",
+    "raw_text": "*** TAX INVOICE ***\nSTARBUCKS COFFEE\nGSTIN: 27AABCT7232A1Z1\nDate: 2026-01-03   Time: 14:19\nBill No: INV-83733\n--------------------------------\n1x Caffe Latte (Venti)   345.00\n1x Blueberry Muffin      240.00\n1x Java Chip Frappuccino   390.00\n--------------------------------\nSubtotal:               INR   975.00\nGST (5%):              INR    48.75\nGRAND TOTAL:            INR  1023.75\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Starbucks Coffee",
+      "category": "food",
+      "total_amount": 1023.75,
+      "tax_amount": 48.75,
+      "date": "2026-01-03",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0926",
+    "raw_text": "*** TAX INVOICE ***\nSTARBUCKS COFFEE\nGSTIN: 27AABCT7052A1Z3\nDate: 21-07-2026   Time: 19:11\nBill No: INV-78576\n--------------------------------\n1x Caffe Latte (Venti)   345.00\n1x Blueberry Muffin      240.00\n1x Java Chip Frappuccino   390.00\n--------------------------------\nSubtotal:               INR   975.00\nGST (5%):              INR    48.75\nGRAND TOTAL:            INR  1023.75\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Starbucks Coffee",
+      "category": "food",
+      "total_amount": 1023.75,
+      "tax_amount": 48.75,
+      "date": "2026-07-21",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0927",
+    "raw_text": "*** TAX INVOICE ***\nPVR CINEMAS MULTIPLEX\nGSTIN: 27AABCT2761A1Z4\nDate: 21/03/2026   Time: 14:34\nBill No: INV-60171\n--------------------------------\n2x Recliner Movie Tickets   900.00\n1x Large Caramel Popcorn   420.00\n2x Pepsi 500ml           260.00\n--------------------------------\nSubtotal:               INR  1580.00\nGST (18%):              INR   284.40\nGRAND TOTAL:            INR  1864.40\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "PVR Cinemas Multiplex",
+      "category": "entertainment",
+      "total_amount": 1864.4,
+      "tax_amount": 284.4,
+      "date": "2026-03-21",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_0928",
+    "raw_text": "*** TAX INVOICE ***\nSTARBUCKS COFFEE\nGSTIN: 27AABCT3193A1Z8\nDate: 10-07-2026   Time: 13:53\nBill No: INV-48670\n--------------------------------\n1x Caffe Latte (Venti)   345.00\n1x Blueberry Muffin      240.00\n1x Java Chip Frappuccino   390.00\n--------------------------------\nSubtotal:               INR   975.00\nGST (5%):              INR    48.75\nGRAND TOTAL:            INR  1023.75\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Starbucks Coffee",
+      "category": "food",
+      "total_amount": 1023.75,
+      "tax_amount": 48.75,
+      "date": "2026-07-10",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0929",
+    "raw_text": "*** TAX INVOICE ***\nAPOLLO PHARMACY OUTLET #42\nGSTIN: 27AABCT5799A1Z2\nDate: 07/09/2026   Time: 19:59\nBill No: INV-67551\n--------------------------------\nParacetamol 650mg 15s     45.00\nVitamin C Chewables      180.00\nDigital Thermometer      250.00\n--------------------------------\nSubtotal:               INR   475.00\nGST (5%):              INR    23.75\nGRAND TOTAL:            INR   498.75\n--------------------------------\nPaid via CASH - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Apollo Pharmacy Outlet #42",
+      "category": "healthcare",
+      "total_amount": 498.75,
+      "tax_amount": 23.75,
+      "date": "2026-09-07",
+      "payment_mode": "CASH"
+    }
+  },
+  {
+    "id": "receipt_0930",
+    "raw_text": "*** TAX INVOICE ***\nAPOLLO PHARMACY OUTLET #42\nGSTIN: 27AABCT5528A1Z5\nDate: 17 Feb 2026   Time: 19:45\nBill No: INV-70458\n--------------------------------\nParacetamol 650mg 15s     45.00\nVitamin C Chewables      180.00\nDigital Thermometer      250.00\n--------------------------------\nSubtotal:               INR   475.00\nGST (5%):              INR    23.75\nGRAND TOTAL:            INR   498.75\n--------------------------------\nPaid via CASH - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Apollo Pharmacy Outlet #42",
+      "category": "healthcare",
+      "total_amount": 498.75,
+      "tax_amount": 23.75,
+      "date": "2026-02-17",
+      "payment_mode": "CASH"
+    }
+  },
+  {
+    "id": "receipt_0931",
+    "raw_text": "*** TAX INVOICE ***\nMCDONALD'S FAMILY RESTAURANT\nGSTIN: 27AABCT8194A1Z4\nDate: 26 Jul 2026   Time: 14:35\nBill No: INV-32533\n--------------------------------\n2x McSpicy Chicken Burger   360.00\n1x Large Fries           125.00\n2x Coke Float            140.00\n--------------------------------\nSubtotal:               INR   625.00\nGST (5%):              INR    31.25\nGRAND TOTAL:            INR   656.25\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "McDonald's Family Restaurant",
+      "category": "food",
+      "total_amount": 656.25,
+      "tax_amount": 31.25,
+      "date": "2026-07-26",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_0932",
+    "raw_text": "*** TAX INVOICE ***\nAPOLLO PHARMACY OUTLET #42\nGSTIN: 27AABCT3524A1Z2\nDate: 17 Feb 2026   Time: 10:21\nBill No: INV-10019\n--------------------------------\nParacetamol 650mg 15s     45.00\nVitamin C Chewables      180.00\nDigital Thermometer      250.00\n--------------------------------\nSubtotal:               INR   475.00\nGST (5%):              INR    23.75\nGRAND TOTAL:            INR   498.75\n--------------------------------\nPaid via CASH - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Apollo Pharmacy Outlet #42",
+      "category": "healthcare",
+      "total_amount": 498.75,
+      "tax_amount": 23.75,
+      "date": "2026-02-17",
+      "payment_mode": "CASH"
+    }
+  },
+  {
+    "id": "receipt_0933",
+    "raw_text": "*** TAX INVOICE ***\nSTARBUCKS COFFEE\nGSTIN: 27AABCT9236A1Z1\nDate: 17-10-2026   Time: 20:14\nBill No: INV-89424\n--------------------------------\n1x Caffe Latte (Venti)   345.00\n1x Blueberry Muffin      240.00\n1x Java Chip Frappuccino   390.00\n--------------------------------\nSubtotal:               INR   975.00\nGST (5%):              INR    48.75\nGRAND TOTAL:            INR  1023.75\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Starbucks Coffee",
+      "category": "food",
+      "total_amount": 1023.75,
+      "tax_amount": 48.75,
+      "date": "2026-10-17",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0934",
+    "raw_text": "*** TAX INVOICE ***\nMCDONALD'S FAMILY RESTAURANT\nGSTIN: 27AABCT1434A1Z2\nDate: 15/04/2026   Time: 14:19\nBill No: INV-53081\n--------------------------------\n2x McSpicy Chicken Burger   360.00\n1x Large Fries           125.00\n2x Coke Float            140.00\n--------------------------------\nSubtotal:               INR   625.00\nGST (5%):              INR    31.25\nGRAND TOTAL:            INR   656.25\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "McDonald's Family Restaurant",
+      "category": "food",
+      "total_amount": 656.25,
+      "tax_amount": 31.25,
+      "date": "2026-04-15",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_0935",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT7357A1Z1\nDate: 27 Nov 2026   Time: 15:21\nBill No: INV-75828\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-11-27",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_0936",
+    "raw_text": "*** TAX INVOICE ***\nINDIANOIL AUTO FUEL PUMP\nGSTIN: 27AABCT1580A1Z4\nDate: 05-07-2026   Time: 11:40\nBill No: INV-87494\n--------------------------------\nPetrol Speed 25.4 Litres  2580.00\n--------------------------------\nSubtotal:               INR  2580.00\nGST (5%):              INR   129.00\nGRAND TOTAL:            INR  2709.00\n--------------------------------\nPaid via DEBIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "IndianOil Auto Fuel Pump",
+      "category": "transport",
+      "total_amount": 2709.0,
+      "tax_amount": 129.0,
+      "date": "2026-07-05",
+      "payment_mode": "DEBIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0937",
+    "raw_text": "*** TAX INVOICE ***\nMCDONALD'S FAMILY RESTAURANT\nGSTIN: 27AABCT7823A1Z4\nDate: 18/03/2026   Time: 18:36\nBill No: INV-77074\n--------------------------------\n2x McSpicy Chicken Burger   360.00\n1x Large Fries           125.00\n2x Coke Float            140.00\n--------------------------------\nSubtotal:               INR   625.00\nGST (5%):              INR    31.25\nGRAND TOTAL:            INR   656.25\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "McDonald's Family Restaurant",
+      "category": "food",
+      "total_amount": 656.25,
+      "tax_amount": 31.25,
+      "date": "2026-03-18",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_0938",
+    "raw_text": "*** TAX INVOICE ***\nMCDONALD'S FAMILY RESTAURANT\nGSTIN: 27AABCT3844A1Z6\nDate: 2026-08-15   Time: 15:57\nBill No: INV-68722\n--------------------------------\n2x McSpicy Chicken Burger   360.00\n1x Large Fries           125.00\n2x Coke Float            140.00\n--------------------------------\nSubtotal:               INR   625.00\nGST (5%):              INR    31.25\nGRAND TOTAL:            INR   656.25\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "McDonald's Family Restaurant",
+      "category": "food",
+      "total_amount": 656.25,
+      "tax_amount": 31.25,
+      "date": "2026-08-15",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_0939",
+    "raw_text": "*** TAX INVOICE ***\nSTARBUCKS COFFEE\nGSTIN: 27AABCT4832A1Z6\nDate: 04-03-2026   Time: 11:11\nBill No: INV-96623\n--------------------------------\n1x Caffe Latte (Venti)   345.00\n1x Blueberry Muffin      240.00\n1x Java Chip Frappuccino   390.00\n--------------------------------\nSubtotal:               INR   975.00\nGST (5%):              INR    48.75\nGRAND TOTAL:            INR  1023.75\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Starbucks Coffee",
+      "category": "food",
+      "total_amount": 1023.75,
+      "tax_amount": 48.75,
+      "date": "2026-03-04",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0940",
+    "raw_text": "*** TAX INVOICE ***\nPVR CINEMAS MULTIPLEX\nGSTIN: 27AABCT2971A1Z5\nDate: 12/05/2026   Time: 21:49\nBill No: INV-86616\n--------------------------------\n2x Recliner Movie Tickets   900.00\n1x Large Caramel Popcorn   420.00\n2x Pepsi 500ml           260.00\n--------------------------------\nSubtotal:               INR  1580.00\nGST (18%):              INR   284.40\nGRAND TOTAL:            INR  1864.40\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "PVR Cinemas Multiplex",
+      "category": "entertainment",
+      "total_amount": 1864.4,
+      "tax_amount": 284.4,
+      "date": "2026-05-12",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_0941",
+    "raw_text": "*** TAX INVOICE ***\nSTARBUCKS COFFEE\nGSTIN: 27AABCT7860A1Z6\nDate: 12 Sep 2026   Time: 10:57\nBill No: INV-52783\n--------------------------------\n1x Caffe Latte (Venti)   345.00\n1x Blueberry Muffin      240.00\n1x Java Chip Frappuccino   390.00\n--------------------------------\nSubtotal:               INR   975.00\nGST (5%):              INR    48.75\nGRAND TOTAL:            INR  1023.75\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Starbucks Coffee",
+      "category": "food",
+      "total_amount": 1023.75,
+      "tax_amount": 48.75,
+      "date": "2026-09-12",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0942",
+    "raw_text": "*** TAX INVOICE ***\nINDIANOIL AUTO FUEL PUMP\nGSTIN: 27AABCT5341A1Z8\nDate: 13-04-2026   Time: 19:13\nBill No: INV-73311\n--------------------------------\nPetrol Speed 25.4 Litres  2580.00\n--------------------------------\nSubtotal:               INR  2580.00\nGST (5%):              INR   129.00\nGRAND TOTAL:            INR  2709.00\n--------------------------------\nPaid via DEBIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "IndianOil Auto Fuel Pump",
+      "category": "transport",
+      "total_amount": 2709.0,
+      "tax_amount": 129.0,
+      "date": "2026-04-13",
+      "payment_mode": "DEBIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0943",
+    "raw_text": "*** TAX INVOICE ***\nAPOLLO PHARMACY OUTLET #42\nGSTIN: 27AABCT3911A1Z8\nDate: 18-04-2026   Time: 17:42\nBill No: INV-50587\n--------------------------------\nParacetamol 650mg 15s     45.00\nVitamin C Chewables      180.00\nDigital Thermometer      250.00\n--------------------------------\nSubtotal:               INR   475.00\nGST (5%):              INR    23.75\nGRAND TOTAL:            INR   498.75\n--------------------------------\nPaid via CASH - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Apollo Pharmacy Outlet #42",
+      "category": "healthcare",
+      "total_amount": 498.75,
+      "tax_amount": 23.75,
+      "date": "2026-04-18",
+      "payment_mode": "CASH"
+    }
+  },
+  {
+    "id": "receipt_0944",
+    "raw_text": "*** TAX INVOICE ***\nINDIANOIL AUTO FUEL PUMP\nGSTIN: 27AABCT1945A1Z6\nDate: 2026-06-01   Time: 16:45\nBill No: INV-88751\n--------------------------------\nPetrol Speed 25.4 Litres  2580.00\n--------------------------------\nSubtotal:               INR  2580.00\nGST (5%):              INR   129.00\nGRAND TOTAL:            INR  2709.00\n--------------------------------\nPaid via DEBIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "IndianOil Auto Fuel Pump",
+      "category": "transport",
+      "total_amount": 2709.0,
+      "tax_amount": 129.0,
+      "date": "2026-06-01",
+      "payment_mode": "DEBIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0945",
+    "raw_text": "*** TAX INVOICE ***\nAPOLLO PHARMACY OUTLET #42\nGSTIN: 27AABCT4667A1Z4\nDate: 14-06-2026   Time: 12:40\nBill No: INV-68775\n--------------------------------\nParacetamol 650mg 15s     45.00\nVitamin C Chewables      180.00\nDigital Thermometer      250.00\n--------------------------------\nSubtotal:               INR   475.00\nGST (5%):              INR    23.75\nGRAND TOTAL:            INR   498.75\n--------------------------------\nPaid via CASH - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Apollo Pharmacy Outlet #42",
+      "category": "healthcare",
+      "total_amount": 498.75,
+      "tax_amount": 23.75,
+      "date": "2026-06-14",
+      "payment_mode": "CASH"
+    }
+  },
+  {
+    "id": "receipt_0946",
+    "raw_text": "*** TAX INVOICE ***\nAPOLLO PHARMACY OUTLET #42\nGSTIN: 27AABCT9006A1Z5\nDate: 2026-12-02   Time: 15:21\nBill No: INV-20445\n--------------------------------\nParacetamol 650mg 15s     45.00\nVitamin C Chewables      180.00\nDigital Thermometer      250.00\n--------------------------------\nSubtotal:               INR   475.00\nGST (5%):              INR    23.75\nGRAND TOTAL:            INR   498.75\n--------------------------------\nPaid via CASH - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Apollo Pharmacy Outlet #42",
+      "category": "healthcare",
+      "total_amount": 498.75,
+      "tax_amount": 23.75,
+      "date": "2026-12-02",
+      "payment_mode": "CASH"
+    }
+  },
+  {
+    "id": "receipt_0947",
+    "raw_text": "*** TAX INVOICE ***\nMCDONALD'S FAMILY RESTAURANT\nGSTIN: 27AABCT6840A1Z9\nDate: 2026-12-07   Time: 11:20\nBill No: INV-73427\n--------------------------------\n2x McSpicy Chicken Burger   360.00\n1x Large Fries           125.00\n2x Coke Float            140.00\n--------------------------------\nSubtotal:               INR   625.00\nGST (5%):              INR    31.25\nGRAND TOTAL:            INR   656.25\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "McDonald's Family Restaurant",
+      "category": "food",
+      "total_amount": 656.25,
+      "tax_amount": 31.25,
+      "date": "2026-12-07",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_0948",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT2066A1Z2\nDate: 17/06/2026   Time: 19:57\nBill No: INV-66163\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-06-17",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_0949",
+    "raw_text": "*** TAX INVOICE ***\nINDIANOIL AUTO FUEL PUMP\nGSTIN: 27AABCT6139A1Z5\nDate: 2026-11-11   Time: 19:27\nBill No: INV-92278\n--------------------------------\nPetrol Speed 25.4 Litres  2580.00\n--------------------------------\nSubtotal:               INR  2580.00\nGST (5%):              INR   129.00\nGRAND TOTAL:            INR  2709.00\n--------------------------------\nPaid via DEBIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "IndianOil Auto Fuel Pump",
+      "category": "transport",
+      "total_amount": 2709.0,
+      "tax_amount": 129.0,
+      "date": "2026-11-11",
+      "payment_mode": "DEBIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0950",
+    "raw_text": "*** TAX INVOICE ***\nCROMA ELECTRONICS STORE\nGSTIN: 27AABCT4491A1Z8\nDate: 07 Apr 2026   Time: 10:32\nBill No: INV-13866\n--------------------------------\nSanDisk 1TB SSD         6499.00\nLogitech MX Master 3S   7995.00\nType-C Braided Cable     499.00\n--------------------------------\nSubtotal:               INR 14993.00\nGST (5%):              INR   749.65\nGRAND TOTAL:            INR 15742.65\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Croma Electronics Store",
+      "category": "shopping",
+      "total_amount": 15742.65,
+      "tax_amount": 749.65,
+      "date": "2026-04-07",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0951",
+    "raw_text": "*** TAX INVOICE ***\nMCDONALD'S FAMILY RESTAURANT\nGSTIN: 27AABCT5205A1Z5\nDate: 2026-03-25   Time: 11:36\nBill No: INV-35805\n--------------------------------\n2x McSpicy Chicken Burger   360.00\n1x Large Fries           125.00\n2x Coke Float            140.00\n--------------------------------\nSubtotal:               INR   625.00\nGST (5%):              INR    31.25\nGRAND TOTAL:            INR   656.25\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "McDonald's Family Restaurant",
+      "category": "food",
+      "total_amount": 656.25,
+      "tax_amount": 31.25,
+      "date": "2026-03-25",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_0952",
+    "raw_text": "*** TAX INVOICE ***\nSTARBUCKS COFFEE\nGSTIN: 27AABCT8475A1Z4\nDate: 04/11/2026   Time: 10:20\nBill No: INV-15380\n--------------------------------\n1x Caffe Latte (Venti)   345.00\n1x Blueberry Muffin      240.00\n1x Java Chip Frappuccino   390.00\n--------------------------------\nSubtotal:               INR   975.00\nGST (5%):              INR    48.75\nGRAND TOTAL:            INR  1023.75\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Starbucks Coffee",
+      "category": "food",
+      "total_amount": 1023.75,
+      "tax_amount": 48.75,
+      "date": "2026-11-04",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0953",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT5115A1Z7\nDate: 01 Apr 2026   Time: 13:14\nBill No: INV-16664\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-04-01",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_0954",
+    "raw_text": "*** TAX INVOICE ***\nAPOLLO PHARMACY OUTLET #42\nGSTIN: 27AABCT3566A1Z9\nDate: 06/10/2026   Time: 21:54\nBill No: INV-48450\n--------------------------------\nParacetamol 650mg 15s     45.00\nVitamin C Chewables      180.00\nDigital Thermometer      250.00\n--------------------------------\nSubtotal:               INR   475.00\nGST (5%):              INR    23.75\nGRAND TOTAL:            INR   498.75\n--------------------------------\nPaid via CASH - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Apollo Pharmacy Outlet #42",
+      "category": "healthcare",
+      "total_amount": 498.75,
+      "tax_amount": 23.75,
+      "date": "2026-10-06",
+      "payment_mode": "CASH"
+    }
+  },
+  {
+    "id": "receipt_0955",
+    "raw_text": "*** TAX INVOICE ***\nINDIANOIL AUTO FUEL PUMP\nGSTIN: 27AABCT5353A1Z7\nDate: 22 Jul 2026   Time: 12:44\nBill No: INV-75159\n--------------------------------\nPetrol Speed 25.4 Litres  2580.00\n--------------------------------\nSubtotal:               INR  2580.00\nGST (5%):              INR   129.00\nGRAND TOTAL:            INR  2709.00\n--------------------------------\nPaid via DEBIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "IndianOil Auto Fuel Pump",
+      "category": "transport",
+      "total_amount": 2709.0,
+      "tax_amount": 129.0,
+      "date": "2026-07-22",
+      "payment_mode": "DEBIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0956",
+    "raw_text": "*** TAX INVOICE ***\nINDIANOIL AUTO FUEL PUMP\nGSTIN: 27AABCT7940A1Z8\nDate: 22-07-2026   Time: 21:52\nBill No: INV-21573\n--------------------------------\nPetrol Speed 25.4 Litres  2580.00\n--------------------------------\nSubtotal:               INR  2580.00\nGST (5%):              INR   129.00\nGRAND TOTAL:            INR  2709.00\n--------------------------------\nPaid via DEBIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "IndianOil Auto Fuel Pump",
+      "category": "transport",
+      "total_amount": 2709.0,
+      "tax_amount": 129.0,
+      "date": "2026-07-22",
+      "payment_mode": "DEBIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0957",
+    "raw_text": "*** TAX INVOICE ***\nAPOLLO PHARMACY OUTLET #42\nGSTIN: 27AABCT5405A1Z6\nDate: 15-03-2026   Time: 16:42\nBill No: INV-24069\n--------------------------------\nParacetamol 650mg 15s     45.00\nVitamin C Chewables      180.00\nDigital Thermometer      250.00\n--------------------------------\nSubtotal:               INR   475.00\nGST (5%):              INR    23.75\nGRAND TOTAL:            INR   498.75\n--------------------------------\nPaid via CASH - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Apollo Pharmacy Outlet #42",
+      "category": "healthcare",
+      "total_amount": 498.75,
+      "tax_amount": 23.75,
+      "date": "2026-03-15",
+      "payment_mode": "CASH"
+    }
+  },
+  {
+    "id": "receipt_0958",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT4836A1Z7\nDate: 11 Oct 2026   Time: 16:41\nBill No: INV-10340\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-10-11",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_0959",
+    "raw_text": "*** TAX INVOICE ***\nAPOLLO PHARMACY OUTLET #42\nGSTIN: 27AABCT7723A1Z7\nDate: 16/04/2026   Time: 13:14\nBill No: INV-81522\n--------------------------------\nParacetamol 650mg 15s     45.00\nVitamin C Chewables      180.00\nDigital Thermometer      250.00\n--------------------------------\nSubtotal:               INR   475.00\nGST (5%):              INR    23.75\nGRAND TOTAL:            INR   498.75\n--------------------------------\nPaid via CASH - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Apollo Pharmacy Outlet #42",
+      "category": "healthcare",
+      "total_amount": 498.75,
+      "tax_amount": 23.75,
+      "date": "2026-04-16",
+      "payment_mode": "CASH"
+    }
+  },
+  {
+    "id": "receipt_0960",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT1734A1Z5\nDate: 13-09-2026   Time: 18:55\nBill No: INV-59759\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-09-13",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_0961",
+    "raw_text": "*** TAX INVOICE ***\nPVR CINEMAS MULTIPLEX\nGSTIN: 27AABCT2798A1Z7\nDate: 21/09/2026   Time: 18:26\nBill No: INV-26618\n--------------------------------\n2x Recliner Movie Tickets   900.00\n1x Large Caramel Popcorn   420.00\n2x Pepsi 500ml           260.00\n--------------------------------\nSubtotal:               INR  1580.00\nGST (18%):              INR   284.40\nGRAND TOTAL:            INR  1864.40\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "PVR Cinemas Multiplex",
+      "category": "entertainment",
+      "total_amount": 1864.4,
+      "tax_amount": 284.4,
+      "date": "2026-09-21",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_0962",
+    "raw_text": "*** TAX INVOICE ***\nINDIANOIL AUTO FUEL PUMP\nGSTIN: 27AABCT6496A1Z3\nDate: 09 Oct 2026   Time: 16:22\nBill No: INV-54576\n--------------------------------\nPetrol Speed 25.4 Litres  2580.00\n--------------------------------\nSubtotal:               INR  2580.00\nGST (5%):              INR   129.00\nGRAND TOTAL:            INR  2709.00\n--------------------------------\nPaid via DEBIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "IndianOil Auto Fuel Pump",
+      "category": "transport",
+      "total_amount": 2709.0,
+      "tax_amount": 129.0,
+      "date": "2026-10-09",
+      "payment_mode": "DEBIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0963",
+    "raw_text": "*** TAX INVOICE ***\nAPOLLO PHARMACY OUTLET #42\nGSTIN: 27AABCT3572A1Z1\nDate: 18-05-2026   Time: 15:51\nBill No: INV-43266\n--------------------------------\nParacetamol 650mg 15s     45.00\nVitamin C Chewables      180.00\nDigital Thermometer      250.00\n--------------------------------\nSubtotal:               INR   475.00\nGST (5%):              INR    23.75\nGRAND TOTAL:            INR   498.75\n--------------------------------\nPaid via CASH - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Apollo Pharmacy Outlet #42",
+      "category": "healthcare",
+      "total_amount": 498.75,
+      "tax_amount": 23.75,
+      "date": "2026-05-18",
+      "payment_mode": "CASH"
+    }
+  },
+  {
+    "id": "receipt_0964",
+    "raw_text": "*** TAX INVOICE ***\nAPOLLO PHARMACY OUTLET #42\nGSTIN: 27AABCT9902A1Z2\nDate: 27 Sep 2026   Time: 13:23\nBill No: INV-78882\n--------------------------------\nParacetamol 650mg 15s     45.00\nVitamin C Chewables      180.00\nDigital Thermometer      250.00\n--------------------------------\nSubtotal:               INR   475.00\nGST (5%):              INR    23.75\nGRAND TOTAL:            INR   498.75\n--------------------------------\nPaid via CASH - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Apollo Pharmacy Outlet #42",
+      "category": "healthcare",
+      "total_amount": 498.75,
+      "tax_amount": 23.75,
+      "date": "2026-09-27",
+      "payment_mode": "CASH"
+    }
+  },
+  {
+    "id": "receipt_0965",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT8353A1Z5\nDate: 2026-08-08   Time: 21:26\nBill No: INV-96949\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-08-08",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_0966",
+    "raw_text": "*** TAX INVOICE ***\nCROMA ELECTRONICS STORE\nGSTIN: 27AABCT6287A1Z8\nDate: 02 Jun 2026   Time: 16:31\nBill No: INV-93681\n--------------------------------\nSanDisk 1TB SSD         6499.00\nLogitech MX Master 3S   7995.00\nType-C Braided Cable     499.00\n--------------------------------\nSubtotal:               INR 14993.00\nGST (5%):              INR   749.65\nGRAND TOTAL:            INR 15742.65\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Croma Electronics Store",
+      "category": "shopping",
+      "total_amount": 15742.65,
+      "tax_amount": 749.65,
+      "date": "2026-06-02",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0967",
+    "raw_text": "*** TAX INVOICE ***\nAPOLLO PHARMACY OUTLET #42\nGSTIN: 27AABCT7995A1Z9\nDate: 17-02-2026   Time: 11:43\nBill No: INV-14219\n--------------------------------\nParacetamol 650mg 15s     45.00\nVitamin C Chewables      180.00\nDigital Thermometer      250.00\n--------------------------------\nSubtotal:               INR   475.00\nGST (5%):              INR    23.75\nGRAND TOTAL:            INR   498.75\n--------------------------------\nPaid via CASH - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Apollo Pharmacy Outlet #42",
+      "category": "healthcare",
+      "total_amount": 498.75,
+      "tax_amount": 23.75,
+      "date": "2026-02-17",
+      "payment_mode": "CASH"
+    }
+  },
+  {
+    "id": "receipt_0968",
+    "raw_text": "*** TAX INVOICE ***\nSTARBUCKS COFFEE\nGSTIN: 27AABCT1962A1Z4\nDate: 2026-02-26   Time: 20:36\nBill No: INV-47871\n--------------------------------\n1x Caffe Latte (Venti)   345.00\n1x Blueberry Muffin      240.00\n1x Java Chip Frappuccino   390.00\n--------------------------------\nSubtotal:               INR   975.00\nGST (5%):              INR    48.75\nGRAND TOTAL:            INR  1023.75\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Starbucks Coffee",
+      "category": "food",
+      "total_amount": 1023.75,
+      "tax_amount": 48.75,
+      "date": "2026-02-26",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0969",
+    "raw_text": "*** TAX INVOICE ***\nINDIANOIL AUTO FUEL PUMP\nGSTIN: 27AABCT5859A1Z2\nDate: 13/11/2026   Time: 20:35\nBill No: INV-15534\n--------------------------------\nPetrol Speed 25.4 Litres  2580.00\n--------------------------------\nSubtotal:               INR  2580.00\nGST (5%):              INR   129.00\nGRAND TOTAL:            INR  2709.00\n--------------------------------\nPaid via DEBIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "IndianOil Auto Fuel Pump",
+      "category": "transport",
+      "total_amount": 2709.0,
+      "tax_amount": 129.0,
+      "date": "2026-11-13",
+      "payment_mode": "DEBIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0970",
+    "raw_text": "*** TAX INVOICE ***\nMCDONALD'S FAMILY RESTAURANT\nGSTIN: 27AABCT2572A1Z9\nDate: 27/05/2026   Time: 12:22\nBill No: INV-13203\n--------------------------------\n2x McSpicy Chicken Burger   360.00\n1x Large Fries           125.00\n2x Coke Float            140.00\n--------------------------------\nSubtotal:               INR   625.00\nGST (5%):              INR    31.25\nGRAND TOTAL:            INR   656.25\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "McDonald's Family Restaurant",
+      "category": "food",
+      "total_amount": 656.25,
+      "tax_amount": 31.25,
+      "date": "2026-05-27",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_0971",
+    "raw_text": "*** TAX INVOICE ***\nINDIANOIL AUTO FUEL PUMP\nGSTIN: 27AABCT3579A1Z2\nDate: 2026-04-09   Time: 11:20\nBill No: INV-39790\n--------------------------------\nPetrol Speed 25.4 Litres  2580.00\n--------------------------------\nSubtotal:               INR  2580.00\nGST (5%):              INR   129.00\nGRAND TOTAL:            INR  2709.00\n--------------------------------\nPaid via DEBIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "IndianOil Auto Fuel Pump",
+      "category": "transport",
+      "total_amount": 2709.0,
+      "tax_amount": 129.0,
+      "date": "2026-04-09",
+      "payment_mode": "DEBIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0972",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT4537A1Z7\nDate: 24 Feb 2026   Time: 16:26\nBill No: INV-89435\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-02-24",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_0973",
+    "raw_text": "*** TAX INVOICE ***\nMCDONALD'S FAMILY RESTAURANT\nGSTIN: 27AABCT7873A1Z5\nDate: 05/10/2026   Time: 14:46\nBill No: INV-23946\n--------------------------------\n2x McSpicy Chicken Burger   360.00\n1x Large Fries           125.00\n2x Coke Float            140.00\n--------------------------------\nSubtotal:               INR   625.00\nGST (5%):              INR    31.25\nGRAND TOTAL:            INR   656.25\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "McDonald's Family Restaurant",
+      "category": "food",
+      "total_amount": 656.25,
+      "tax_amount": 31.25,
+      "date": "2026-10-05",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_0974",
+    "raw_text": "*** TAX INVOICE ***\nCROMA ELECTRONICS STORE\nGSTIN: 27AABCT7527A1Z8\nDate: 11/09/2026   Time: 16:25\nBill No: INV-47143\n--------------------------------\nSanDisk 1TB SSD         6499.00\nLogitech MX Master 3S   7995.00\nType-C Braided Cable     499.00\n--------------------------------\nSubtotal:               INR 14993.00\nGST (5%):              INR   749.65\nGRAND TOTAL:            INR 15742.65\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Croma Electronics Store",
+      "category": "shopping",
+      "total_amount": 15742.65,
+      "tax_amount": 749.65,
+      "date": "2026-09-11",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0975",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT1885A1Z5\nDate: 16/12/2026   Time: 11:26\nBill No: INV-95052\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-12-16",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_0976",
+    "raw_text": "*** TAX INVOICE ***\nAPOLLO PHARMACY OUTLET #42\nGSTIN: 27AABCT1876A1Z5\nDate: 27-06-2026   Time: 18:47\nBill No: INV-72938\n--------------------------------\nParacetamol 650mg 15s     45.00\nVitamin C Chewables      180.00\nDigital Thermometer      250.00\n--------------------------------\nSubtotal:               INR   475.00\nGST (5%):              INR    23.75\nGRAND TOTAL:            INR   498.75\n--------------------------------\nPaid via CASH - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Apollo Pharmacy Outlet #42",
+      "category": "healthcare",
+      "total_amount": 498.75,
+      "tax_amount": 23.75,
+      "date": "2026-06-27",
+      "payment_mode": "CASH"
+    }
+  },
+  {
+    "id": "receipt_0977",
+    "raw_text": "*** TAX INVOICE ***\nPVR CINEMAS MULTIPLEX\nGSTIN: 27AABCT6381A1Z1\nDate: 2026-01-21   Time: 21:25\nBill No: INV-92415\n--------------------------------\n2x Recliner Movie Tickets   900.00\n1x Large Caramel Popcorn   420.00\n2x Pepsi 500ml           260.00\n--------------------------------\nSubtotal:               INR  1580.00\nGST (18%):              INR   284.40\nGRAND TOTAL:            INR  1864.40\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "PVR Cinemas Multiplex",
+      "category": "entertainment",
+      "total_amount": 1864.4,
+      "tax_amount": 284.4,
+      "date": "2026-01-21",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_0978",
+    "raw_text": "*** TAX INVOICE ***\nAPOLLO PHARMACY OUTLET #42\nGSTIN: 27AABCT7581A1Z4\nDate: 19/03/2026   Time: 18:37\nBill No: INV-35769\n--------------------------------\nParacetamol 650mg 15s     45.00\nVitamin C Chewables      180.00\nDigital Thermometer      250.00\n--------------------------------\nSubtotal:               INR   475.00\nGST (5%):              INR    23.75\nGRAND TOTAL:            INR   498.75\n--------------------------------\nPaid via CASH - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Apollo Pharmacy Outlet #42",
+      "category": "healthcare",
+      "total_amount": 498.75,
+      "tax_amount": 23.75,
+      "date": "2026-03-19",
+      "payment_mode": "CASH"
+    }
+  },
+  {
+    "id": "receipt_0979",
+    "raw_text": "*** TAX INVOICE ***\nPVR CINEMAS MULTIPLEX\nGSTIN: 27AABCT2672A1Z6\nDate: 15-03-2026   Time: 12:52\nBill No: INV-26062\n--------------------------------\n2x Recliner Movie Tickets   900.00\n1x Large Caramel Popcorn   420.00\n2x Pepsi 500ml           260.00\n--------------------------------\nSubtotal:               INR  1580.00\nGST (18%):              INR   284.40\nGRAND TOTAL:            INR  1864.40\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "PVR Cinemas Multiplex",
+      "category": "entertainment",
+      "total_amount": 1864.4,
+      "tax_amount": 284.4,
+      "date": "2026-03-15",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_0980",
+    "raw_text": "*** TAX INVOICE ***\nSTARBUCKS COFFEE\nGSTIN: 27AABCT4465A1Z5\nDate: 14-05-2026   Time: 14:52\nBill No: INV-63980\n--------------------------------\n1x Caffe Latte (Venti)   345.00\n1x Blueberry Muffin      240.00\n1x Java Chip Frappuccino   390.00\n--------------------------------\nSubtotal:               INR   975.00\nGST (5%):              INR    48.75\nGRAND TOTAL:            INR  1023.75\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Starbucks Coffee",
+      "category": "food",
+      "total_amount": 1023.75,
+      "tax_amount": 48.75,
+      "date": "2026-05-14",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0981",
+    "raw_text": "*** TAX INVOICE ***\nINDIANOIL AUTO FUEL PUMP\nGSTIN: 27AABCT6760A1Z6\nDate: 08-01-2026   Time: 21:41\nBill No: INV-23388\n--------------------------------\nPetrol Speed 25.4 Litres  2580.00\n--------------------------------\nSubtotal:               INR  2580.00\nGST (5%):              INR   129.00\nGRAND TOTAL:            INR  2709.00\n--------------------------------\nPaid via DEBIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "IndianOil Auto Fuel Pump",
+      "category": "transport",
+      "total_amount": 2709.0,
+      "tax_amount": 129.0,
+      "date": "2026-01-08",
+      "payment_mode": "DEBIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0982",
+    "raw_text": "*** TAX INVOICE ***\nPVR CINEMAS MULTIPLEX\nGSTIN: 27AABCT2388A1Z8\nDate: 2026-02-17   Time: 14:15\nBill No: INV-43654\n--------------------------------\n2x Recliner Movie Tickets   900.00\n1x Large Caramel Popcorn   420.00\n2x Pepsi 500ml           260.00\n--------------------------------\nSubtotal:               INR  1580.00\nGST (18%):              INR   284.40\nGRAND TOTAL:            INR  1864.40\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "PVR Cinemas Multiplex",
+      "category": "entertainment",
+      "total_amount": 1864.4,
+      "tax_amount": 284.4,
+      "date": "2026-02-17",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_0983",
+    "raw_text": "*** TAX INVOICE ***\nAPOLLO PHARMACY OUTLET #42\nGSTIN: 27AABCT7338A1Z1\nDate: 22 Sep 2026   Time: 18:45\nBill No: INV-87592\n--------------------------------\nParacetamol 650mg 15s     45.00\nVitamin C Chewables      180.00\nDigital Thermometer      250.00\n--------------------------------\nSubtotal:               INR   475.00\nGST (5%):              INR    23.75\nGRAND TOTAL:            INR   498.75\n--------------------------------\nPaid via CASH - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Apollo Pharmacy Outlet #42",
+      "category": "healthcare",
+      "total_amount": 498.75,
+      "tax_amount": 23.75,
+      "date": "2026-09-22",
+      "payment_mode": "CASH"
+    }
+  },
+  {
+    "id": "receipt_0984",
+    "raw_text": "*** TAX INVOICE ***\nPVR CINEMAS MULTIPLEX\nGSTIN: 27AABCT8742A1Z3\nDate: 26/12/2026   Time: 11:49\nBill No: INV-56944\n--------------------------------\n2x Recliner Movie Tickets   900.00\n1x Large Caramel Popcorn   420.00\n2x Pepsi 500ml           260.00\n--------------------------------\nSubtotal:               INR  1580.00\nGST (18%):              INR   284.40\nGRAND TOTAL:            INR  1864.40\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "PVR Cinemas Multiplex",
+      "category": "entertainment",
+      "total_amount": 1864.4,
+      "tax_amount": 284.4,
+      "date": "2026-12-26",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_0985",
+    "raw_text": "*** TAX INVOICE ***\nINDIANOIL AUTO FUEL PUMP\nGSTIN: 27AABCT1324A1Z8\nDate: 2026-04-11   Time: 16:47\nBill No: INV-30831\n--------------------------------\nPetrol Speed 25.4 Litres  2580.00\n--------------------------------\nSubtotal:               INR  2580.00\nGST (5%):              INR   129.00\nGRAND TOTAL:            INR  2709.00\n--------------------------------\nPaid via DEBIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "IndianOil Auto Fuel Pump",
+      "category": "transport",
+      "total_amount": 2709.0,
+      "tax_amount": 129.0,
+      "date": "2026-04-11",
+      "payment_mode": "DEBIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0986",
+    "raw_text": "*** TAX INVOICE ***\nINDIANOIL AUTO FUEL PUMP\nGSTIN: 27AABCT4028A1Z2\nDate: 2026-02-04   Time: 19:40\nBill No: INV-73802\n--------------------------------\nPetrol Speed 25.4 Litres  2580.00\n--------------------------------\nSubtotal:               INR  2580.00\nGST (5%):              INR   129.00\nGRAND TOTAL:            INR  2709.00\n--------------------------------\nPaid via DEBIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "IndianOil Auto Fuel Pump",
+      "category": "transport",
+      "total_amount": 2709.0,
+      "tax_amount": 129.0,
+      "date": "2026-02-04",
+      "payment_mode": "DEBIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0987",
+    "raw_text": "*** TAX INVOICE ***\nPVR CINEMAS MULTIPLEX\nGSTIN: 27AABCT1507A1Z1\nDate: 18/09/2026   Time: 14:13\nBill No: INV-40681\n--------------------------------\n2x Recliner Movie Tickets   900.00\n1x Large Caramel Popcorn   420.00\n2x Pepsi 500ml           260.00\n--------------------------------\nSubtotal:               INR  1580.00\nGST (18%):              INR   284.40\nGRAND TOTAL:            INR  1864.40\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "PVR Cinemas Multiplex",
+      "category": "entertainment",
+      "total_amount": 1864.4,
+      "tax_amount": 284.4,
+      "date": "2026-09-18",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_0988",
+    "raw_text": "*** TAX INVOICE ***\nSTARBUCKS COFFEE\nGSTIN: 27AABCT2720A1Z4\nDate: 10/10/2026   Time: 11:29\nBill No: INV-48223\n--------------------------------\n1x Caffe Latte (Venti)   345.00\n1x Blueberry Muffin      240.00\n1x Java Chip Frappuccino   390.00\n--------------------------------\nSubtotal:               INR   975.00\nGST (5%):              INR    48.75\nGRAND TOTAL:            INR  1023.75\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Starbucks Coffee",
+      "category": "food",
+      "total_amount": 1023.75,
+      "tax_amount": 48.75,
+      "date": "2026-10-10",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0989",
+    "raw_text": "*** TAX INVOICE ***\nSTARBUCKS COFFEE\nGSTIN: 27AABCT5902A1Z5\nDate: 28-02-2026   Time: 16:55\nBill No: INV-97334\n--------------------------------\n1x Caffe Latte (Venti)   345.00\n1x Blueberry Muffin      240.00\n1x Java Chip Frappuccino   390.00\n--------------------------------\nSubtotal:               INR   975.00\nGST (5%):              INR    48.75\nGRAND TOTAL:            INR  1023.75\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Starbucks Coffee",
+      "category": "food",
+      "total_amount": 1023.75,
+      "tax_amount": 48.75,
+      "date": "2026-02-28",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0990",
+    "raw_text": "*** TAX INVOICE ***\nSTARBUCKS COFFEE\nGSTIN: 27AABCT5348A1Z5\nDate: 27/09/2026   Time: 14:27\nBill No: INV-90188\n--------------------------------\n1x Caffe Latte (Venti)   345.00\n1x Blueberry Muffin      240.00\n1x Java Chip Frappuccino   390.00\n--------------------------------\nSubtotal:               INR   975.00\nGST (5%):              INR    48.75\nGRAND TOTAL:            INR  1023.75\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Starbucks Coffee",
+      "category": "food",
+      "total_amount": 1023.75,
+      "tax_amount": 48.75,
+      "date": "2026-09-27",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0991",
+    "raw_text": "*** TAX INVOICE ***\nAPOLLO PHARMACY OUTLET #42\nGSTIN: 27AABCT5742A1Z5\nDate: 05-08-2026   Time: 12:54\nBill No: INV-30235\n--------------------------------\nParacetamol 650mg 15s     45.00\nVitamin C Chewables      180.00\nDigital Thermometer      250.00\n--------------------------------\nSubtotal:               INR   475.00\nGST (5%):              INR    23.75\nGRAND TOTAL:            INR   498.75\n--------------------------------\nPaid via CASH - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Apollo Pharmacy Outlet #42",
+      "category": "healthcare",
+      "total_amount": 498.75,
+      "tax_amount": 23.75,
+      "date": "2026-08-05",
+      "payment_mode": "CASH"
+    }
+  },
+  {
+    "id": "receipt_0992",
+    "raw_text": "*** TAX INVOICE ***\nPVR CINEMAS MULTIPLEX\nGSTIN: 27AABCT6340A1Z5\nDate: 07/06/2026   Time: 19:55\nBill No: INV-55919\n--------------------------------\n2x Recliner Movie Tickets   900.00\n1x Large Caramel Popcorn   420.00\n2x Pepsi 500ml           260.00\n--------------------------------\nSubtotal:               INR  1580.00\nGST (18%):              INR   284.40\nGRAND TOTAL:            INR  1864.40\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "PVR Cinemas Multiplex",
+      "category": "entertainment",
+      "total_amount": 1864.4,
+      "tax_amount": 284.4,
+      "date": "2026-06-07",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_0993",
+    "raw_text": "*** TAX INVOICE ***\nPVR CINEMAS MULTIPLEX\nGSTIN: 27AABCT9884A1Z6\nDate: 02-02-2026   Time: 19:47\nBill No: INV-39141\n--------------------------------\n2x Recliner Movie Tickets   900.00\n1x Large Caramel Popcorn   420.00\n2x Pepsi 500ml           260.00\n--------------------------------\nSubtotal:               INR  1580.00\nGST (18%):              INR   284.40\nGRAND TOTAL:            INR  1864.40\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "PVR Cinemas Multiplex",
+      "category": "entertainment",
+      "total_amount": 1864.4,
+      "tax_amount": 284.4,
+      "date": "2026-02-02",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_0994",
+    "raw_text": "*** TAX INVOICE ***\nINDIANOIL AUTO FUEL PUMP\nGSTIN: 27AABCT7062A1Z1\nDate: 05 Sep 2026   Time: 18:18\nBill No: INV-24319\n--------------------------------\nPetrol Speed 25.4 Litres  2580.00\n--------------------------------\nSubtotal:               INR  2580.00\nGST (5%):              INR   129.00\nGRAND TOTAL:            INR  2709.00\n--------------------------------\nPaid via DEBIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "IndianOil Auto Fuel Pump",
+      "category": "transport",
+      "total_amount": 2709.0,
+      "tax_amount": 129.0,
+      "date": "2026-09-05",
+      "payment_mode": "DEBIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0995",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT8151A1Z5\nDate: 06-05-2026   Time: 11:51\nBill No: INV-78639\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-05-06",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_0996",
+    "raw_text": "*** TAX INVOICE ***\nPVR CINEMAS MULTIPLEX\nGSTIN: 27AABCT2708A1Z2\nDate: 15-08-2026   Time: 15:43\nBill No: INV-12587\n--------------------------------\n2x Recliner Movie Tickets   900.00\n1x Large Caramel Popcorn   420.00\n2x Pepsi 500ml           260.00\n--------------------------------\nSubtotal:               INR  1580.00\nGST (18%):              INR   284.40\nGRAND TOTAL:            INR  1864.40\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "PVR Cinemas Multiplex",
+      "category": "entertainment",
+      "total_amount": 1864.4,
+      "tax_amount": 284.4,
+      "date": "2026-08-15",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_0997",
+    "raw_text": "*** TAX INVOICE ***\nCROMA ELECTRONICS STORE\nGSTIN: 27AABCT5582A1Z3\nDate: 2026-08-15   Time: 15:22\nBill No: INV-56725\n--------------------------------\nSanDisk 1TB SSD         6499.00\nLogitech MX Master 3S   7995.00\nType-C Braided Cable     499.00\n--------------------------------\nSubtotal:               INR 14993.00\nGST (5%):              INR   749.65\nGRAND TOTAL:            INR 15742.65\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Croma Electronics Store",
+      "category": "shopping",
+      "total_amount": 15742.65,
+      "tax_amount": 749.65,
+      "date": "2026-08-15",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_0998",
+    "raw_text": "*** TAX INVOICE ***\nMCDONALD'S FAMILY RESTAURANT\nGSTIN: 27AABCT4005A1Z4\nDate: 06 Aug 2026   Time: 18:56\nBill No: INV-97582\n--------------------------------\n2x McSpicy Chicken Burger   360.00\n1x Large Fries           125.00\n2x Coke Float            140.00\n--------------------------------\nSubtotal:               INR   625.00\nGST (5%):              INR    31.25\nGRAND TOTAL:            INR   656.25\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "McDonald's Family Restaurant",
+      "category": "food",
+      "total_amount": 656.25,
+      "tax_amount": 31.25,
+      "date": "2026-08-06",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_0999",
+    "raw_text": "*** TAX INVOICE ***\nCROMA ELECTRONICS STORE\nGSTIN: 27AABCT9744A1Z8\nDate: 26/11/2026   Time: 17:18\nBill No: INV-94855\n--------------------------------\nSanDisk 1TB SSD         6499.00\nLogitech MX Master 3S   7995.00\nType-C Braided Cable     499.00\n--------------------------------\nSubtotal:               INR 14993.00\nGST (5%):              INR   749.65\nGRAND TOTAL:            INR 15742.65\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Croma Electronics Store",
+      "category": "shopping",
+      "total_amount": 15742.65,
+      "tax_amount": 749.65,
+      "date": "2026-11-26",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1000",
+    "raw_text": "*** TAX INVOICE ***\nINDIANOIL AUTO FUEL PUMP\nGSTIN: 27AABCT7448A1Z6\nDate: 25/07/2026   Time: 11:39\nBill No: INV-31726\n--------------------------------\nPetrol Speed 25.4 Litres  2580.00\n--------------------------------\nSubtotal:               INR  2580.00\nGST (5%):              INR   129.00\nGRAND TOTAL:            INR  2709.00\n--------------------------------\nPaid via DEBIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "IndianOil Auto Fuel Pump",
+      "category": "transport",
+      "total_amount": 2709.0,
+      "tax_amount": 129.0,
+      "date": "2026-07-25",
+      "payment_mode": "DEBIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1001",
+    "raw_text": "*** TAX INVOICE ***\nAPOLLO PHARMACY OUTLET #42\nGSTIN: 27AABCT2495A1Z9\nDate: 26-01-2026   Time: 16:20\nBill No: INV-63304\n--------------------------------\nParacetamol 650mg 15s     45.00\nVitamin C Chewables      180.00\nDigital Thermometer      250.00\n--------------------------------\nSubtotal:               INR   475.00\nGST (5%):              INR    23.75\nGRAND TOTAL:            INR   498.75\n--------------------------------\nPaid via CASH - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Apollo Pharmacy Outlet #42",
+      "category": "healthcare",
+      "total_amount": 498.75,
+      "tax_amount": 23.75,
+      "date": "2026-01-26",
+      "payment_mode": "CASH"
+    }
+  },
+  {
+    "id": "receipt_1002",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT4619A1Z3\nDate: 17 Oct 2026   Time: 12:27\nBill No: INV-73433\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-10-17",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_1003",
+    "raw_text": "*** TAX INVOICE ***\nMCDONALD'S FAMILY RESTAURANT\nGSTIN: 27AABCT4628A1Z8\nDate: 2026-09-16   Time: 17:44\nBill No: INV-69422\n--------------------------------\n2x McSpicy Chicken Burger   360.00\n1x Large Fries           125.00\n2x Coke Float            140.00\n--------------------------------\nSubtotal:               INR   625.00\nGST (5%):              INR    31.25\nGRAND TOTAL:            INR   656.25\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "McDonald's Family Restaurant",
+      "category": "food",
+      "total_amount": 656.25,
+      "tax_amount": 31.25,
+      "date": "2026-09-16",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_1004",
+    "raw_text": "*** TAX INVOICE ***\nCROMA ELECTRONICS STORE\nGSTIN: 27AABCT4434A1Z6\nDate: 14-02-2026   Time: 20:13\nBill No: INV-29778\n--------------------------------\nSanDisk 1TB SSD         6499.00\nLogitech MX Master 3S   7995.00\nType-C Braided Cable     499.00\n--------------------------------\nSubtotal:               INR 14993.00\nGST (5%):              INR   749.65\nGRAND TOTAL:            INR 15742.65\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Croma Electronics Store",
+      "category": "shopping",
+      "total_amount": 15742.65,
+      "tax_amount": 749.65,
+      "date": "2026-02-14",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1005",
+    "raw_text": "*** TAX INVOICE ***\nPVR CINEMAS MULTIPLEX\nGSTIN: 27AABCT5922A1Z6\nDate: 16 Jul 2026   Time: 18:52\nBill No: INV-33445\n--------------------------------\n2x Recliner Movie Tickets   900.00\n1x Large Caramel Popcorn   420.00\n2x Pepsi 500ml           260.00\n--------------------------------\nSubtotal:               INR  1580.00\nGST (18%):              INR   284.40\nGRAND TOTAL:            INR  1864.40\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "PVR Cinemas Multiplex",
+      "category": "entertainment",
+      "total_amount": 1864.4,
+      "tax_amount": 284.4,
+      "date": "2026-07-16",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_1006",
+    "raw_text": "*** TAX INVOICE ***\nCROMA ELECTRONICS STORE\nGSTIN: 27AABCT8270A1Z1\nDate: 12-01-2026   Time: 13:46\nBill No: INV-52272\n--------------------------------\nSanDisk 1TB SSD         6499.00\nLogitech MX Master 3S   7995.00\nType-C Braided Cable     499.00\n--------------------------------\nSubtotal:               INR 14993.00\nGST (5%):              INR   749.65\nGRAND TOTAL:            INR 15742.65\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Croma Electronics Store",
+      "category": "shopping",
+      "total_amount": 15742.65,
+      "tax_amount": 749.65,
+      "date": "2026-01-12",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1007",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT6100A1Z3\nDate: 28-01-2026   Time: 13:43\nBill No: INV-17454\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-01-28",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_1008",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT2325A1Z2\nDate: 2026-08-17   Time: 10:52\nBill No: INV-28569\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-08-17",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_1009",
+    "raw_text": "*** TAX INVOICE ***\nPVR CINEMAS MULTIPLEX\nGSTIN: 27AABCT2271A1Z9\nDate: 06 Jan 2026   Time: 17:20\nBill No: INV-75925\n--------------------------------\n2x Recliner Movie Tickets   900.00\n1x Large Caramel Popcorn   420.00\n2x Pepsi 500ml           260.00\n--------------------------------\nSubtotal:               INR  1580.00\nGST (18%):              INR   284.40\nGRAND TOTAL:            INR  1864.40\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "PVR Cinemas Multiplex",
+      "category": "entertainment",
+      "total_amount": 1864.4,
+      "tax_amount": 284.4,
+      "date": "2026-01-06",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_1010",
+    "raw_text": "*** TAX INVOICE ***\nPVR CINEMAS MULTIPLEX\nGSTIN: 27AABCT9754A1Z2\nDate: 22-10-2026   Time: 16:37\nBill No: INV-64025\n--------------------------------\n2x Recliner Movie Tickets   900.00\n1x Large Caramel Popcorn   420.00\n2x Pepsi 500ml           260.00\n--------------------------------\nSubtotal:               INR  1580.00\nGST (18%):              INR   284.40\nGRAND TOTAL:            INR  1864.40\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "PVR Cinemas Multiplex",
+      "category": "entertainment",
+      "total_amount": 1864.4,
+      "tax_amount": 284.4,
+      "date": "2026-10-22",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_1011",
+    "raw_text": "*** TAX INVOICE ***\nMCDONALD'S FAMILY RESTAURANT\nGSTIN: 27AABCT7786A1Z3\nDate: 12/05/2026   Time: 20:38\nBill No: INV-62244\n--------------------------------\n2x McSpicy Chicken Burger   360.00\n1x Large Fries           125.00\n2x Coke Float            140.00\n--------------------------------\nSubtotal:               INR   625.00\nGST (5%):              INR    31.25\nGRAND TOTAL:            INR   656.25\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "McDonald's Family Restaurant",
+      "category": "food",
+      "total_amount": 656.25,
+      "tax_amount": 31.25,
+      "date": "2026-05-12",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_1012",
+    "raw_text": "*** TAX INVOICE ***\nPVR CINEMAS MULTIPLEX\nGSTIN: 27AABCT7609A1Z4\nDate: 11-03-2026   Time: 19:11\nBill No: INV-55137\n--------------------------------\n2x Recliner Movie Tickets   900.00\n1x Large Caramel Popcorn   420.00\n2x Pepsi 500ml           260.00\n--------------------------------\nSubtotal:               INR  1580.00\nGST (18%):              INR   284.40\nGRAND TOTAL:            INR  1864.40\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "PVR Cinemas Multiplex",
+      "category": "entertainment",
+      "total_amount": 1864.4,
+      "tax_amount": 284.4,
+      "date": "2026-03-11",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_1013",
+    "raw_text": "*** TAX INVOICE ***\nINDIANOIL AUTO FUEL PUMP\nGSTIN: 27AABCT1444A1Z7\nDate: 16-05-2026   Time: 10:34\nBill No: INV-42234\n--------------------------------\nPetrol Speed 25.4 Litres  2580.00\n--------------------------------\nSubtotal:               INR  2580.00\nGST (5%):              INR   129.00\nGRAND TOTAL:            INR  2709.00\n--------------------------------\nPaid via DEBIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "IndianOil Auto Fuel Pump",
+      "category": "transport",
+      "total_amount": 2709.0,
+      "tax_amount": 129.0,
+      "date": "2026-05-16",
+      "payment_mode": "DEBIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1014",
+    "raw_text": "*** TAX INVOICE ***\nINDIANOIL AUTO FUEL PUMP\nGSTIN: 27AABCT5161A1Z1\nDate: 17-01-2026   Time: 16:37\nBill No: INV-98601\n--------------------------------\nPetrol Speed 25.4 Litres  2580.00\n--------------------------------\nSubtotal:               INR  2580.00\nGST (5%):              INR   129.00\nGRAND TOTAL:            INR  2709.00\n--------------------------------\nPaid via DEBIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "IndianOil Auto Fuel Pump",
+      "category": "transport",
+      "total_amount": 2709.0,
+      "tax_amount": 129.0,
+      "date": "2026-01-17",
+      "payment_mode": "DEBIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1015",
+    "raw_text": "*** TAX INVOICE ***\nAPOLLO PHARMACY OUTLET #42\nGSTIN: 27AABCT9577A1Z7\nDate: 04 May 2026   Time: 14:37\nBill No: INV-87227\n--------------------------------\nParacetamol 650mg 15s     45.00\nVitamin C Chewables      180.00\nDigital Thermometer      250.00\n--------------------------------\nSubtotal:               INR   475.00\nGST (5%):              INR    23.75\nGRAND TOTAL:            INR   498.75\n--------------------------------\nPaid via CASH - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Apollo Pharmacy Outlet #42",
+      "category": "healthcare",
+      "total_amount": 498.75,
+      "tax_amount": 23.75,
+      "date": "2026-05-04",
+      "payment_mode": "CASH"
+    }
+  },
+  {
+    "id": "receipt_1016",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT9940A1Z6\nDate: 12 Dec 2026   Time: 21:45\nBill No: INV-32404\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-12-12",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_1017",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT4125A1Z2\nDate: 16 Nov 2026   Time: 15:29\nBill No: INV-23345\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-11-16",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_1018",
+    "raw_text": "*** TAX INVOICE ***\nINDIANOIL AUTO FUEL PUMP\nGSTIN: 27AABCT2643A1Z4\nDate: 13 Nov 2026   Time: 19:30\nBill No: INV-38870\n--------------------------------\nPetrol Speed 25.4 Litres  2580.00\n--------------------------------\nSubtotal:               INR  2580.00\nGST (5%):              INR   129.00\nGRAND TOTAL:            INR  2709.00\n--------------------------------\nPaid via DEBIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "IndianOil Auto Fuel Pump",
+      "category": "transport",
+      "total_amount": 2709.0,
+      "tax_amount": 129.0,
+      "date": "2026-11-13",
+      "payment_mode": "DEBIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1019",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT2658A1Z4\nDate: 02-06-2026   Time: 17:49\nBill No: INV-80703\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-06-02",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_1020",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT7642A1Z3\nDate: 04 Jan 2026   Time: 14:59\nBill No: INV-33503\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-01-04",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_1021",
+    "raw_text": "*** TAX INVOICE ***\nAPOLLO PHARMACY OUTLET #42\nGSTIN: 27AABCT5023A1Z5\nDate: 17-09-2026   Time: 18:36\nBill No: INV-88646\n--------------------------------\nParacetamol 650mg 15s     45.00\nVitamin C Chewables      180.00\nDigital Thermometer      250.00\n--------------------------------\nSubtotal:               INR   475.00\nGST (5%):              INR    23.75\nGRAND TOTAL:            INR   498.75\n--------------------------------\nPaid via CASH - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Apollo Pharmacy Outlet #42",
+      "category": "healthcare",
+      "total_amount": 498.75,
+      "tax_amount": 23.75,
+      "date": "2026-09-17",
+      "payment_mode": "CASH"
+    }
+  },
+  {
+    "id": "receipt_1022",
+    "raw_text": "*** TAX INVOICE ***\nCROMA ELECTRONICS STORE\nGSTIN: 27AABCT2415A1Z7\nDate: 2026-07-05   Time: 18:52\nBill No: INV-96609\n--------------------------------\nSanDisk 1TB SSD         6499.00\nLogitech MX Master 3S   7995.00\nType-C Braided Cable     499.00\n--------------------------------\nSubtotal:               INR 14993.00\nGST (5%):              INR   749.65\nGRAND TOTAL:            INR 15742.65\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Croma Electronics Store",
+      "category": "shopping",
+      "total_amount": 15742.65,
+      "tax_amount": 749.65,
+      "date": "2026-07-05",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1023",
+    "raw_text": "*** TAX INVOICE ***\nSTARBUCKS COFFEE\nGSTIN: 27AABCT8831A1Z3\nDate: 16 Dec 2026   Time: 16:29\nBill No: INV-10295\n--------------------------------\n1x Caffe Latte (Venti)   345.00\n1x Blueberry Muffin      240.00\n1x Java Chip Frappuccino   390.00\n--------------------------------\nSubtotal:               INR   975.00\nGST (5%):              INR    48.75\nGRAND TOTAL:            INR  1023.75\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Starbucks Coffee",
+      "category": "food",
+      "total_amount": 1023.75,
+      "tax_amount": 48.75,
+      "date": "2026-12-16",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1024",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT7380A1Z6\nDate: 26 Jan 2026   Time: 18:16\nBill No: INV-68342\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-01-26",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_1025",
+    "raw_text": "*** TAX INVOICE ***\nAPOLLO PHARMACY OUTLET #42\nGSTIN: 27AABCT4362A1Z6\nDate: 07/01/2026   Time: 13:50\nBill No: INV-98716\n--------------------------------\nParacetamol 650mg 15s     45.00\nVitamin C Chewables      180.00\nDigital Thermometer      250.00\n--------------------------------\nSubtotal:               INR   475.00\nGST (5%):              INR    23.75\nGRAND TOTAL:            INR   498.75\n--------------------------------\nPaid via CASH - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Apollo Pharmacy Outlet #42",
+      "category": "healthcare",
+      "total_amount": 498.75,
+      "tax_amount": 23.75,
+      "date": "2026-01-07",
+      "payment_mode": "CASH"
+    }
+  },
+  {
+    "id": "receipt_1026",
+    "raw_text": "*** TAX INVOICE ***\nMCDONALD'S FAMILY RESTAURANT\nGSTIN: 27AABCT7355A1Z5\nDate: 2026-08-01   Time: 13:46\nBill No: INV-64411\n--------------------------------\n2x McSpicy Chicken Burger   360.00\n1x Large Fries           125.00\n2x Coke Float            140.00\n--------------------------------\nSubtotal:               INR   625.00\nGST (5%):              INR    31.25\nGRAND TOTAL:            INR   656.25\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "McDonald's Family Restaurant",
+      "category": "food",
+      "total_amount": 656.25,
+      "tax_amount": 31.25,
+      "date": "2026-08-01",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_1027",
+    "raw_text": "*** TAX INVOICE ***\nCROMA ELECTRONICS STORE\nGSTIN: 27AABCT9862A1Z8\nDate: 01/02/2026   Time: 13:10\nBill No: INV-88297\n--------------------------------\nSanDisk 1TB SSD         6499.00\nLogitech MX Master 3S   7995.00\nType-C Braided Cable     499.00\n--------------------------------\nSubtotal:               INR 14993.00\nGST (5%):              INR   749.65\nGRAND TOTAL:            INR 15742.65\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Croma Electronics Store",
+      "category": "shopping",
+      "total_amount": 15742.65,
+      "tax_amount": 749.65,
+      "date": "2026-02-01",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1028",
+    "raw_text": "*** TAX INVOICE ***\nPVR CINEMAS MULTIPLEX\nGSTIN: 27AABCT5135A1Z4\nDate: 15 Oct 2026   Time: 17:32\nBill No: INV-81590\n--------------------------------\n2x Recliner Movie Tickets   900.00\n1x Large Caramel Popcorn   420.00\n2x Pepsi 500ml           260.00\n--------------------------------\nSubtotal:               INR  1580.00\nGST (18%):              INR   284.40\nGRAND TOTAL:            INR  1864.40\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "PVR Cinemas Multiplex",
+      "category": "entertainment",
+      "total_amount": 1864.4,
+      "tax_amount": 284.4,
+      "date": "2026-10-15",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_1029",
+    "raw_text": "*** TAX INVOICE ***\nCROMA ELECTRONICS STORE\nGSTIN: 27AABCT9755A1Z9\nDate: 20-05-2026   Time: 18:37\nBill No: INV-43736\n--------------------------------\nSanDisk 1TB SSD         6499.00\nLogitech MX Master 3S   7995.00\nType-C Braided Cable     499.00\n--------------------------------\nSubtotal:               INR 14993.00\nGST (5%):              INR   749.65\nGRAND TOTAL:            INR 15742.65\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Croma Electronics Store",
+      "category": "shopping",
+      "total_amount": 15742.65,
+      "tax_amount": 749.65,
+      "date": "2026-05-20",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1030",
+    "raw_text": "*** TAX INVOICE ***\nPVR CINEMAS MULTIPLEX\nGSTIN: 27AABCT4090A1Z8\nDate: 02-07-2026   Time: 18:35\nBill No: INV-19252\n--------------------------------\n2x Recliner Movie Tickets   900.00\n1x Large Caramel Popcorn   420.00\n2x Pepsi 500ml           260.00\n--------------------------------\nSubtotal:               INR  1580.00\nGST (18%):              INR   284.40\nGRAND TOTAL:            INR  1864.40\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "PVR Cinemas Multiplex",
+      "category": "entertainment",
+      "total_amount": 1864.4,
+      "tax_amount": 284.4,
+      "date": "2026-07-02",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_1031",
+    "raw_text": "*** TAX INVOICE ***\nCROMA ELECTRONICS STORE\nGSTIN: 27AABCT1568A1Z6\nDate: 23/10/2026   Time: 15:12\nBill No: INV-58894\n--------------------------------\nSanDisk 1TB SSD         6499.00\nLogitech MX Master 3S   7995.00\nType-C Braided Cable     499.00\n--------------------------------\nSubtotal:               INR 14993.00\nGST (5%):              INR   749.65\nGRAND TOTAL:            INR 15742.65\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Croma Electronics Store",
+      "category": "shopping",
+      "total_amount": 15742.65,
+      "tax_amount": 749.65,
+      "date": "2026-10-23",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1032",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT3611A1Z6\nDate: 13 Nov 2026   Time: 13:39\nBill No: INV-47150\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-11-13",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_1033",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT8496A1Z2\nDate: 2026-04-21   Time: 20:14\nBill No: INV-96313\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-04-21",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_1034",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT2376A1Z2\nDate: 27/01/2026   Time: 16:14\nBill No: INV-40571\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-01-27",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_1035",
+    "raw_text": "*** TAX INVOICE ***\nPVR CINEMAS MULTIPLEX\nGSTIN: 27AABCT3292A1Z5\nDate: 25 Nov 2026   Time: 12:14\nBill No: INV-16530\n--------------------------------\n2x Recliner Movie Tickets   900.00\n1x Large Caramel Popcorn   420.00\n2x Pepsi 500ml           260.00\n--------------------------------\nSubtotal:               INR  1580.00\nGST (18%):              INR   284.40\nGRAND TOTAL:            INR  1864.40\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "PVR Cinemas Multiplex",
+      "category": "entertainment",
+      "total_amount": 1864.4,
+      "tax_amount": 284.4,
+      "date": "2026-11-25",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_1036",
+    "raw_text": "*** TAX INVOICE ***\nCROMA ELECTRONICS STORE\nGSTIN: 27AABCT2056A1Z1\nDate: 14/12/2026   Time: 11:33\nBill No: INV-70069\n--------------------------------\nSanDisk 1TB SSD         6499.00\nLogitech MX Master 3S   7995.00\nType-C Braided Cable     499.00\n--------------------------------\nSubtotal:               INR 14993.00\nGST (5%):              INR   749.65\nGRAND TOTAL:            INR 15742.65\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Croma Electronics Store",
+      "category": "shopping",
+      "total_amount": 15742.65,
+      "tax_amount": 749.65,
+      "date": "2026-12-14",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1037",
+    "raw_text": "*** TAX INVOICE ***\nMCDONALD'S FAMILY RESTAURANT\nGSTIN: 27AABCT2783A1Z1\nDate: 03 Aug 2026   Time: 10:32\nBill No: INV-97318\n--------------------------------\n2x McSpicy Chicken Burger   360.00\n1x Large Fries           125.00\n2x Coke Float            140.00\n--------------------------------\nSubtotal:               INR   625.00\nGST (5%):              INR    31.25\nGRAND TOTAL:            INR   656.25\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "McDonald's Family Restaurant",
+      "category": "food",
+      "total_amount": 656.25,
+      "tax_amount": 31.25,
+      "date": "2026-08-03",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_1038",
+    "raw_text": "*** TAX INVOICE ***\nINDIANOIL AUTO FUEL PUMP\nGSTIN: 27AABCT3452A1Z2\nDate: 2026-02-04   Time: 15:41\nBill No: INV-16166\n--------------------------------\nPetrol Speed 25.4 Litres  2580.00\n--------------------------------\nSubtotal:               INR  2580.00\nGST (5%):              INR   129.00\nGRAND TOTAL:            INR  2709.00\n--------------------------------\nPaid via DEBIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "IndianOil Auto Fuel Pump",
+      "category": "transport",
+      "total_amount": 2709.0,
+      "tax_amount": 129.0,
+      "date": "2026-02-04",
+      "payment_mode": "DEBIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1039",
+    "raw_text": "*** TAX INVOICE ***\nCROMA ELECTRONICS STORE\nGSTIN: 27AABCT4112A1Z2\nDate: 22-11-2026   Time: 10:24\nBill No: INV-62926\n--------------------------------\nSanDisk 1TB SSD         6499.00\nLogitech MX Master 3S   7995.00\nType-C Braided Cable     499.00\n--------------------------------\nSubtotal:               INR 14993.00\nGST (5%):              INR   749.65\nGRAND TOTAL:            INR 15742.65\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Croma Electronics Store",
+      "category": "shopping",
+      "total_amount": 15742.65,
+      "tax_amount": 749.65,
+      "date": "2026-11-22",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1040",
+    "raw_text": "*** TAX INVOICE ***\nSTARBUCKS COFFEE\nGSTIN: 27AABCT7060A1Z5\nDate: 10-03-2026   Time: 10:26\nBill No: INV-89795\n--------------------------------\n1x Caffe Latte (Venti)   345.00\n1x Blueberry Muffin      240.00\n1x Java Chip Frappuccino   390.00\n--------------------------------\nSubtotal:               INR   975.00\nGST (5%):              INR    48.75\nGRAND TOTAL:            INR  1023.75\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Starbucks Coffee",
+      "category": "food",
+      "total_amount": 1023.75,
+      "tax_amount": 48.75,
+      "date": "2026-03-10",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1041",
+    "raw_text": "*** TAX INVOICE ***\nINDIANOIL AUTO FUEL PUMP\nGSTIN: 27AABCT7251A1Z1\nDate: 15 Mar 2026   Time: 13:59\nBill No: INV-21402\n--------------------------------\nPetrol Speed 25.4 Litres  2580.00\n--------------------------------\nSubtotal:               INR  2580.00\nGST (5%):              INR   129.00\nGRAND TOTAL:            INR  2709.00\n--------------------------------\nPaid via DEBIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "IndianOil Auto Fuel Pump",
+      "category": "transport",
+      "total_amount": 2709.0,
+      "tax_amount": 129.0,
+      "date": "2026-03-15",
+      "payment_mode": "DEBIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1042",
+    "raw_text": "*** TAX INVOICE ***\nMCDONALD'S FAMILY RESTAURANT\nGSTIN: 27AABCT1900A1Z6\nDate: 2026-03-08   Time: 14:41\nBill No: INV-61446\n--------------------------------\n2x McSpicy Chicken Burger   360.00\n1x Large Fries           125.00\n2x Coke Float            140.00\n--------------------------------\nSubtotal:               INR   625.00\nGST (5%):              INR    31.25\nGRAND TOTAL:            INR   656.25\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "McDonald's Family Restaurant",
+      "category": "food",
+      "total_amount": 656.25,
+      "tax_amount": 31.25,
+      "date": "2026-03-08",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_1043",
+    "raw_text": "*** TAX INVOICE ***\nINDIANOIL AUTO FUEL PUMP\nGSTIN: 27AABCT8728A1Z4\nDate: 2026-06-19   Time: 20:24\nBill No: INV-15727\n--------------------------------\nPetrol Speed 25.4 Litres  2580.00\n--------------------------------\nSubtotal:               INR  2580.00\nGST (5%):              INR   129.00\nGRAND TOTAL:            INR  2709.00\n--------------------------------\nPaid via DEBIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "IndianOil Auto Fuel Pump",
+      "category": "transport",
+      "total_amount": 2709.0,
+      "tax_amount": 129.0,
+      "date": "2026-06-19",
+      "payment_mode": "DEBIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1044",
+    "raw_text": "*** TAX INVOICE ***\nINDIANOIL AUTO FUEL PUMP\nGSTIN: 27AABCT8344A1Z8\nDate: 2026-04-26   Time: 21:48\nBill No: INV-15094\n--------------------------------\nPetrol Speed 25.4 Litres  2580.00\n--------------------------------\nSubtotal:               INR  2580.00\nGST (5%):              INR   129.00\nGRAND TOTAL:            INR  2709.00\n--------------------------------\nPaid via DEBIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "IndianOil Auto Fuel Pump",
+      "category": "transport",
+      "total_amount": 2709.0,
+      "tax_amount": 129.0,
+      "date": "2026-04-26",
+      "payment_mode": "DEBIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1045",
+    "raw_text": "*** TAX INVOICE ***\nPVR CINEMAS MULTIPLEX\nGSTIN: 27AABCT8470A1Z8\nDate: 22 Jan 2026   Time: 11:39\nBill No: INV-27467\n--------------------------------\n2x Recliner Movie Tickets   900.00\n1x Large Caramel Popcorn   420.00\n2x Pepsi 500ml           260.00\n--------------------------------\nSubtotal:               INR  1580.00\nGST (18%):              INR   284.40\nGRAND TOTAL:            INR  1864.40\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "PVR Cinemas Multiplex",
+      "category": "entertainment",
+      "total_amount": 1864.4,
+      "tax_amount": 284.4,
+      "date": "2026-01-22",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_1046",
+    "raw_text": "*** TAX INVOICE ***\nINDIANOIL AUTO FUEL PUMP\nGSTIN: 27AABCT2455A1Z6\nDate: 15 Oct 2026   Time: 15:22\nBill No: INV-28809\n--------------------------------\nPetrol Speed 25.4 Litres  2580.00\n--------------------------------\nSubtotal:               INR  2580.00\nGST (5%):              INR   129.00\nGRAND TOTAL:            INR  2709.00\n--------------------------------\nPaid via DEBIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "IndianOil Auto Fuel Pump",
+      "category": "transport",
+      "total_amount": 2709.0,
+      "tax_amount": 129.0,
+      "date": "2026-10-15",
+      "payment_mode": "DEBIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1047",
+    "raw_text": "*** TAX INVOICE ***\nPVR CINEMAS MULTIPLEX\nGSTIN: 27AABCT5247A1Z8\nDate: 03 May 2026   Time: 16:40\nBill No: INV-34316\n--------------------------------\n2x Recliner Movie Tickets   900.00\n1x Large Caramel Popcorn   420.00\n2x Pepsi 500ml           260.00\n--------------------------------\nSubtotal:               INR  1580.00\nGST (18%):              INR   284.40\nGRAND TOTAL:            INR  1864.40\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "PVR Cinemas Multiplex",
+      "category": "entertainment",
+      "total_amount": 1864.4,
+      "tax_amount": 284.4,
+      "date": "2026-05-03",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_1048",
+    "raw_text": "*** TAX INVOICE ***\nINDIANOIL AUTO FUEL PUMP\nGSTIN: 27AABCT4442A1Z1\nDate: 09-05-2026   Time: 20:14\nBill No: INV-49012\n--------------------------------\nPetrol Speed 25.4 Litres  2580.00\n--------------------------------\nSubtotal:               INR  2580.00\nGST (5%):              INR   129.00\nGRAND TOTAL:            INR  2709.00\n--------------------------------\nPaid via DEBIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "IndianOil Auto Fuel Pump",
+      "category": "transport",
+      "total_amount": 2709.0,
+      "tax_amount": 129.0,
+      "date": "2026-05-09",
+      "payment_mode": "DEBIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1049",
+    "raw_text": "*** TAX INVOICE ***\nMCDONALD'S FAMILY RESTAURANT\nGSTIN: 27AABCT2021A1Z4\nDate: 22 Nov 2026   Time: 17:31\nBill No: INV-82122\n--------------------------------\n2x McSpicy Chicken Burger   360.00\n1x Large Fries           125.00\n2x Coke Float            140.00\n--------------------------------\nSubtotal:               INR   625.00\nGST (5%):              INR    31.25\nGRAND TOTAL:            INR   656.25\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "McDonald's Family Restaurant",
+      "category": "food",
+      "total_amount": 656.25,
+      "tax_amount": 31.25,
+      "date": "2026-11-22",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_1050",
+    "raw_text": "*** TAX INVOICE ***\nINDIANOIL AUTO FUEL PUMP\nGSTIN: 27AABCT8359A1Z6\nDate: 11 Oct 2026   Time: 11:13\nBill No: INV-32428\n--------------------------------\nPetrol Speed 25.4 Litres  2580.00\n--------------------------------\nSubtotal:               INR  2580.00\nGST (5%):              INR   129.00\nGRAND TOTAL:            INR  2709.00\n--------------------------------\nPaid via DEBIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "IndianOil Auto Fuel Pump",
+      "category": "transport",
+      "total_amount": 2709.0,
+      "tax_amount": 129.0,
+      "date": "2026-10-11",
+      "payment_mode": "DEBIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1051",
+    "raw_text": "*** TAX INVOICE ***\nCROMA ELECTRONICS STORE\nGSTIN: 27AABCT5355A1Z8\nDate: 02/11/2026   Time: 20:18\nBill No: INV-44080\n--------------------------------\nSanDisk 1TB SSD         6499.00\nLogitech MX Master 3S   7995.00\nType-C Braided Cable     499.00\n--------------------------------\nSubtotal:               INR 14993.00\nGST (5%):              INR   749.65\nGRAND TOTAL:            INR 15742.65\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Croma Electronics Store",
+      "category": "shopping",
+      "total_amount": 15742.65,
+      "tax_amount": 749.65,
+      "date": "2026-11-02",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1052",
+    "raw_text": "*** TAX INVOICE ***\nPVR CINEMAS MULTIPLEX\nGSTIN: 27AABCT6136A1Z3\nDate: 05/11/2026   Time: 17:39\nBill No: INV-36947\n--------------------------------\n2x Recliner Movie Tickets   900.00\n1x Large Caramel Popcorn   420.00\n2x Pepsi 500ml           260.00\n--------------------------------\nSubtotal:               INR  1580.00\nGST (18%):              INR   284.40\nGRAND TOTAL:            INR  1864.40\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "PVR Cinemas Multiplex",
+      "category": "entertainment",
+      "total_amount": 1864.4,
+      "tax_amount": 284.4,
+      "date": "2026-11-05",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_1053",
+    "raw_text": "*** TAX INVOICE ***\nINDIANOIL AUTO FUEL PUMP\nGSTIN: 27AABCT6909A1Z4\nDate: 2026-06-25   Time: 15:36\nBill No: INV-87792\n--------------------------------\nPetrol Speed 25.4 Litres  2580.00\n--------------------------------\nSubtotal:               INR  2580.00\nGST (5%):              INR   129.00\nGRAND TOTAL:            INR  2709.00\n--------------------------------\nPaid via DEBIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "IndianOil Auto Fuel Pump",
+      "category": "transport",
+      "total_amount": 2709.0,
+      "tax_amount": 129.0,
+      "date": "2026-06-25",
+      "payment_mode": "DEBIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1054",
+    "raw_text": "*** TAX INVOICE ***\nINDIANOIL AUTO FUEL PUMP\nGSTIN: 27AABCT5061A1Z3\nDate: 04/09/2026   Time: 15:38\nBill No: INV-89637\n--------------------------------\nPetrol Speed 25.4 Litres  2580.00\n--------------------------------\nSubtotal:               INR  2580.00\nGST (5%):              INR   129.00\nGRAND TOTAL:            INR  2709.00\n--------------------------------\nPaid via DEBIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "IndianOil Auto Fuel Pump",
+      "category": "transport",
+      "total_amount": 2709.0,
+      "tax_amount": 129.0,
+      "date": "2026-09-04",
+      "payment_mode": "DEBIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1055",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT4403A1Z7\nDate: 2026-02-03   Time: 17:57\nBill No: INV-65475\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-02-03",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_1056",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT4210A1Z6\nDate: 2026-03-04   Time: 17:49\nBill No: INV-38738\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-03-04",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_1057",
+    "raw_text": "*** TAX INVOICE ***\nAPOLLO PHARMACY OUTLET #42\nGSTIN: 27AABCT7724A1Z6\nDate: 27-09-2026   Time: 13:24\nBill No: INV-86525\n--------------------------------\nParacetamol 650mg 15s     45.00\nVitamin C Chewables      180.00\nDigital Thermometer      250.00\n--------------------------------\nSubtotal:               INR   475.00\nGST (5%):              INR    23.75\nGRAND TOTAL:            INR   498.75\n--------------------------------\nPaid via CASH - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Apollo Pharmacy Outlet #42",
+      "category": "healthcare",
+      "total_amount": 498.75,
+      "tax_amount": 23.75,
+      "date": "2026-09-27",
+      "payment_mode": "CASH"
+    }
+  },
+  {
+    "id": "receipt_1058",
+    "raw_text": "*** TAX INVOICE ***\nCROMA ELECTRONICS STORE\nGSTIN: 27AABCT4300A1Z2\nDate: 10-10-2026   Time: 18:55\nBill No: INV-75269\n--------------------------------\nSanDisk 1TB SSD         6499.00\nLogitech MX Master 3S   7995.00\nType-C Braided Cable     499.00\n--------------------------------\nSubtotal:               INR 14993.00\nGST (5%):              INR   749.65\nGRAND TOTAL:            INR 15742.65\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Croma Electronics Store",
+      "category": "shopping",
+      "total_amount": 15742.65,
+      "tax_amount": 749.65,
+      "date": "2026-10-10",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1059",
+    "raw_text": "*** TAX INVOICE ***\nMCDONALD'S FAMILY RESTAURANT\nGSTIN: 27AABCT4926A1Z1\nDate: 02/02/2026   Time: 16:53\nBill No: INV-95509\n--------------------------------\n2x McSpicy Chicken Burger   360.00\n1x Large Fries           125.00\n2x Coke Float            140.00\n--------------------------------\nSubtotal:               INR   625.00\nGST (5%):              INR    31.25\nGRAND TOTAL:            INR   656.25\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "McDonald's Family Restaurant",
+      "category": "food",
+      "total_amount": 656.25,
+      "tax_amount": 31.25,
+      "date": "2026-02-02",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_1060",
+    "raw_text": "*** TAX INVOICE ***\nPVR CINEMAS MULTIPLEX\nGSTIN: 27AABCT1515A1Z3\nDate: 08/04/2026   Time: 12:15\nBill No: INV-88413\n--------------------------------\n2x Recliner Movie Tickets   900.00\n1x Large Caramel Popcorn   420.00\n2x Pepsi 500ml           260.00\n--------------------------------\nSubtotal:               INR  1580.00\nGST (18%):              INR   284.40\nGRAND TOTAL:            INR  1864.40\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "PVR Cinemas Multiplex",
+      "category": "entertainment",
+      "total_amount": 1864.4,
+      "tax_amount": 284.4,
+      "date": "2026-04-08",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_1061",
+    "raw_text": "*** TAX INVOICE ***\nMCDONALD'S FAMILY RESTAURANT\nGSTIN: 27AABCT3112A1Z7\nDate: 2026-06-18   Time: 15:45\nBill No: INV-23532\n--------------------------------\n2x McSpicy Chicken Burger   360.00\n1x Large Fries           125.00\n2x Coke Float            140.00\n--------------------------------\nSubtotal:               INR   625.00\nGST (5%):              INR    31.25\nGRAND TOTAL:            INR   656.25\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "McDonald's Family Restaurant",
+      "category": "food",
+      "total_amount": 656.25,
+      "tax_amount": 31.25,
+      "date": "2026-06-18",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_1062",
+    "raw_text": "*** TAX INVOICE ***\nSTARBUCKS COFFEE\nGSTIN: 27AABCT9355A1Z2\nDate: 2026-04-04   Time: 20:12\nBill No: INV-82444\n--------------------------------\n1x Caffe Latte (Venti)   345.00\n1x Blueberry Muffin      240.00\n1x Java Chip Frappuccino   390.00\n--------------------------------\nSubtotal:               INR   975.00\nGST (5%):              INR    48.75\nGRAND TOTAL:            INR  1023.75\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Starbucks Coffee",
+      "category": "food",
+      "total_amount": 1023.75,
+      "tax_amount": 48.75,
+      "date": "2026-04-04",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1063",
+    "raw_text": "*** TAX INVOICE ***\nCROMA ELECTRONICS STORE\nGSTIN: 27AABCT9917A1Z4\nDate: 07 Mar 2026   Time: 19:33\nBill No: INV-61232\n--------------------------------\nSanDisk 1TB SSD         6499.00\nLogitech MX Master 3S   7995.00\nType-C Braided Cable     499.00\n--------------------------------\nSubtotal:               INR 14993.00\nGST (5%):              INR   749.65\nGRAND TOTAL:            INR 15742.65\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Croma Electronics Store",
+      "category": "shopping",
+      "total_amount": 15742.65,
+      "tax_amount": 749.65,
+      "date": "2026-03-07",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1064",
+    "raw_text": "*** TAX INVOICE ***\nINDIANOIL AUTO FUEL PUMP\nGSTIN: 27AABCT7015A1Z9\nDate: 08/10/2026   Time: 13:40\nBill No: INV-22225\n--------------------------------\nPetrol Speed 25.4 Litres  2580.00\n--------------------------------\nSubtotal:               INR  2580.00\nGST (5%):              INR   129.00\nGRAND TOTAL:            INR  2709.00\n--------------------------------\nPaid via DEBIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "IndianOil Auto Fuel Pump",
+      "category": "transport",
+      "total_amount": 2709.0,
+      "tax_amount": 129.0,
+      "date": "2026-10-08",
+      "payment_mode": "DEBIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1065",
+    "raw_text": "*** TAX INVOICE ***\nMCDONALD'S FAMILY RESTAURANT\nGSTIN: 27AABCT4241A1Z2\nDate: 2026-02-23   Time: 12:41\nBill No: INV-86849\n--------------------------------\n2x McSpicy Chicken Burger   360.00\n1x Large Fries           125.00\n2x Coke Float            140.00\n--------------------------------\nSubtotal:               INR   625.00\nGST (5%):              INR    31.25\nGRAND TOTAL:            INR   656.25\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "McDonald's Family Restaurant",
+      "category": "food",
+      "total_amount": 656.25,
+      "tax_amount": 31.25,
+      "date": "2026-02-23",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_1066",
+    "raw_text": "*** TAX INVOICE ***\nPVR CINEMAS MULTIPLEX\nGSTIN: 27AABCT7412A1Z9\nDate: 15 Sep 2026   Time: 18:28\nBill No: INV-98941\n--------------------------------\n2x Recliner Movie Tickets   900.00\n1x Large Caramel Popcorn   420.00\n2x Pepsi 500ml           260.00\n--------------------------------\nSubtotal:               INR  1580.00\nGST (18%):              INR   284.40\nGRAND TOTAL:            INR  1864.40\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "PVR Cinemas Multiplex",
+      "category": "entertainment",
+      "total_amount": 1864.4,
+      "tax_amount": 284.4,
+      "date": "2026-09-15",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_1067",
+    "raw_text": "*** TAX INVOICE ***\nAPOLLO PHARMACY OUTLET #42\nGSTIN: 27AABCT3873A1Z5\nDate: 01 May 2026   Time: 20:45\nBill No: INV-51952\n--------------------------------\nParacetamol 650mg 15s     45.00\nVitamin C Chewables      180.00\nDigital Thermometer      250.00\n--------------------------------\nSubtotal:               INR   475.00\nGST (5%):              INR    23.75\nGRAND TOTAL:            INR   498.75\n--------------------------------\nPaid via CASH - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Apollo Pharmacy Outlet #42",
+      "category": "healthcare",
+      "total_amount": 498.75,
+      "tax_amount": 23.75,
+      "date": "2026-05-01",
+      "payment_mode": "CASH"
+    }
+  },
+  {
+    "id": "receipt_1068",
+    "raw_text": "*** TAX INVOICE ***\nCROMA ELECTRONICS STORE\nGSTIN: 27AABCT8038A1Z9\nDate: 14-08-2026   Time: 20:33\nBill No: INV-72039\n--------------------------------\nSanDisk 1TB SSD         6499.00\nLogitech MX Master 3S   7995.00\nType-C Braided Cable     499.00\n--------------------------------\nSubtotal:               INR 14993.00\nGST (5%):              INR   749.65\nGRAND TOTAL:            INR 15742.65\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Croma Electronics Store",
+      "category": "shopping",
+      "total_amount": 15742.65,
+      "tax_amount": 749.65,
+      "date": "2026-08-14",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1069",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT9284A1Z8\nDate: 12-12-2026   Time: 11:17\nBill No: INV-76367\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-12-12",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_1070",
+    "raw_text": "*** TAX INVOICE ***\nMCDONALD'S FAMILY RESTAURANT\nGSTIN: 27AABCT8858A1Z1\nDate: 12/12/2026   Time: 21:31\nBill No: INV-29997\n--------------------------------\n2x McSpicy Chicken Burger   360.00\n1x Large Fries           125.00\n2x Coke Float            140.00\n--------------------------------\nSubtotal:               INR   625.00\nGST (5%):              INR    31.25\nGRAND TOTAL:            INR   656.25\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "McDonald's Family Restaurant",
+      "category": "food",
+      "total_amount": 656.25,
+      "tax_amount": 31.25,
+      "date": "2026-12-12",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_1071",
+    "raw_text": "*** TAX INVOICE ***\nMCDONALD'S FAMILY RESTAURANT\nGSTIN: 27AABCT9636A1Z1\nDate: 04 Aug 2026   Time: 19:51\nBill No: INV-17031\n--------------------------------\n2x McSpicy Chicken Burger   360.00\n1x Large Fries           125.00\n2x Coke Float            140.00\n--------------------------------\nSubtotal:               INR   625.00\nGST (5%):              INR    31.25\nGRAND TOTAL:            INR   656.25\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "McDonald's Family Restaurant",
+      "category": "food",
+      "total_amount": 656.25,
+      "tax_amount": 31.25,
+      "date": "2026-08-04",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_1072",
+    "raw_text": "*** TAX INVOICE ***\nCROMA ELECTRONICS STORE\nGSTIN: 27AABCT1367A1Z7\nDate: 27 Aug 2026   Time: 14:23\nBill No: INV-21968\n--------------------------------\nSanDisk 1TB SSD         6499.00\nLogitech MX Master 3S   7995.00\nType-C Braided Cable     499.00\n--------------------------------\nSubtotal:               INR 14993.00\nGST (5%):              INR   749.65\nGRAND TOTAL:            INR 15742.65\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Croma Electronics Store",
+      "category": "shopping",
+      "total_amount": 15742.65,
+      "tax_amount": 749.65,
+      "date": "2026-08-27",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1073",
+    "raw_text": "*** TAX INVOICE ***\nCROMA ELECTRONICS STORE\nGSTIN: 27AABCT6986A1Z2\nDate: 11/12/2026   Time: 18:46\nBill No: INV-14195\n--------------------------------\nSanDisk 1TB SSD         6499.00\nLogitech MX Master 3S   7995.00\nType-C Braided Cable     499.00\n--------------------------------\nSubtotal:               INR 14993.00\nGST (5%):              INR   749.65\nGRAND TOTAL:            INR 15742.65\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Croma Electronics Store",
+      "category": "shopping",
+      "total_amount": 15742.65,
+      "tax_amount": 749.65,
+      "date": "2026-12-11",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1074",
+    "raw_text": "*** TAX INVOICE ***\nCROMA ELECTRONICS STORE\nGSTIN: 27AABCT6195A1Z3\nDate: 26 Nov 2026   Time: 10:56\nBill No: INV-28218\n--------------------------------\nSanDisk 1TB SSD         6499.00\nLogitech MX Master 3S   7995.00\nType-C Braided Cable     499.00\n--------------------------------\nSubtotal:               INR 14993.00\nGST (5%):              INR   749.65\nGRAND TOTAL:            INR 15742.65\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Croma Electronics Store",
+      "category": "shopping",
+      "total_amount": 15742.65,
+      "tax_amount": 749.65,
+      "date": "2026-11-26",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1075",
+    "raw_text": "*** TAX INVOICE ***\nSTARBUCKS COFFEE\nGSTIN: 27AABCT1739A1Z9\nDate: 14-01-2026   Time: 14:55\nBill No: INV-80915\n--------------------------------\n1x Caffe Latte (Venti)   345.00\n1x Blueberry Muffin      240.00\n1x Java Chip Frappuccino   390.00\n--------------------------------\nSubtotal:               INR   975.00\nGST (5%):              INR    48.75\nGRAND TOTAL:            INR  1023.75\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Starbucks Coffee",
+      "category": "food",
+      "total_amount": 1023.75,
+      "tax_amount": 48.75,
+      "date": "2026-01-14",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1076",
+    "raw_text": "*** TAX INVOICE ***\nAPOLLO PHARMACY OUTLET #42\nGSTIN: 27AABCT9160A1Z5\nDate: 12/03/2026   Time: 10:50\nBill No: INV-69337\n--------------------------------\nParacetamol 650mg 15s     45.00\nVitamin C Chewables      180.00\nDigital Thermometer      250.00\n--------------------------------\nSubtotal:               INR   475.00\nGST (5%):              INR    23.75\nGRAND TOTAL:            INR   498.75\n--------------------------------\nPaid via CASH - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Apollo Pharmacy Outlet #42",
+      "category": "healthcare",
+      "total_amount": 498.75,
+      "tax_amount": 23.75,
+      "date": "2026-03-12",
+      "payment_mode": "CASH"
+    }
+  },
+  {
+    "id": "receipt_1077",
+    "raw_text": "*** TAX INVOICE ***\nPVR CINEMAS MULTIPLEX\nGSTIN: 27AABCT6588A1Z6\nDate: 22-01-2026   Time: 17:24\nBill No: INV-57177\n--------------------------------\n2x Recliner Movie Tickets   900.00\n1x Large Caramel Popcorn   420.00\n2x Pepsi 500ml           260.00\n--------------------------------\nSubtotal:               INR  1580.00\nGST (18%):              INR   284.40\nGRAND TOTAL:            INR  1864.40\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "PVR Cinemas Multiplex",
+      "category": "entertainment",
+      "total_amount": 1864.4,
+      "tax_amount": 284.4,
+      "date": "2026-01-22",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_1078",
+    "raw_text": "*** TAX INVOICE ***\nCROMA ELECTRONICS STORE\nGSTIN: 27AABCT7249A1Z5\nDate: 04 Mar 2026   Time: 10:26\nBill No: INV-75373\n--------------------------------\nSanDisk 1TB SSD         6499.00\nLogitech MX Master 3S   7995.00\nType-C Braided Cable     499.00\n--------------------------------\nSubtotal:               INR 14993.00\nGST (5%):              INR   749.65\nGRAND TOTAL:            INR 15742.65\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Croma Electronics Store",
+      "category": "shopping",
+      "total_amount": 15742.65,
+      "tax_amount": 749.65,
+      "date": "2026-03-04",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1079",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT1836A1Z3\nDate: 18 Dec 2026   Time: 19:49\nBill No: INV-31414\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-12-18",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_1080",
+    "raw_text": "*** TAX INVOICE ***\nPVR CINEMAS MULTIPLEX\nGSTIN: 27AABCT2120A1Z3\nDate: 2026-08-26   Time: 16:22\nBill No: INV-60803\n--------------------------------\n2x Recliner Movie Tickets   900.00\n1x Large Caramel Popcorn   420.00\n2x Pepsi 500ml           260.00\n--------------------------------\nSubtotal:               INR  1580.00\nGST (18%):              INR   284.40\nGRAND TOTAL:            INR  1864.40\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "PVR Cinemas Multiplex",
+      "category": "entertainment",
+      "total_amount": 1864.4,
+      "tax_amount": 284.4,
+      "date": "2026-08-26",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_1081",
+    "raw_text": "*** TAX INVOICE ***\nINDIANOIL AUTO FUEL PUMP\nGSTIN: 27AABCT4264A1Z8\nDate: 16/05/2026   Time: 21:31\nBill No: INV-55543\n--------------------------------\nPetrol Speed 25.4 Litres  2580.00\n--------------------------------\nSubtotal:               INR  2580.00\nGST (5%):              INR   129.00\nGRAND TOTAL:            INR  2709.00\n--------------------------------\nPaid via DEBIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "IndianOil Auto Fuel Pump",
+      "category": "transport",
+      "total_amount": 2709.0,
+      "tax_amount": 129.0,
+      "date": "2026-05-16",
+      "payment_mode": "DEBIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1082",
+    "raw_text": "*** TAX INVOICE ***\nMCDONALD'S FAMILY RESTAURANT\nGSTIN: 27AABCT8632A1Z5\nDate: 07/09/2026   Time: 21:27\nBill No: INV-16159\n--------------------------------\n2x McSpicy Chicken Burger   360.00\n1x Large Fries           125.00\n2x Coke Float            140.00\n--------------------------------\nSubtotal:               INR   625.00\nGST (5%):              INR    31.25\nGRAND TOTAL:            INR   656.25\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "McDonald's Family Restaurant",
+      "category": "food",
+      "total_amount": 656.25,
+      "tax_amount": 31.25,
+      "date": "2026-09-07",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_1083",
+    "raw_text": "*** TAX INVOICE ***\nPVR CINEMAS MULTIPLEX\nGSTIN: 27AABCT6698A1Z6\nDate: 07 May 2026   Time: 13:20\nBill No: INV-37394\n--------------------------------\n2x Recliner Movie Tickets   900.00\n1x Large Caramel Popcorn   420.00\n2x Pepsi 500ml           260.00\n--------------------------------\nSubtotal:               INR  1580.00\nGST (18%):              INR   284.40\nGRAND TOTAL:            INR  1864.40\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "PVR Cinemas Multiplex",
+      "category": "entertainment",
+      "total_amount": 1864.4,
+      "tax_amount": 284.4,
+      "date": "2026-05-07",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_1084",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT7989A1Z8\nDate: 21 Jan 2026   Time: 13:45\nBill No: INV-37704\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-01-21",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_1085",
+    "raw_text": "*** TAX INVOICE ***\nSTARBUCKS COFFEE\nGSTIN: 27AABCT2916A1Z2\nDate: 2026-11-21   Time: 15:19\nBill No: INV-19217\n--------------------------------\n1x Caffe Latte (Venti)   345.00\n1x Blueberry Muffin      240.00\n1x Java Chip Frappuccino   390.00\n--------------------------------\nSubtotal:               INR   975.00\nGST (5%):              INR    48.75\nGRAND TOTAL:            INR  1023.75\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Starbucks Coffee",
+      "category": "food",
+      "total_amount": 1023.75,
+      "tax_amount": 48.75,
+      "date": "2026-11-21",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1086",
+    "raw_text": "*** TAX INVOICE ***\nSTARBUCKS COFFEE\nGSTIN: 27AABCT6307A1Z8\nDate: 28 Oct 2026   Time: 12:32\nBill No: INV-84392\n--------------------------------\n1x Caffe Latte (Venti)   345.00\n1x Blueberry Muffin      240.00\n1x Java Chip Frappuccino   390.00\n--------------------------------\nSubtotal:               INR   975.00\nGST (5%):              INR    48.75\nGRAND TOTAL:            INR  1023.75\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Starbucks Coffee",
+      "category": "food",
+      "total_amount": 1023.75,
+      "tax_amount": 48.75,
+      "date": "2026-10-28",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1087",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT7196A1Z4\nDate: 2026-01-07   Time: 15:22\nBill No: INV-12852\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-01-07",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_1088",
+    "raw_text": "*** TAX INVOICE ***\nPVR CINEMAS MULTIPLEX\nGSTIN: 27AABCT6512A1Z7\nDate: 18 Nov 2026   Time: 12:30\nBill No: INV-43121\n--------------------------------\n2x Recliner Movie Tickets   900.00\n1x Large Caramel Popcorn   420.00\n2x Pepsi 500ml           260.00\n--------------------------------\nSubtotal:               INR  1580.00\nGST (18%):              INR   284.40\nGRAND TOTAL:            INR  1864.40\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "PVR Cinemas Multiplex",
+      "category": "entertainment",
+      "total_amount": 1864.4,
+      "tax_amount": 284.4,
+      "date": "2026-11-18",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_1089",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT8317A1Z6\nDate: 11 Aug 2026   Time: 12:13\nBill No: INV-19776\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-08-11",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_1090",
+    "raw_text": "*** TAX INVOICE ***\nPVR CINEMAS MULTIPLEX\nGSTIN: 27AABCT6939A1Z4\nDate: 15 Mar 2026   Time: 11:56\nBill No: INV-88814\n--------------------------------\n2x Recliner Movie Tickets   900.00\n1x Large Caramel Popcorn   420.00\n2x Pepsi 500ml           260.00\n--------------------------------\nSubtotal:               INR  1580.00\nGST (18%):              INR   284.40\nGRAND TOTAL:            INR  1864.40\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "PVR Cinemas Multiplex",
+      "category": "entertainment",
+      "total_amount": 1864.4,
+      "tax_amount": 284.4,
+      "date": "2026-03-15",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_1091",
+    "raw_text": "*** TAX INVOICE ***\nSTARBUCKS COFFEE\nGSTIN: 27AABCT1644A1Z6\nDate: 2026-01-12   Time: 20:48\nBill No: INV-85675\n--------------------------------\n1x Caffe Latte (Venti)   345.00\n1x Blueberry Muffin      240.00\n1x Java Chip Frappuccino   390.00\n--------------------------------\nSubtotal:               INR   975.00\nGST (5%):              INR    48.75\nGRAND TOTAL:            INR  1023.75\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Starbucks Coffee",
+      "category": "food",
+      "total_amount": 1023.75,
+      "tax_amount": 48.75,
+      "date": "2026-01-12",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1092",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT5164A1Z4\nDate: 20 Sep 2026   Time: 12:26\nBill No: INV-86079\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-09-20",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_1093",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT7130A1Z3\nDate: 11 Nov 2026   Time: 17:53\nBill No: INV-10325\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-11-11",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_1094",
+    "raw_text": "*** TAX INVOICE ***\nCROMA ELECTRONICS STORE\nGSTIN: 27AABCT8830A1Z1\nDate: 2026-11-18   Time: 17:30\nBill No: INV-76244\n--------------------------------\nSanDisk 1TB SSD         6499.00\nLogitech MX Master 3S   7995.00\nType-C Braided Cable     499.00\n--------------------------------\nSubtotal:               INR 14993.00\nGST (5%):              INR   749.65\nGRAND TOTAL:            INR 15742.65\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Croma Electronics Store",
+      "category": "shopping",
+      "total_amount": 15742.65,
+      "tax_amount": 749.65,
+      "date": "2026-11-18",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1095",
+    "raw_text": "*** TAX INVOICE ***\nCROMA ELECTRONICS STORE\nGSTIN: 27AABCT5065A1Z7\nDate: 07/04/2026   Time: 19:21\nBill No: INV-77324\n--------------------------------\nSanDisk 1TB SSD         6499.00\nLogitech MX Master 3S   7995.00\nType-C Braided Cable     499.00\n--------------------------------\nSubtotal:               INR 14993.00\nGST (5%):              INR   749.65\nGRAND TOTAL:            INR 15742.65\n--------------------------------\nPaid via CREDIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Croma Electronics Store",
+      "category": "shopping",
+      "total_amount": 15742.65,
+      "tax_amount": 749.65,
+      "date": "2026-04-07",
+      "payment_mode": "CREDIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1096",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT7839A1Z8\nDate: 21/07/2026   Time: 18:15\nBill No: INV-49776\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-07-21",
+      "payment_mode": "NET_BANKING"
+    }
+  },
+  {
+    "id": "receipt_1097",
+    "raw_text": "*** TAX INVOICE ***\nINDIANOIL AUTO FUEL PUMP\nGSTIN: 27AABCT8065A1Z8\nDate: 17/02/2026   Time: 18:47\nBill No: INV-55310\n--------------------------------\nPetrol Speed 25.4 Litres  2580.00\n--------------------------------\nSubtotal:               INR  2580.00\nGST (5%):              INR   129.00\nGRAND TOTAL:            INR  2709.00\n--------------------------------\nPaid via DEBIT_CARD - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "IndianOil Auto Fuel Pump",
+      "category": "transport",
+      "total_amount": 2709.0,
+      "tax_amount": 129.0,
+      "date": "2026-02-17",
+      "payment_mode": "DEBIT_CARD"
+    }
+  },
+  {
+    "id": "receipt_1098",
+    "raw_text": "*** TAX INVOICE ***\nPVR CINEMAS MULTIPLEX\nGSTIN: 27AABCT9849A1Z9\nDate: 2026-05-06   Time: 16:24\nBill No: INV-20918\n--------------------------------\n2x Recliner Movie Tickets   900.00\n1x Large Caramel Popcorn   420.00\n2x Pepsi 500ml           260.00\n--------------------------------\nSubtotal:               INR  1580.00\nGST (18%):              INR   284.40\nGRAND TOTAL:            INR  1864.40\n--------------------------------\nPaid via UPI - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "PVR Cinemas Multiplex",
+      "category": "entertainment",
+      "total_amount": 1864.4,
+      "tax_amount": 284.4,
+      "date": "2026-05-06",
+      "payment_mode": "UPI"
+    }
+  },
+  {
+    "id": "receipt_1099",
+    "raw_text": "*** TAX INVOICE ***\nTATA POWER ELECTRIC SUPPLY\nGSTIN: 27AABCT3779A1Z8\nDate: 13-04-2026   Time: 17:17\nBill No: INV-14643\n--------------------------------\nMonthly Consumption 340 Units  2450.00\nFixed Meter Charges      180.00\n--------------------------------\nSubtotal:               INR  2630.00\nGST (18%):              INR   473.40\nGRAND TOTAL:            INR  3103.40\n--------------------------------\nPaid via NET_BANKING - APPROVED\nThank you! Visit again.",
+    "ground_truth": {
+      "merchant": "Tata Power Electric Supply",
+      "category": "bills",
+      "total_amount": 3103.4,
+      "tax_amount": 473.4,
+      "date": "2026-04-13",
+      "payment_mode": "NET_BANKING"
+    }
+  }
+]
