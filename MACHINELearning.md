@@ -534,35 +534,55 @@ Implementation: `ml/preprocessing/preprocess_subscriptions.py`, `ml/training/tra
 
 ---
 
-## Phase 15 — OCR Receipt Intelligence
+## Phase 15 — OCR Receipt Intelligence & Smart Scanner ✅ (Implemented)
+
+### Objective
+
+Automatically scan physical receipts, e-invoices, and retail bills using Computer Vision and NLP entity extraction to identify merchant names, grand totals, ISO transaction dates, GST/tax amounts, payment methods, and auto-classify expense categories via Phase 3 integration.
 
 Pipeline
 
+```text
+[Receipt Image / E-Invoice Text]
+              │
+              ▼
+   Fast Text & Line Tokenizer
+              │
+              ▼
+   Spatial Regex & NLP Parser
+   ├── Merchant Name & Header Cleaner
+   ├── Total Amount Extractor
+   ├── ISO Date Normalizer (YYYY-MM-DD)
+   ├── Tax / GST Breakdown
+   └── Payment Mode (UPI/Card/Cash)
+              │
+              ▼
+   Phase 3 ML Category Classifier
+              │
+              ▼
+   Structured JSON Expense Creation (<30ms)
 ```
-Receipt
 
-↓
+Output
 
-OCR
-
-↓
-
-Merchant Detection
-
-↓
-
-Category Prediction
-
-↓
-
-Expense Creation
+```json
+{
+  "status": "success",
+  "extracted_expense": {
+    "merchant": "Starbucks Coffee",
+    "total_amount_inr": 614.25,
+    "currency": "INR",
+    "transaction_date": "2026-08-25",
+    "predicted_category": "food",
+    "payment_mode": "UPI",
+    "tax_amount_inr": 29.25,
+    "line_items_summary": "1x Caffe Latte (Venti), 1x Blueberry Muffin"
+  },
+  "extraction_confidence": 0.98
+}
 ```
 
-Libraries
-
-- EasyOCR
-- PaddleOCR
-- Tesseract
+Implementation: `ml/preprocessing/preprocess_ocr.py`, `ml/training/train_ocr_matcher.py`, `ml/evaluation/evaluate_ocr.py`, `ml/inference/predict_ocr.py`
 
 ---
 

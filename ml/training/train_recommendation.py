@@ -1,19 +1,3 @@
-"""
-Multi-Model Training & Benchmark Pipeline for Phase 16: Financial Product Recommendation.
-
-Benchmarks 4 recommender architectures:
-1. Popularity Baseline Ranker
-2. Matrix Factorization (TruncatedSVD Collaborative Filtering)
-3. Content-Based Cosine Embedding Matcher
-4. Multi-Stage Hybrid Net-Annual-Value Ranker (Selected Production Pipeline)
-
-Evaluates:
-- NDCG@5 (Normalized Discounted Cumulative Gain)
-- Precision@3, Recall@5, and Hit Rate@5
-- Mean Reciprocal Rank (MRR)
-- Sub-Millisecond Execution Latency
-"""
-
 import json
 import os
 import sys
@@ -66,11 +50,15 @@ def main():
     print("=" * 85)
 
     if not os.path.exists(TRAIN_FILE):
-        print(f"[error] Train file not found: {TRAIN_FILE}. Run preprocess_recommendation.py first.")
+        print(
+            f"[error] Train file not found: {TRAIN_FILE}. Run preprocess_recommendation.py first."
+        )
         sys.exit(1)
 
     df = pd.read_csv(TRAIN_FILE)
-    print(f"[info] Loaded {len(df)} user financial records. Precomputing product matrix embeddings...")
+    print(
+        f"[info] Loaded {len(df)} user financial records. Precomputing product matrix embeddings..."
+    )
 
     # Precompute catalog reward matrix P (M x 6)
     product_matrix = np.array([get_product_reward_vector(p) for p in PRODUCT_CATALOG])
@@ -96,7 +84,12 @@ def main():
 
     print("\n[info] Benchmarking Candidate Recommender Architectures...")
 
-    candidates = ["popularity_baseline", "matrix_factorization_svd", "content_cosine_matcher", "multi_stage_hybrid_ranker"]
+    candidates = [
+        "popularity_baseline",
+        "matrix_factorization_svd",
+        "content_cosine_matcher",
+        "multi_stage_hybrid_ranker",
+    ]
     leaderboard = []
 
     for model_name in candidates:
@@ -130,18 +123,27 @@ def main():
             elif model_name == "matrix_factorization_svd":
                 u_vec = get_user_spend_vector(user_spends)
                 # Pseudo user factor via spend mapping
-                u_proj = np.dot(u_vec[:item_factors.shape[0]], item_factors)
+                u_proj = np.dot(u_vec[: item_factors.shape[0]], item_factors)
                 ranked = [all_pids[i] for i in np.argsort(-u_proj)]
 
             else:  # multi_stage_hybrid_ranker
                 scored_products = []
                 for prod in PRODUCT_CATALOG:
                     # Stage 1: Eligibility Guardrail
-                    if cscore < prod["min_credit_score"] or income < prod["min_monthly_income"]:
+                    if (
+                        cscore < prod["min_credit_score"]
+                        or income < prod["min_monthly_income"]
+                    ):
                         continue
                     # Stage 2: Net Annual Value & Persona Relevance
-                    nav, _ = calculate_product_net_annual_value(prod, user_spends, savings, debt)
-                    persona_match = 1.2 if row["persona_id"] in prod.get("target_personas", []) else 1.0
+                    nav, _ = calculate_product_net_annual_value(
+                        prod, user_spends, savings, debt
+                    )
+                    persona_match = (
+                        1.2
+                        if row["persona_id"] in prod.get("target_personas", [])
+                        else 1.0
+                    )
                     final_score = nav * persona_match
                     scored_products.append((prod["product_id"], final_score))
 
@@ -188,10 +190,14 @@ def main():
     print("\n" + "=" * 85)
     print(f"[result] Selected Production Architecture: '{best_name}'")
     print(f"         NDCG@5 Score:        {best_row['ndcg_at_5']} (Benchmark >= 0.90)")
-    print(f"         Precision@3:         {best_row['precision_at_3_pct']}% (Benchmark >= 88%)")
+    print(
+        f"         Precision@3:         {best_row['precision_at_3_pct']}% (Benchmark >= 88%)"
+    )
     print(f"         Hit Rate@5:          {best_row['hit_rate_at_5_pct']}%")
     print(f"         Mean Reciprocal Rank:{best_row['mrr']}")
-    print(f"         Average Latency:     {best_row['avg_latency_us']} microseconds / query")
+    print(
+        f"         Average Latency:     {best_row['avg_latency_us']} microseconds / query"
+    )
     print("=" * 85)
 
     os.makedirs(MODEL_DIR, exist_ok=True)
@@ -214,7 +220,10 @@ def main():
         json.dump(metadata, f, indent=2)
 
     # Save lightweight production wrapper object
-    joblib.dump({"catalog": PRODUCT_CATALOG, "matrix": product_matrix, "pids": product_ids}, model_save_path)
+    joblib.dump(
+        {"catalog": PRODUCT_CATALOG, "matrix": product_matrix, "pids": product_ids},
+        model_save_path,
+    )
 
     print(f"[done] Serialized product catalog   -> {catalog_save_path}")
     print(f"[done] Serialized metadata          -> {metadata_save_path}")
