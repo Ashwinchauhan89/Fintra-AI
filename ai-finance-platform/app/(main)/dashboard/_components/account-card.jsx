@@ -1,8 +1,7 @@
 "use client";
 
-import { ArrowUpRight, ArrowDownRight, CreditCard } from "lucide-react";
+import { ArrowUpRight, ArrowDownRight } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
-import { Badge } from "@/components/ui/badge";
 import { useEffect } from "react";
 import useFetch from "@/hooks/use-fetch";
 import {
@@ -30,7 +29,7 @@ export function AccountCard({ account }) {
     event.preventDefault(); // Prevent navigation
 
     if (isDefault) {
-      toast.warning("You need atleast 1 default account");
+      toast.warning("You need at least 1 default account");
       return; // Don't allow toggling off the default account
     }
 
