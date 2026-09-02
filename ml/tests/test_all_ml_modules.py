@@ -1,11 +1,22 @@
 """
 Master ML Diagnostic & Live Verification Test Suite for Fintra-AI.
 
-Tests every ML inference engine end-to-end to guarantee:
-- 0 runtime exceptions
-- 0 missing files or broken paths
-- Proper input validation & error recovery
-- Exact structured JSON dictionary schema outputs
+Tests every ML inference engine end-to-end across all 15 implemented phases:
+- Phase 3: Expense Category Classification
+- Phase 5: Budget Recommendation Engine
+- Phase 6: Savings Projector
+- Phase 7: Financial Health Score
+- Phase 8: Fraud Detection Engine
+- Phase 9: Spending Anomaly Detection
+- Phase 10: Investment Allocator Engine
+- Phase 11: Goal Timeline Predictor
+- Phase 12: Loan Underwriting Engine
+- Phase 13: Credit Estimator & Simulator
+- Phase 14: Subscription Detection
+- Phase 15: OCR Receipt Intelligence
+- Phase 16: Product Recommender Engine
+- Phase 17: Customer Segmentation Engine
+- Phase 18: Cash Flow Forecasting
 """
 
 import os
@@ -18,7 +29,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
 def test_all_modules():
     print("=" * 90)
-    print("FINTRA-AI MASTER ML DIAGNOSTIC & END-TO-END VERIFICATION SUITE")
+    print("FINTRA-AI MASTER ML DIAGNOSTIC & END-TO-END VERIFICATION SUITE (15 MODULES)")
     print("=" * 90)
 
     results = []
@@ -30,7 +41,7 @@ def test_all_modules():
         assert "category" in cat_res
         results.append(("Phase 3: Expense Classification", "[PASS]", f"Category: {cat_res.get('category')} (Conf: {cat_res.get('confidence', 0):.2f})"))
     except Exception as e:
-        results.append(("Phase 3: Expense Classification", "[FAIL]", traceback.format_exc()))
+        results.append(("Phase 3: Expense Classification", "[FAIL]", str(e)))
 
     # 2. Phase 5: Budget Recommendation & Optimization
     try:
@@ -43,7 +54,7 @@ def test_all_modules():
         assert "recommended_allocations" in bud_res
         results.append(("Phase 5: Budget Recommendation Engine", "[PASS]", f"Allocations: {len(bud_res.get('category_breakdown', {}))} categories"))
     except Exception as e:
-        results.append(("Phase 5: Budget Recommendation Engine", "[FAIL]", traceback.format_exc()))
+        results.append(("Phase 5: Budget Recommendation Engine", "[FAIL]", str(e)))
 
     # 3. Phase 6: Savings Capacity Growth Projector
     try:
@@ -52,7 +63,7 @@ def test_all_modules():
         assert sav_res["status"] == "success"
         results.append(("Phase 6: Savings Projector", "[PASS]", f"Monthly Capacity: INR {sav_res.get('predicted_monthly_savings', 0):,.0f}"))
     except Exception as e:
-        results.append(("Phase 6: Savings Projector", "[FAIL]", traceback.format_exc()))
+        results.append(("Phase 6: Savings Projector", "[FAIL]", str(e)))
 
     # 4. Phase 7: Financial Health Score
     try:
@@ -67,7 +78,7 @@ def test_all_modules():
         score = health_res["financial_health_score"]
         results.append(("Phase 7: Financial Health Score", "[PASS]", f"Health Score: {score}/100 ({health_res.get('grade')})"))
     except Exception as e:
-        results.append(("Phase 7: Financial Health Score", "[FAIL]", traceback.format_exc()))
+        results.append(("Phase 7: Financial Health Score", "[FAIL]", str(e)))
 
     # 5. Phase 8: Fraud Detection Engine
     try:
@@ -76,7 +87,7 @@ def test_all_modules():
         assert "risk_level" in fraud_res
         results.append(("Phase 8: Fraud Detection Engine", "[PASS]", f"Risk Level: {fraud_res.get('risk_level')} ({fraud_res.get('fraud_probability', 0)*100:.1f}%)"))
     except Exception as e:
-        results.append(("Phase 8: Fraud Detection Engine", "[FAIL]", traceback.format_exc()))
+        results.append(("Phase 8: Fraud Detection Engine", "[FAIL]", str(e)))
 
     # 6. Phase 9: Spending Anomaly Detection
     try:
@@ -85,7 +96,7 @@ def test_all_modules():
         assert "is_anomaly" in anom_res
         results.append(("Phase 9: Spending Anomaly Detection", "[PASS]", f"Is Anomaly: {anom_res.get('is_anomaly', False)}"))
     except Exception as e:
-        results.append(("Phase 9: Spending Anomaly Detection", "[FAIL]", traceback.format_exc()))
+        results.append(("Phase 9: Spending Anomaly Detection", "[FAIL]", str(e)))
 
     # 7. Phase 10: Investment Recommendation & Portfolio Allocator
     try:
@@ -95,7 +106,7 @@ def test_all_modules():
         assert "recommended_allocation_pct" in inv_res
         results.append(("Phase 10: Investment Allocator Engine", "[PASS]", f"Profile: {inv_res['user_profile']['risk_profile']}"))
     except Exception as e:
-        results.append(("Phase 10: Investment Allocator Engine", "[FAIL]", traceback.format_exc()))
+        results.append(("Phase 10: Investment Allocator Engine", "[FAIL]", str(e)))
 
     # 8. Phase 11: Financial Goal Timeline Prediction
     try:
@@ -110,7 +121,7 @@ def test_all_modules():
         assert "predicted_months_to_completion" in goal_res
         results.append(("Phase 11: Goal Timeline Predictor", "[PASS]", f"Months to Goal: {goal_res.get('predicted_months_to_completion')} mo ({goal_res.get('feasibility')})"))
     except Exception as e:
-        results.append(("Phase 11: Goal Timeline Predictor", "[FAIL]", traceback.format_exc()))
+        results.append(("Phase 11: Goal Timeline Predictor", "[FAIL]", str(e)))
 
     # 9. Phase 12: Loan Underwriting & Credit Risk Engine
     try:
@@ -120,7 +131,7 @@ def test_all_modules():
         assert "approval_status" in loan_res
         results.append(("Phase 12: Loan Underwriting Engine", "[PASS]", f"Decision: {loan_res.get('approval_status')} (Verdict: {loan_res.get('verdict')})"))
     except Exception as e:
-        results.append(("Phase 12: Loan Underwriting Engine", "[FAIL]", traceback.format_exc()))
+        results.append(("Phase 12: Loan Underwriting Engine", "[FAIL]", str(e)))
 
     # 10. Phase 13: Fast Credit Score Estimator & Simulator
     try:
@@ -131,7 +142,7 @@ def test_all_modules():
         assert 300 <= cred_res["estimated_credit_score"] <= 900
         results.append(("Phase 13: Credit Estimator & Simulator", "[PASS]", f"Score: {cred_res['estimated_credit_score']} ({cred_res['credit_tier']})"))
     except Exception as e:
-        results.append(("Phase 13: Credit Estimator & Simulator", "[FAIL]", traceback.format_exc()))
+        results.append(("Phase 13: Credit Estimator & Simulator", "[FAIL]", str(e)))
 
     # 11. Phase 14: Subscription & Recurring Charge Detection
     try:
@@ -140,9 +151,20 @@ def test_all_modules():
         assert "is_subscription" in sub_res
         results.append(("Phase 14: Subscription Detection", "[PASS]", f"Cadence: {sub_res.get('predicted_cadence', 'MONTHLY')}"))
     except Exception as e:
-        results.append(("Phase 14: Subscription Detection", "[FAIL]", traceback.format_exc()))
+        results.append(("Phase 14: Subscription Detection", "[FAIL]", str(e)))
 
-    # 12. Phase 16: Financial Product Recommendation Engine
+    # 12. Phase 15: OCR Receipt Intelligence & Smart Scanner
+    try:
+        from inference.predict_ocr import SmartReceiptScannerEngine
+        ocr_eng = SmartReceiptScannerEngine()
+        ocr_res = ocr_eng.scan_receipt_text("STARBUCKS COFFEE\nDate: 25/08/2026\n1x Latte 345.00\nGRAND TOTAL: INR 362.25\nPaid via UPI")
+        assert ocr_res["status"] == "success"
+        data = ocr_res["extracted_expense"]
+        results.append(("Phase 15: OCR Receipt Intelligence", "[PASS]", f"Extracted: INR {data['total_amount_inr']} ({data['merchant']})"))
+    except Exception as e:
+        results.append(("Phase 15: OCR Receipt Intelligence", "[FAIL]", str(e)))
+
+    # 13. Phase 16: Financial Product Recommendation Engine
     try:
         from inference.predict_recommendation import FinancialProductRecommenderEngine
         rec_eng = FinancialProductRecommenderEngine()
@@ -151,9 +173,9 @@ def test_all_modules():
         assert len(rec_res["top_recommendations"]) > 0
         results.append(("Phase 16: Product Recommender Engine", "[PASS]", f"{len(rec_res['top_recommendations'])} products matched"))
     except Exception as e:
-        results.append(("Phase 16: Product Recommender Engine", "[FAIL]", traceback.format_exc()))
+        results.append(("Phase 16: Product Recommender Engine", "[FAIL]", str(e)))
 
-    # 13. Phase 17: Customer Persona Segmentation
+    # 14. Phase 17: Customer Persona Segmentation
     try:
         from inference.predict_segmentation import CustomerSegmentationEngine
         seg_eng = CustomerSegmentationEngine()
@@ -161,16 +183,16 @@ def test_all_modules():
         assert seg_res["status"] == "success"
         results.append(("Phase 17: Customer Segmentation Engine", "[PASS]", f"Persona: {seg_res['primary_persona']['persona_id']}"))
     except Exception as e:
-        results.append(("Phase 17: Customer Segmentation Engine", "[FAIL]", traceback.format_exc()))
+        results.append(("Phase 17: Customer Segmentation Engine", "[FAIL]", str(e)))
 
-    # 14. Phase 18: Cash Flow & Balance Forecasting
+    # 15. Phase 18: Cash Flow & Balance Forecasting
     try:
         from inference.predict_forecasting import predict_cash_flow
         cf_res = predict_cash_flow(monthly_income=65000.0, current_balance=28000.0, horizon_days=30)
         assert cf_res["status"] == "success"
         results.append(("Phase 18: Cash Flow Forecasting", "[PASS]", f"Net Balance Projected (30 days)"))
     except Exception as e:
-        results.append(("Phase 18: Cash Flow Forecasting", "[FAIL]", traceback.format_exc()))
+        results.append(("Phase 18: Cash Flow Forecasting", "[FAIL]", str(e)))
 
     print("\nDIAGNOSTIC TEST RESULTS SUMMARY:")
     print("-" * 90)
@@ -182,7 +204,7 @@ def test_all_modules():
     print("-" * 90)
 
     if all_ok:
-        print(">>> RESULT: ALL 14 ML MODULES EXECUTED LIVE INFERENCE WITH 100% SUCCESS & ZERO ERRORS!")
+        print(">>> RESULT: ALL 15 ML MODULES EXECUTED LIVE INFERENCE WITH 100% SUCCESS & ZERO ERRORS!")
     else:
         print(">>> RESULT: One or more modules reported an issue.")
     print("=" * 90)

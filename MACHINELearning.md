@@ -534,35 +534,55 @@ Implementation: `ml/preprocessing/preprocess_subscriptions.py`, `ml/training/tra
 
 ---
 
-## Phase 15 — OCR Receipt Intelligence
+## Phase 15 — OCR Receipt Intelligence & Smart Scanner ✅ (Implemented)
+
+### Objective
+
+Automatically scan physical receipts, e-invoices, and retail bills using Computer Vision and NLP entity extraction to identify merchant names, grand totals, ISO transaction dates, GST/tax amounts, payment methods, and auto-classify expense categories via Phase 3 integration.
 
 Pipeline
 
+```text
+[Receipt Image / E-Invoice Text]
+              │
+              ▼
+   Fast Text & Line Tokenizer
+              │
+              ▼
+   Spatial Regex & NLP Parser
+   ├── Merchant Name & Header Cleaner
+   ├── Total Amount Extractor
+   ├── ISO Date Normalizer (YYYY-MM-DD)
+   ├── Tax / GST Breakdown
+   └── Payment Mode (UPI/Card/Cash)
+              │
+              ▼
+   Phase 3 ML Category Classifier
+              │
+              ▼
+   Structured JSON Expense Creation (<30ms)
 ```
-Receipt
 
-↓
+Output
 
-OCR
-
-↓
-
-Merchant Detection
-
-↓
-
-Category Prediction
-
-↓
-
-Expense Creation
+```json
+{
+  "status": "success",
+  "extracted_expense": {
+    "merchant": "Starbucks Coffee",
+    "total_amount_inr": 614.25,
+    "currency": "INR",
+    "transaction_date": "2026-08-25",
+    "predicted_category": "food",
+    "payment_mode": "UPI",
+    "tax_amount_inr": 29.25,
+    "line_items_summary": "1x Caffe Latte (Venti), 1x Blueberry Muffin"
+  },
+  "extraction_confidence": 0.98
+}
 ```
 
-Libraries
-
-- EasyOCR
-- PaddleOCR
-- Tesseract
+Implementation: `ml/preprocessing/preprocess_ocr.py`, `ml/training/train_ocr_matcher.py`, `ml/evaluation/evaluate_ocr.py`, `ml/inference/predict_ocr.py`
 
 ---
 
@@ -678,31 +698,61 @@ Implementation: `ml/inference/predict_forecasting.py` (`predict_cash_flow`)
 
 ---
 
-## Phase 19 — AI + ML Hybrid Copilot
+## Phase 19 — AI + ML Hybrid Copilot & FastAPI Production REST Microservice ✅ (Implemented)
 
-Gemini explains.
+### Objective
 
-Machine Learning predicts.
+Deliver a high-throughput, low-latency **FastAPI Production REST Microservice** exposing all 15 Machine Learning intelligence pipelines to the Next.js web application, alongside a hybrid **Google Gemini AI Financial Copilot** that synthesizes mathematical ML predictions into actionable natural language advisory.
 
-Example
+Architecture & Microservice Layout
 
+```text
+                     Next.js Web Frontend & Server Actions
+                                      │
+                                      ▼
+                        FastAPI REST ML Microservice (Port 8000)
+                                      │
+            ┌─────────────────────────┴─────────────────────────┐
+            ▼                                                   ▼
+ 15 Structured ML Endpoints                             Google Gemini AI Copilot
+ ├── /api/v1/expenses/classify                          ├── /api/v1/copilot/ask
+ ├── /api/v1/budget/recommend                           ├── /api/v1/copilot/affordability
+ ├── /api/v1/savings/project                            └── /api/v1/copilot/credit-repair-plan
+ ├── /api/v1/health-score/diagnose                                  │
+ ├── /api/v1/fraud/check                                            ▼
+ ├── /api/v1/anomaly/detect                              Gemini 1.5 / 2.0 Flash LLM
+ ├── /api/v1/investments/recommend                      (Synthesizes ML numbers into
+ ├── /api/v1/goals/timeline                             actionable financial advice)
+ ├── /api/v1/loans/underwrite
+ ├── /api/v1/credit/estimate
+ ├── /api/v1/subscriptions/detect
+ ├── /api/v1/ocr/scan
+ ├── /api/v1/marketplace/recommend
+ ├── /api/v1/persona/segment
+ └── /api/v1/cashflow/forecast
 ```
-User
 
-Can I afford a new laptop?
+Output Sample (`/api/v1/copilot/affordability`)
 
-↓
-
-ML
-
-Savings Prediction
-
-↓
-
-Gemini
-
-Explains the recommendation in natural language.
+```json
+{
+  "status": "success",
+  "item_name": "MacBook Pro M3",
+  "item_price_inr": 114900.0,
+  "verdict": "AFFORDABLE_NO_COST_EMI",
+  "recommended_strategy": "Opt for a 3 to 6-month No-Cost EMI on credit card while keeping emergency funds intact.",
+  "impact_on_emergency_fund": {
+    "current_liquid_savings_inr": 150000.0,
+    "post_purchase_liquid_savings_inr": 35100.0,
+    "safe_runway_threshold_inr": 135000.0,
+    "current_runway_months": 3.3,
+    "post_purchase_runway_months": 0.8
+  },
+  "ai_copilot_advice": "Direct full cash payment would reduce your emergency buffer below safe limits (0.8 months). However, with your monthly surplus of INR 40,000, a 6-month No-Cost EMI (~INR 19,150/mo) is very comfortable and will not strain your monthly budget."
+}
 ```
+
+Implementation: `ml/api/main.py`, `ml/api/schemas.py`, `ml/api/routes/`, `ml/api/client.py`, `ml/tests/test_api_endpoints.py`
 
 ---
 
