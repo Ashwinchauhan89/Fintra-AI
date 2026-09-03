@@ -1,4 +1,4 @@
-﻿# Fintra-AI Backend & Prediction Service
+# Fintra-AI Backend & Prediction Service
 
 A modular, production-ready **FastAPI** backend service that exposes RESTful endpoints for Fintra-AI's Machine Learning and Financial Intelligence engines.
 
@@ -11,6 +11,7 @@ A modular, production-ready **FastAPI** backend service that exposes RESTful end
 - **Financial Health Scoring**: 5-pillar composite 0–100 scoring with letter grades (`A+` to `D`).
 - **Goal Completion Forecasting**: Non-linear timeline solving and required monthly SIP projections.
 - **Investment Portfolio Allocator**: Multi-asset recommendations across Equity, Debt, Gold, REITs, and Cash.
+- **Phase 15 OCR Receipt Intelligence**: Automatic extraction of merchant, date, total INR, tax, and payment mode from invoice text.
 - **Interactive Documentation**: Auto-generated Swagger UI (`/api/v1/docs`) and ReDoc (`/api/v1/redoc`).
 
 ---

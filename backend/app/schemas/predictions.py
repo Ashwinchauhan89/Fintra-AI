@@ -1,4 +1,4 @@
-﻿"""
+"""
 Pydantic Schemas for Fintra-AI ML Prediction Services.
 """
 
@@ -134,3 +134,20 @@ class InvestmentRecommendResponse(BaseModel):
     monthly_sip_distribution_inr: Dict[str, float]
     portfolio_expected_cagr_pct: float
     wealth_growth_projections: Dict[str, Any]
+
+
+# --- Phase 15: OCR Receipt Intelligence ---
+class OCRScanRequest(BaseModel):
+    raw_text: str = Field(
+        ...,
+        description="Raw optical character recognition text from receipt or invoice",
+        example="STARBUCKS COFFEE\nDate: 25/08/2026\n1x Latte 345.00\nGRAND TOTAL: INR 362.25\nPaid via UPI"
+    )
+
+
+class OCRScanResponse(BaseModel):
+    status: str = "success"
+    extracted_expense: Dict[str, Any]
+    extraction_confidence: float
+    entity_confidences: Dict[str, float]
+

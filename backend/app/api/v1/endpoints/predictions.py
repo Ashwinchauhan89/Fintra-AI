@@ -1,4 +1,4 @@
-﻿"""
+"""
 REST Endpoints for Machine Learning Predictions and Financial Intelligence.
 Directly interfaces with the Fintra-AI ML inference layer.
 """
@@ -27,6 +27,8 @@ from backend.app.schemas.predictions import (
     GoalTimelineResponse,
     InvestmentRecommendRequest,
     InvestmentRecommendResponse,
+    OCRScanRequest,
+    OCRScanResponse,
 )
 
 router = APIRouter()
@@ -257,3 +259,36 @@ def recommend_investment_portfolio(payload: InvestmentRecommendRequest):
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Investment recommendation error: {str(exc)}",
         )
+
+
+@router.post(
+    "/predict/ocr",
+    response_model=OCRScanResponse,
+    summary="Scan OCR Receipt Text (Phase 15)",
+    description="Parses raw OCR text into structured financial fields: merchant, date, total INR, tax, category, and payment mode.",
+)
+def scan_receipt_ocr(payload: OCRScanRequest):
+    try:
+        from ml.inference.predict_ocr import SmartReceiptScannerEngine
+
+        engine = SmartReceiptScannerEngine()
+        res = engine.scan_receipt_text(payload.raw_text)
+        if res.get("status") == "error":
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail=res.get("message", "Invalid receipt text"),
+            )
+        return OCRScanResponse(
+            status="success",
+            extracted_expense=res.get("extracted_expense", {}),
+            extraction_confidence=float(res.get("extraction_confidence", 0.0)),
+            entity_confidences=res.get("entity_confidences", {}),
+        )
+    except HTTPException:
+        raise
+    except Exception as exc:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"OCR receipt scanning error: {str(exc)}",
+        )
+
