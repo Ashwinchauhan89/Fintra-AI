@@ -1,4 +1,4 @@
-﻿"""
+"""
 Unit and Contract Verification Tests for Fintra-AI Backend REST Endpoints.
 """
 
@@ -59,6 +59,14 @@ class TestBackendSchemas(unittest.TestCase):
         self.assertEqual(req.monthly_income, 80000.0)
         self.assertEqual(req.current_balance, 150000.0)
 
+        # Also supports category dictionary
+        req_dict = HealthScoreRequest(
+            monthly_income=80000.0,
+            current_balance=150000.0,
+            monthly_expenses={"food": 15000.0, "rent": 25000.0},
+        )
+        self.assertEqual(req_dict.monthly_expenses["food"], 15000.0)
+
     def test_goal_timeline_schema(self):
         req = GoalTimelineRequest(
             goal_name="MacBook",
@@ -71,8 +79,14 @@ class TestBackendSchemas(unittest.TestCase):
         self.assertEqual(req.target_amount, 100000.0)
 
     def test_investment_request_schema(self):
-        req = InvestmentRecommendRequest(monthly_income=90000.0, age=26, risk_profile="AGGRESSIVE")
+        req = InvestmentRecommendRequest(
+            monthly_income=90000.0,
+            age=26,
+            investment_horizon_years=7,
+            risk_profile="AGGRESSIVE",
+        )
         self.assertEqual(req.age, 26)
+        self.assertEqual(req.investment_horizon_years, 7)
         self.assertEqual(req.risk_profile, "AGGRESSIVE")
 
 
