@@ -1,4 +1,4 @@
-﻿"""
+"""
 REST Endpoints for Machine Learning Predictions and Financial Intelligence.
 Directly interfaces with the Fintra-AI ML inference layer.
 """
@@ -8,7 +8,7 @@ import sys
 from fastapi import APIRouter, HTTPException, status
 
 # Ensure root repository is in Python module search path
-REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../.."))
+REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../../.."))
 if REPO_ROOT not in sys.path:
     sys.path.insert(0, REPO_ROOT)
 
@@ -48,11 +48,14 @@ def predict_expense_category(payload: CategoryPredictRequest):
             amount=payload.amount,
             date=payload.date,
         )
+        conf_val = res.get("confidence")
+        confidence = float(conf_val) if conf_val is not None else 1.0
+        is_low = bool(res.get("low_confidence", False) or res.get("is_low_confidence", False))
         return CategoryPredictResponse(
             status="success",
             category=res.get("category", "other-expense"),
-            confidence=float(res.get("confidence", 1.0)),
-            is_low_confidence=bool(res.get("is_low_confidence", False)),
+            confidence=confidence,
+            is_low_confidence=is_low,
             fallback_used=bool(res.get("fallback_used", False)),
         )
     except Exception as exc:
@@ -206,7 +209,7 @@ def predict_financial_goal(payload: GoalTimelineRequest):
             monthly_income=payload.monthly_income,
             monthly_expenses=payload.monthly_expenses,
             debt_obligations=payload.debt_obligations,
-            intended_months=payload.intended_months,
+            intended_months=payload.intended_months or 12,
             expected_annual_return_pct=payload.expected_annual_return_pct,
         )
         return GoalTimelineResponse(
@@ -241,9 +244,8 @@ def recommend_investment_portfolio(payload: InvestmentRecommendRequest):
         res = recommender.recommend(
             monthly_income=payload.monthly_income,
             age=payload.age,
-            target_horizon_years=payload.target_horizon_years,
+            investment_horizon_years=payload.investment_horizon_years,
             risk_profile=payload.risk_profile,
-            liquid_reserve_months=payload.liquid_reserve_months,
         )
         return InvestmentRecommendResponse(
             status="success",

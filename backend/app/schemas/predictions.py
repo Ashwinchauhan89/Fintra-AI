@@ -1,8 +1,8 @@
-﻿"""
+"""
 Pydantic Schemas for Fintra-AI ML Prediction Services.
 """
 
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Union
 from pydantic import BaseModel, Field
 
 
@@ -82,7 +82,11 @@ class BudgetRecommendResponse(BaseModel):
 class HealthScoreRequest(BaseModel):
     monthly_income: float = Field(..., description="Monthly income in INR", example=80000.0)
     current_balance: float = Field(..., description="Total liquid balance in INR", example=200000.0)
-    monthly_expenses: Any = Field(..., description="Total monthly expenses as a float or category breakdown map", example=45000.0)
+    monthly_expenses: Union[float, Dict[str, float]] = Field(
+        ...,
+        description="Total monthly expenses as a float or category breakdown map",
+        example=45000.0
+    )
     debt_obligations: float = Field(0.0, description="Total monthly debt or loan payments", example=5000.0)
 
 
@@ -123,9 +127,8 @@ class GoalTimelineResponse(BaseModel):
 class InvestmentRecommendRequest(BaseModel):
     monthly_income: float = Field(..., description="Monthly income in INR", example=90000.0)
     age: int = Field(28, description="User age in years", example=28)
-    target_horizon_years: int = Field(5, description="Investment horizon in years", example=5)
+    investment_horizon_years: int = Field(5, description="Investment horizon in years", example=5)
     risk_profile: str = Field("BALANCED", description="Risk profile: CONSERVATIVE, BALANCED, AGGRESSIVE", example="AGGRESSIVE")
-    liquid_reserve_months: float = Field(6.0, description="Emergency fund buffer in months", example=6.0)
 
 
 class InvestmentRecommendResponse(BaseModel):
