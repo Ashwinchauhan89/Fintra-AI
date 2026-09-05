@@ -1,0 +1,65 @@
+﻿version: "3.8"
+
+services:
+  # 1. PostgreSQL Relational Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: fintra-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: fintra_user
+      POSTGRES_PASSWORD: fintra_password
+      POSTGRES_DB: fintra_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U fintra_user -d fintra_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # 2. FastAPI Python ML & Financial Prediction Service
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: fintra-backend
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=True
+      - PROJECT_NAME=Fintra-AI Backend & Prediction Service
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/v1/health')"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+
+  # 3. Next.js 15 Web Platform Frontend
+  frontend:
+    build:
+      context: ./ai-finance-platform
+      dockerfile: Dockerfile
+    container_name: fintra-frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgresql://fintra_user:fintra_password@postgres:5432/fintra_db
+      - DIRECT_URL=postgresql://fintra_user:fintra_password@postgres:5432/fintra_db
+      - NEXT_PUBLIC_ML_SERVICE_URL=http://backend:8000
+    depends_on:
+      postgres:
+        condition: service_healthy
+      backend:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
+    driver: local
