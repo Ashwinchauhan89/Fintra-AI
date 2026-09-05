@@ -1,14 +1,15 @@
-﻿"""
+"""
 Fintra-AI Backend & Prediction Service Entry Point.
 FastAPI Application providing REST APIs for Financial Intelligence and ML Models.
 """
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import RedirectResponse
+from fastapi.responses import JSONResponse, RedirectResponse
 
 from backend.app.core.config import settings
-from backend.app.api.v1.endpoints import health, predictions
+from backend.app.core.security import RateLimitExceeded
+from backend.app.api.v1.endpoints import auth, health, predictions
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -32,8 +33,31 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+@app.middleware("http")
+async def add_security_headers(request: Request, call_next):
+    """Inject standard security headers into all outgoing HTTP responses."""
+    response: Response = await call_next(request)
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["X-Frame-Options"] = "DENY"
+    response.headers["X-XSS-Protection"] = "1; mode=block"
+    response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+    return response
+
+
+@app.exception_handler(RateLimitExceeded)
+async def rate_limit_handler(request: Request, exc: RateLimitExceeded):
+    """Custom JSON response for rate limit violations with RateLimit headers."""
+    return JSONResponse(
+        status_code=exc.status_code,
+        content=exc.detail,
+        headers=exc.headers,
+    )
+
+
 # Mount API Routers
 app.include_router(health.router, prefix=settings.API_V1_STR, tags=["System Health"])
+app.include_router(auth.router, prefix=settings.API_V1_STR, tags=["Authentication & Security"])
 app.include_router(predictions.router, prefix=settings.API_V1_STR, tags=["ML Predictions & Intelligence"])
 
 

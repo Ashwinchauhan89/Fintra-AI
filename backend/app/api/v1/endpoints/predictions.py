@@ -5,13 +5,14 @@ Directly interfaces with the Fintra-AI ML inference layer.
 
 import os
 import sys
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status
 
 # Ensure root repository is in Python module search path
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../../.."))
 if REPO_ROOT not in sys.path:
     sys.path.insert(0, REPO_ROOT)
 
+from backend.app.core.security import rate_limit
 from backend.app.schemas.predictions import (
     CategoryPredictRequest,
     CategoryPredictResponse,
@@ -29,7 +30,7 @@ from backend.app.schemas.predictions import (
     InvestmentRecommendResponse,
 )
 
-router = APIRouter()
+router = APIRouter(dependencies=[Depends(rate_limit(rate=100, window=60))])
 
 
 @router.post(
