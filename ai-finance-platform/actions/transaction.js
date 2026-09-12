@@ -408,3 +408,88 @@ function calculateNextRecurringDate(startDate, interval) {
 
   return date;
 }
+
+/**
+ * Bulk imports transactions parsed from CSV/bank statements into the selected account.
+ */
+export async function bulkImportTransactions({ accountId, transactions }) {
+  try {
+    const { userId } = await auth();
+    if (!userId) throw new Error("Unauthorized");
+
+    if (!accountId || !Array.isArray(transactions) || transactions.length === 0) {
+      throw new Error("Invalid import payload");
+    }
+
+    const user = await db.user.findUnique({
+      where: { clerkUserId: userId },
+    });
+
+    if (!user) throw new Error("User not found");
+
+    const account = await db.account.findFirst({
+      where: { id: accountId, userId: user.id },
+    });
+
+    if (!account) throw new Error("Target account not found");
+
+    // Process transactions atomically
+    const result = await db.$transaction(async (tx) => {
+      let netAdjustment = 0;
+      const validRecords = [];
+
+      for (const item of transactions) {
+        const amount = Number(item.amount);
+        if (!Number.isFinite(amount) || amount <= 0) continue;
+
+        const type = item.type === "INCOME" ? "INCOME" : "EXPENSE";
+        const txDate = item.date ? new Date(item.date) : new Date();
+
+        validRecords.push({
+          type,
+          amount,
+          description: item.description || "Imported Statement Transaction",
+          date: isNaN(txDate.getTime()) ? new Date() : txDate,
+          category: item.category || "other-expense",
+          status: "COMPLETED",
+          userId: user.id,
+          accountId: account.id,
+          isRecurring: false,
+        });
+
+        if (type === "EXPENSE") {
+          netAdjustment -= amount;
+        } else {
+          netAdjustment += amount;
+        }
+      }
+
+      if (validRecords.length === 0) {
+        throw new Error("No valid transactions found to import");
+      }
+
+      await tx.transaction.createMany({
+        data: validRecords,
+      });
+
+      await tx.account.update({
+        where: { id: account.id },
+        data: {
+          balance: { increment: netAdjustment },
+        },
+      });
+
+      return { count: validRecords.length };
+    });
+
+    revalidatePath("/dashboard");
+    revalidatePath(`/account/${accountId}`);
+    revalidatePath("/transaction/create");
+
+    return { success: true, count: result.count };
+  } catch (error) {
+    console.error("Bulk import failed:", error);
+    return { success: false, error: error.message || "Failed to import transactions" };
+  }
+}
+
