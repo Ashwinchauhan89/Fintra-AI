@@ -5,6 +5,8 @@ import Link from "next/link";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import { checkUser } from "@/lib/checkUser";
 import Image from "next/image";
+import { NotificationCenter } from "./notification-center";
+import { CreditCard } from "lucide-react";
 
 const Header = async () => {
   const isClerkConfigured =
@@ -84,6 +86,17 @@ const Header = async () => {
                     <LayoutDashboard size={18} />
                     <span className="hidden md:inline">Dashboard</span>
                   </Button>
+                <Link
+                  href="/subscriptions"
+                  className="text-neutral-200 hover:text-[#88CE02] hidden lg:flex items-center gap-2 transition-colors"
+                >
+                  <Button
+                    variant="outline"
+                    className="border-white/20 hover:border-white/40 hover:text-white hover:bg-white/10 font-bold text-white bg-white/5"
+                  >
+                    <CreditCard size={18} />
+                    <span>Subscriptions</span>
+                  </Button>
                 </Link>
                 <Link href="/transaction/create">
                   <Button className="flex items-center gap-2 bg-[#88CE02] text-black hover:bg-lime-400 font-extrabold shadow-[0_0_20px_rgba(136,206,2,0.3)]">
@@ -91,6 +104,7 @@ const Header = async () => {
                     <span className="hidden md:inline">Add Transaction</span>
                   </Button>
                 </Link>
+                <NotificationCenter />
               </SignedIn>
               <SignedOut>
                 <SignInButton forceRedirectUrl="/dashboard">
