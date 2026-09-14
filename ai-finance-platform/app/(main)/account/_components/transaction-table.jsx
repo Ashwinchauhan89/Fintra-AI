@@ -54,6 +54,7 @@ import { bulkDeleteTransactions } from "@/actions/account";
 import useFetch from "@/hooks/use-fetch";
 import { BarLoader } from "react-spinners";
 import { useRouter } from "next/navigation";
+import { AnomalyBadge } from "./anomaly-badge";
 
 const ITEMS_PER_PAGE = 10;
 
@@ -358,7 +359,15 @@ export function TransactionTable({ transactions }) {
                   <TableCell>
                     {format(new Date(transaction.date), "PP")}
                   </TableCell>
-                  <TableCell>{transaction.description}</TableCell>
+                  <TableCell>
+                    <div className="flex items-center gap-2">
+                      <span>{transaction.description}</span>
+                      <AnomalyBadge
+                        transaction={transaction}
+                        allTransactions={transactions}
+                      />
+                    </div>
+                  </TableCell>
                   <TableCell className="capitalize">
                     <span
                       style={{

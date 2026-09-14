@@ -7,6 +7,8 @@ import { BudgetProgress } from "./_components/budget-progress";
 import { Card, CardContent } from "@/components/ui/card";
 import { Plus } from "lucide-react";
 import { DashboardOverview } from "./_components/transaction-overview";
+import { HealthScoreRadar } from "./_components/health-score-radar";
+import { PortfolioSimulator } from "./_components/portfolio-simulator";
 
 export default async function DashboardPage() {
   const [accounts, transactions] = await Promise.all([
@@ -25,11 +27,20 @@ export default async function DashboardPage() {
         currentExpenses={budgetData?.currentExpenses || 0}
       />
 
+      {/* AI Financial Health Radar Diagnostic */}
+      <HealthScoreRadar
+        accounts={accounts}
+        transactions={transactions || []}
+      />
+
       {/* Dashboard Overview */}
       <DashboardOverview
         accounts={accounts}
         transactions={transactions || []}
       />
+
+      {/* Multi-Asset Portfolio & SIP Simulator */}
+      <PortfolioSimulator />
 
       {/* Accounts Grid */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
