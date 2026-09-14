@@ -1,4 +1,4 @@
-﻿version: "3.8"
+version: "3.8"
 
 services:
   # 1. PostgreSQL Relational Database
@@ -46,6 +46,13 @@ services:
     build:
       context: ./ai-finance-platform
       dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: ${NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY:-pk_test_ZmludHJhLWFpLTEuY2xlcmsuYWNjb3VudHMuZGV2JA==}
+        NEXT_PUBLIC_CLERK_SIGN_IN_URL: ${NEXT_PUBLIC_CLERK_SIGN_IN_URL:-/sign-in}
+        NEXT_PUBLIC_CLERK_SIGN_UP_URL: ${NEXT_PUBLIC_CLERK_SIGN_UP_URL:-/sign-up}
+        NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL: ${NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL:-/onboarding}
+        NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL: ${NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL:-/onboarding}
+        NEXT_PUBLIC_ML_SERVICE_URL: ${NEXT_PUBLIC_ML_SERVICE_URL:-http://localhost:8000}
     container_name: fintra-frontend
     restart: always
     ports:
@@ -53,6 +60,8 @@ services:
     environment:
       - DATABASE_URL=postgresql://fintra_user:fintra_password@postgres:5432/fintra_db
       - DIRECT_URL=postgresql://fintra_user:fintra_password@postgres:5432/fintra_db
+      - NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=${NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY:-pk_test_ZmludHJhLWFpLTEuY2xlcmsuYWNjb3VudHMuZGV2JA==}
+      - CLERK_SECRET_KEY=${CLERK_SECRET_KEY:-sk_test_placeholder}
       - NEXT_PUBLIC_ML_SERVICE_URL=http://backend:8000
     depends_on:
       postgres:
