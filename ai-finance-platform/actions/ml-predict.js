@@ -1,9 +1,11 @@
-﻿"use server";
+"use server";
 
 import {
   predictExpenseCategory,
   checkSpendingAnomaly,
   scanReceiptText,
+  askCopilot,
+  checkAffordability,
 } from "@/lib/ml-client";
 
 /**
@@ -41,3 +43,52 @@ export async function parseReceiptOCR(rawText) {
     return { success: false, error: error.message };
   }
 }
+
+/**
+ * Server action to converse with AI Financial Copilot.
+ */
+export async function askFinancialCopilot({
+  userQuery,
+  monthlyIncome,
+  monthlyExpenses,
+  currentBalance,
+}) {
+  try {
+    const result = await askCopilot({
+      userQuery,
+      monthlyIncome,
+      monthlyExpenses,
+      currentBalance,
+    });
+    return { success: true, data: result };
+  } catch (error) {
+    return { success: false, error: error.message };
+  }
+}
+
+/**
+ * Server action to calculate purchase affordability.
+ */
+export async function solvePurchaseAffordability({
+  itemName,
+  itemPrice,
+  monthlyIncome,
+  monthlyExpenses,
+  currentLiquidSavings,
+  existingMonthlyEmi,
+}) {
+  try {
+    const result = await checkAffordability({
+      itemName,
+      itemPrice,
+      monthlyIncome,
+      monthlyExpenses,
+      currentLiquidSavings,
+      existingMonthlyEmi,
+    });
+    return { success: true, data: result };
+  } catch (error) {
+    return { success: false, error: error.message };
+  }
+}
+
