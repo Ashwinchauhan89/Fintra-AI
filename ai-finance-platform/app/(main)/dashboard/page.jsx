@@ -9,6 +9,7 @@ import { Plus } from "lucide-react";
 import { DashboardOverview } from "./_components/transaction-overview";
 import { HealthScoreRadar } from "./_components/health-score-radar";
 import { PortfolioSimulator } from "./_components/portfolio-simulator";
+import { RLDecisionSimulator } from "./_components/rl-decision-simulator";
 
 export default async function DashboardPage() {
   const [accounts, transactions] = await Promise.all([
@@ -38,6 +39,9 @@ export default async function DashboardPage() {
         accounts={accounts}
         transactions={transactions || []}
       />
+
+      {/* Autonomous RL Financial Strategy & Decision Simulator (Issue #54) */}
+      <RLDecisionSimulator />
 
       {/* Multi-Asset Portfolio & SIP Simulator */}
       <PortfolioSimulator />

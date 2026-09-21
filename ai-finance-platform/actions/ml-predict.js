@@ -6,6 +6,7 @@ import {
   scanReceiptText,
   askCopilot,
   checkAffordability,
+  simulateRLDecision,
 } from "@/lib/ml-client";
 
 /**
@@ -86,6 +87,18 @@ export async function solvePurchaseAffordability({
       currentLiquidSavings,
       existingMonthlyEmi,
     });
+    return { success: true, data: result };
+  } catch (error) {
+    return { success: false, error: error.message };
+  }
+}
+
+/**
+ * Server action to run Reinforcement Learning financial strategy simulations (Issue #54).
+ */
+export async function runRLFinancialSimulation(params) {
+  try {
+    const result = await simulateRLDecision(params);
     return { success: true, data: result };
   } catch (error) {
     return { success: false, error: error.message };

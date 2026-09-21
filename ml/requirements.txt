@@ -6,3 +6,5 @@ matplotlib>=3.8
 seaborn>=0.13
 plotly>=5.18
 nbformat>=5.9
+torch>=2.0.0
+gymnasium>=1.0.0
