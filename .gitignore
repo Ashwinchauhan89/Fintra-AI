@@ -52,6 +52,7 @@ __pycache__/
 
 ml/models/*.pkl
 ml/models/*.json
+!ml/models/rl_metadata.json
 
 ml/datasets/processed/*.csv
 

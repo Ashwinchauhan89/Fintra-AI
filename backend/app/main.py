@@ -9,7 +9,7 @@ from fastapi.responses import JSONResponse, RedirectResponse
 
 from backend.app.core.config import settings
 from backend.app.core.security import RateLimitExceeded
-from backend.app.api.v1.endpoints import auth, health, predictions
+from backend.app.api.v1.endpoints import auth, health, predictions, rl
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -17,7 +17,7 @@ app = FastAPI(
     description=(
         "Production-ready REST API for Fintra-AI. Provides predictive financial intelligence, "
         "fraud detection, real-time spending anomaly detection, optimal budget allocations, "
-        "and goal forecasting."
+        "goal forecasting, and reinforcement learning decision simulations."
     ),
     openapi_url=f"{settings.API_V1_STR}/openapi.json",
     docs_url=f"{settings.API_V1_STR}/docs",
@@ -59,6 +59,8 @@ async def rate_limit_handler(request: Request, exc: RateLimitExceeded):
 app.include_router(health.router, prefix=settings.API_V1_STR, tags=["System Health"])
 app.include_router(auth.router, prefix=settings.API_V1_STR, tags=["Authentication & Security"])
 app.include_router(predictions.router, prefix=settings.API_V1_STR, tags=["ML Predictions & Intelligence"])
+app.include_router(rl.router, prefix=f"{settings.API_V1_STR}/rl", tags=["Reinforcement Learning Engine"])
+app.include_router(rl.router, prefix="/api/rl", tags=["Reinforcement Learning Engine (Direct)"], include_in_schema=False)
 
 
 @app.get("/", include_in_schema=False)
