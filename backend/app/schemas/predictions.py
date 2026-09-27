@@ -154,3 +154,36 @@ class OCRScanResponse(BaseModel):
     extraction_confidence: float
     entity_confidences: Dict[str, float]
 
+
+# --- Buy or Wait? AI Affordability Decision Engine ---
+class AffordabilityEvaluateRequest(BaseModel):
+    item_name: str = Field(..., description="Name of the item or expense", example="MacBook Pro M3")
+    amount: float = Field(..., description="Cost of the item", example=1999.0)
+    current_liquid_balance: float = Field(..., description="Total available cash across accounts", example=8500.0)
+    monthly_income: float = Field(..., description="Confirmed monthly income", example=5500.0)
+    monthly_essential_expenses: float = Field(..., description="Total mandatory recurring expenses & bills", example=2800.0)
+    urgency: str = Field("DISCRETIONARY", description="ESSENTIAL, IMPORTANT, or DISCRETIONARY", example="DISCRETIONARY")
+    installment_months: Optional[int] = Field(0, description="Available financing tenure in months (0 for upfront cash)", example=6)
+    installment_interest_rate_pct: Optional[float] = Field(0.0, description="Annual percentage interest rate on EMI", example=0.0)
+
+
+class AffordabilityEvaluateResponse(BaseModel):
+    status: str = "success"
+    item_name: str
+    amount: float
+    recommendation: str  # PAY_IN_FULL, PAY_PARTIALLY, INSTALLMENTS, WAIT, DO_NOT_PROCEED
+    recommendation_title: str
+    risk_level: str  # LOW, MEDIUM, HIGH, CRITICAL
+    confidence_score: float
+    amount_safe_to_spend: float
+    runway_before_months: float
+    runway_after_months: float
+    monthly_surplus_before: float
+    monthly_surplus_after: float
+    savings_rate_impact_pct: float
+    cashflow_projection_30d: List[Dict[str, Any]]
+    tradeoffs: List[str]
+    alternative_options: List[Dict[str, Any]]
+    action_verdict: str
+
+
