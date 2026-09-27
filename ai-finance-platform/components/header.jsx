@@ -1,12 +1,11 @@
 import React from "react";
 import { Button } from "./ui/button";
-import { PenBox, LayoutDashboard, Sparkles } from "lucide-react";
+import { PenBox, LayoutDashboard, Sparkles, Target, CreditCard } from "lucide-react";
 import Link from "next/link";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import { checkUser } from "@/lib/checkUser";
 import Image from "next/image";
 import { NotificationCenter } from "./notification-center";
-import { CreditCard } from "lucide-react";
 
 const Header = async () => {
   const isClerkConfigured =
@@ -86,6 +85,19 @@ const Header = async () => {
                     <LayoutDashboard size={18} />
                     <span className="hidden md:inline">Dashboard</span>
                   </Button>
+                </Link>
+                <Link
+                  href="/goals"
+                  className="text-neutral-200 hover:text-[#88CE02] hidden sm:flex items-center gap-2 transition-colors"
+                >
+                  <Button
+                    variant="outline"
+                    className="border-white/20 hover:border-white/40 hover:text-white hover:bg-white/10 font-bold text-white bg-white/5"
+                  >
+                    <Target size={18} />
+                    <span>Goals</span>
+                  </Button>
+                </Link>
                 <Link
                   href="/subscriptions"
                   className="text-neutral-200 hover:text-[#88CE02] hidden lg:flex items-center gap-2 transition-colors"
