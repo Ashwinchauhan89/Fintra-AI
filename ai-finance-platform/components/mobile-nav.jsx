@@ -11,6 +11,7 @@ import {
   Upload,
   PenBox,
   Sparkles,
+  Target,
 } from "lucide-react";
 import { Button } from "./ui/button";
 
@@ -51,6 +52,15 @@ export function MobileNav() {
           >
             <CreditCard size={18} className="text-[#88CE02]" />
             <span>Subscriptions Tracker</span>
+          </Link>
+
+          <Link
+            href="/goals"
+            onClick={() => setIsOpen(false)}
+            className="flex items-center gap-3 px-3 py-2 rounded-xl text-neutral-200 hover:text-white hover:bg-white/10 text-sm font-medium transition-colors"
+          >
+            <Target size={18} className="text-emerald-400" />
+            <span>Goals & Sinking Funds</span>
           </Link>
 
           <Link
