@@ -10,6 +10,7 @@ import {
   X,
   RefreshCw,
   Clock,
+  Download,
 } from "lucide-react";
 import { format } from "date-fns";
 import { toast } from "sonner";
@@ -175,6 +176,40 @@ export function NoPaginationTransactionTable({ transactions }) {
     setSelectedIds([]);
   };
 
+  const handleExportCSV = () => {
+    const listToExport =
+      selectedIds.length > 0
+        ? filteredAndSortedTransactions.filter((t) => selectedIds.includes(t.id))
+        : filteredAndSortedTransactions;
+
+    if (listToExport.length === 0) {
+      toast.error("No transactions available to export.");
+      return;
+    }
+
+    const headers = ["Date", "Description", "Category", "Type", "Amount", "Recurring"];
+    const rows = listToExport.map((t) => [
+      format(new Date(t.date), "yyyy-MM-dd"),
+      `"${(t.description || "").replace(/"/g, '""')}"`,
+      t.category,
+      t.type,
+      t.amount.toFixed(2),
+      t.isRecurring ? "Yes" : "No",
+    ]);
+
+    const csvContent = [headers.join(","), ...rows.map((r) => r.join(","))].join("\n");
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `fintra_transactions_${format(new Date(), "yyyy-MM-dd")}.csv`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+    toast.success(`Exported ${listToExport.length} transactions to CSV.`);
+  };
+
   return (
     <div className="space-y-4">
       {deleteLoading && (
@@ -230,6 +265,17 @@ export function NoPaginationTransactionTable({ transactions }) {
               </Button>
             </div>
           )}
+
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={handleExportCSV}
+            className="gap-1.5 text-xs font-semibold h-9"
+            title="Export transactions to CSV"
+          >
+            <Download className="h-3.5 w-3.5" />
+            <span className="hidden sm:inline">Export CSV</span>
+          </Button>
 
           {(searchTerm || typeFilter || recurringFilter) && (
             <Button
