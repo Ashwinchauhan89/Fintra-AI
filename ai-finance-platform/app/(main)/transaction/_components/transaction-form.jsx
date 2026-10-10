@@ -118,7 +118,7 @@ export function AddTransactionForm({
       reset();
       router.push(`/account/${transactionResult.data.accountId}`);
     }
-  }, [transactionResult, transactionLoading, editMode]);
+  }, [transactionResult, transactionLoading, editMode, reset, router]);
 
   const type = watch("type");
   const isRecurring = watch("isRecurring");

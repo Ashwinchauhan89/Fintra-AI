@@ -1,0 +1,22 @@
+{
+  "model_name": "Double-DQN Financial Decision Advisor",
+  "algorithm": "Double DQN with Experience Replay",
+  "framework": "PyTorch + Gymnasium",
+  "state_dimension": 9,
+  "action_dimension": 6,
+  "episodes_trained": 250,
+  "max_months_per_episode": 24,
+  "batch_size": 64,
+  "learning_rate": 0.001,
+  "final_average_reward": 159.08916823779137,
+  "final_average_health_score": 96.88207422142212,
+  "training_duration_seconds": 22.38,
+  "actions_map": {
+    "0": "MAINTAIN_CURRENT_STRATEGY",
+    "1": "INCREASE_SAVINGS",
+    "2": "REDUCE_DISCRETIONARY_SPENDING",
+    "3": "PAY_DOWN_DEBT",
+    "4": "INCREASE_EMERGENCY_FUND",
+    "5": "ADJUST_INVESTMENT_ALLOCATION"
+  }
+}

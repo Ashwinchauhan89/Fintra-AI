@@ -9,37 +9,42 @@ export const checkUser = async () => {
     return null;
   }
 
+  const user = await currentUser();
+
+  if (!user) {
+    return null;
+  }
+
   try {
-    const user = await currentUser();
+    const email =
+      user.primaryEmailAddress?.emailAddress ||
+      user.emailAddresses?.[0]?.emailAddress;
 
-    if (!user) {
-      return null;
+    if (!email) {
+      throw new Error("Authenticated user has no email address");
     }
 
-    const loggedInUser = await db.user.findUnique({
-      where: {
-        clerkUserId: user.id,
+    const name = [user.firstName, user.lastName]
+      .filter((part) => typeof part === "string" && part.trim())
+      .join(" ")
+      .trim() || null;
+
+    return db.user.upsert({
+      where: { clerkUserId: user.id },
+      update: {
+        name,
+        imageUrl: user.imageUrl || null,
+        email,
       },
-    });
-
-    if (loggedInUser) {
-      return loggedInUser;
-    }
-
-    const name = `${user.firstName} ${user.lastName}`;
-
-    const newUser = await db.user.create({
-      data: {
+      create: {
         clerkUserId: user.id,
         name,
-        imageUrl: user.imageUrl,
-        email: user.emailAddresses[0].emailAddress,
+        imageUrl: user.imageUrl || null,
+        email,
       },
     });
-
-    return newUser;
   } catch (error) {
-    console.log(error.message);
-    return null;
+    console.error("Failed to provision authenticated user:", error);
+    throw new Error("Unable to initialize user profile");
   }
 };

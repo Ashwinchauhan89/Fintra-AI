@@ -5,8 +5,13 @@ import { AccountCard } from "./_components/account-card";
 import { CreateAccountDrawer } from "@/components/create-account-drawer";
 import { BudgetProgress } from "./_components/budget-progress";
 import { Card, CardContent } from "@/components/ui/card";
-import { Plus } from "lucide-react";
+import { Plus, FileText } from "lucide-react";
 import { DashboardOverview } from "./_components/transaction-overview";
+import { HealthScoreRadar } from "./_components/health-score-radar";
+import { PortfolioSimulator } from "./_components/portfolio-simulator";
+import { RLDecisionSimulator } from "./_components/rl-decision-simulator";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default async function DashboardPage() {
   const [accounts, transactions] = await Promise.all([
@@ -19,10 +24,26 @@ export default async function DashboardPage() {
 
   return (
     <div className="space-y-8">
+      {/* Quick Action Navigation */}
+      <div className="flex justify-end">
+        <Link href="/reports">
+          <Button variant="outline" size="sm" className="gap-2 text-xs font-semibold shadow-sm">
+            <FileText className="h-4 w-4 text-primary" />
+            Executive Monthly Statement & Gamification
+          </Button>
+        </Link>
+      </div>
+
       {/* Budget Progress */}
       <BudgetProgress
         initialBudget={budgetData?.budget}
         currentExpenses={budgetData?.currentExpenses || 0}
+      />
+
+      {/* AI Financial Health Radar Diagnostic */}
+      <HealthScoreRadar
+        accounts={accounts}
+        transactions={transactions || []}
       />
 
       {/* Dashboard Overview */}
@@ -30,6 +51,12 @@ export default async function DashboardPage() {
         accounts={accounts}
         transactions={transactions || []}
       />
+
+      {/* Autonomous RL Financial Strategy & Decision Simulator (Issue #54) */}
+      <RLDecisionSimulator />
+
+      {/* Multi-Asset Portfolio & SIP Simulator */}
+      <PortfolioSimulator />
 
       {/* Accounts Grid */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">

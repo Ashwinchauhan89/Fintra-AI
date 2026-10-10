@@ -306,6 +306,225 @@ python ml/inference/predict.py --merchant Netflix --description "monthly subscri
 | **2. Balanced Mid-Career Family** | 38 | ₹150,000 | ₹35,000 | `BALANCED` | **51.8%** | 27.2% | 8.9% | 7.1% | 5.0% | **10.82%** | **₹29.98 Lakhs** (5 yrs) |
 | **3. Conservative Pre-Retirement** | 56 | ₹90,000 | ₹25,000 | `CONSERVATIVE` | **9.9%** | **69.9%** | 15.0% | 0.1% | 5.0% | **8.03%** | **₹10.79 Lakhs** (3 yrs) |
 
+---
+
+## 11. Loan Eligibility & Credit Risk Underwriting Benchmarks (Phase 12)
+
+### Multi-Model Candidate Leaderboard (5-Fold Stratified Cross-Validation)
+
+| Candidate Classifier | PR-AUC (Average Precision) | ROC-AUC Score | Macro F1-Score | Accuracy | Brier Calibration Loss | Optimal Decision Threshold | Composite Score | Status |
+|---|---|---|---|---|---|---|---|---|
+| `logistic_regression` (Balanced) | 0.8805 | 0.9248 | 0.8551 | 85.86% | 0.1086 | 0.509 | 0.7898 | Baseline |
+| `extra_trees` (250 trees, depth=18) | 0.9280 | 0.9555 | 0.9174 | 92.02% | 0.0800 | 0.498 | 0.8333 | Candidate |
+| `random_forest` (Balanced Subsample) | 0.9453 | 0.9625 | 0.9426 | 94.50% | 0.0528 | 0.502 | 0.8501 | Contender |
+| `soft_voting_ensemble` | 0.9474 | 0.9653 | 0.9509 | 95.29% | 0.0487 | 0.505 | 0.8538 | High Performer |
+| `gradient_boosting` (250 trees) | 0.9498 | 0.9645 | 0.9509 | 95.29% | 0.0430 | 0.508 | 0.8551 | Contender |
+| **`xgboost` (scale_pos_weight=1.5)** | **0.9499** | **0.9642** | **0.9527** | **95.46%** | **0.0426** | **0.506** | **0.8555** | **Selected Production Model** |
+
+### Held-Out Test Set Evaluation (1,199 Loan Applications)
+
+* **ROC-AUC Score**: **0.9695**
+* **PR-AUC (Average Precision)**: **0.9505**
+* **Macro F1-Score**: **0.9541**
+* **Overall Accuracy**: **95.58%**
+* **Approval Safety (Precision)**: **93.65%**
+* **Eligible Capture (Recall)**: **95.41%**
+* **False Positive Rate on Bad Loans (FPR)**: **4.31%**
+* **Brier Score Calibration Loss**: **0.0404** (Well-calibrated credit risk probabilities)
+
+### Real-World Underwriting Archetype Validation
+
+| Borrower Scenario | Monthly Income | Requested Loan | Purpose | Credit Score | Existing EMI | Verdict | Risk Tier | Default Prob | Max Safe Borrowing Limit | Actionable Tip |
+|---|---|---|---|---|---|---|---|---|---|---|
+| **1. Prime Salaried Homebuyer** | ₹125,000 | ₹3,500,000 (15 yrs) | `HOME_LOAN` | 780 | ₹0 | **APPROVED** | `LOW_RISK` | **1.91%** | **₹73.04 Lakhs** | 26.36% FOIR (Healthy); Prime 7.75% preferential rate |
+| **2. Overleveraged Unsecured Applicant** | ₹35,000 | ₹800,000 (3 yrs) | `PERSONAL_LOAN` | 590 | ₹12,000 | **DECLINED** | `HIGH_RISK` | **98.21%** | **₹1.08 Lakhs** | FOIR 113.5% exceeds 45% ceiling; negative cashflow (₹-20.4k) |
+| **3. Moderate Near-Prime Auto Buyer** | ₹75,000 | ₹900,000 (5 yrs) | `AUTO_LOAN` | 695 | ₹8,000 | **APPROVED** | `MODERATE_RISK` | **14.20%** | **₹14.80 Lakhs** | FOIR 35.8%; Auto collateral verified |
+
+---
+
+## 12. Credit Score Estimator & 5-Pillar Diagnostics Benchmarks (Phase 13)
+
+### Multi-Model Candidate Leaderboard (5-Fold Stratified Cross-Validation)
+
+| Candidate Architecture | CV Mean MAE (pts) | CV Median AE (pts) | CV R² Score | Max Peak Error (pts) | Training Latency | Status |
+|---|---|---|---|---|---|---|
+| `random_forest` (180 trees) | 7.26 pts | 5.20 pts | 0.9855 | 55.0 pts | 1.8s | Contender |
+| `ridge` (L2 Baseline) | 7.84 pts | 6.80 pts | 0.9855 | 39.0 pts | 0.1s | Baseline |
+| `extra_trees` (200 trees) | 5.66 pts | 4.20 pts | 0.9911 | 50.0 pts | 1.6s | High Performer |
+| `xgboost_hist` (350 trees) | 4.45 pts | 3.40 pts | 0.9949 | 36.0 pts | 0.8s | High Performer |
+| **`hist_gradient_boosting`** | **4.32 pts** | **3.40 pts** | **0.9953** | **31.0 pts** | **0.6s** | **Selected Production Model** |
+
+### Held-Out Test Set Evaluation (1,200 Credit Records)
+
+* **Mean Absolute Error (MAE)**: **3.89 points** (Relative error only **0.65%** on 600-pt scale)
+* **Median Absolute Error (MedAE)**: **3.00 points**
+* **Root Mean Squared Error (RMSE)**: **5.03 points**
+* **R² Score**: **0.9962**
+* **Max Outlier Error**: **21.0 points**
+* **Within $\pm 10$ Points Accuracy**: **95.67%**
+* **Within $\pm 20$ Points Accuracy**: **99.92%**
+* **Credit Tier Categorization Accuracy**: **95.50%** (Macro F1: **0.9519**)
+
+### Real-World Persona Validation
+
+| Persona Scenario | Limit / Used | Utilization | On-Time | Missed | Credit Age | Inquiries | Estimated Score | Tier | Risk Grade | Simulated Gain Action |
+|---|---|---|---|---|---|---|---|---|---|---|
+### Extreme Stress-Testing & Corner-Case Boundary Validation
+
+| Extreme Scenario Archetype | Key Risk Signals & Inputs | Ground Truth Constraint | Predicted Score | Result Tier | Risk Grade | Stress-Test Status |
+|---|---|---|---|---|---|---|
+| **1. Perfect Prime Ceiling** | ₹3.5L income, 1% util, 18 yrs age, 0 inq, 0 missed | $850 \le \text{Score} \le 900$ | **889** | `EXCELLENT` | **A+** | ✅ **PASS** |
+| **2. Catastrophic Default Floor** | ₹18k income, 100% util, 6 missed, 7 hard inq | $300 \le \text{Score} \le 520$ | **300** | `VERY_POOR` | **D** | ✅ **PASS** |
+| **3. Thin-File Fresh Graduate** | 100% on-time, 15% util, but **only 6 months age** | $660 \le \text{Score} \le 730$ | **708** | `FAIR` | **B** | ✅ **PASS** |
+| **4. High-Earner Card Churner** | ₹2.5L income, but **87.5% util + 6 hard inq** | $580 \le \text{Score} \le 680$ | **617** | `POOR` | **C** | ✅ **PASS** |
+| **5. Sudden Delinquency Shock** | Prime profile hit by **2 missed payments in 2 yrs** | $550 \le \text{Score} \le 660$ | **598** | `POOR` | **C** | ✅ **PASS** |
+| **6. Over-Limit Anomaly** | 110% over-limit utilization, 2 missed payments | $300 \le \text{Score} \le 560$ | **383** | `VERY_POOR` | **D** | ✅ **PASS** |
+
+---
+
+## 13. Customer Financial Persona & Archetype Segmentation Benchmarks (Phase 17)
+
+### Unsupervised Clustering Model Leaderboard (5-Fold Validated)
+
+| Architecture | Silhouette Score (Separation) | Davies-Bouldin Index (Compactness) | Calinski-Harabasz Index | Training Latency | Status |
+|---|---|---|---|---|---|
+| `gmm_diagonal` (6 Components) | 0.4691 | 1.0020 | 5,208.8 | 12.2 ms | Candidate |
+| `minibatch_kmeans` (Batch=256) | 0.5104 | 0.7271 | 5,250.1 | 30.9 ms | Contender |
+| `standard_kmeans` (Euclidean) | 0.5104 | 0.7271 | 5,250.1 | 1,935.9 ms | Baseline |
+| **`pca_kmeans_plus_plus` (Fast Pipeline)** | **0.5961** | **0.5592** | **7,904.4** | **17.6 ms** | **Selected Production Pipeline** |
+
+### Held-Out Test Set Evaluation (1,200 User Profiles)
+
+* **Silhouette Score (Cluster Separation)**: **0.6025** (Benchmark: $\ge 0.50$)
+* **Davies-Bouldin Index (Cluster Overlap)**: **0.5431** (Benchmark: $\le 0.85$)
+* **Calinski-Harabasz Variance Ratio**: **2,072.6**
+* **Adjusted Rand Index (ARI Ground-Truth Purity)**: **0.9940** (99.40% cluster purity)
+* **Adjusted Mutual Information (AMI)**: **0.9927**
+* **Homogeneity / V-Measure**: **0.9927**
+* **Inference Response Latency**: **`< 0.2 milliseconds`**
+
+### Real-World Persona Archetype Validation
+
+| Archetype Scenario | Monthly Income | Savings Rate | Equity SIP | Debt EMI | Card Util | Primary Persona | Confidence | Secondary Affinity |
+|---|---|---|---|---|---|---|---|---|
+| **1. Early Starter Student** | ₹20,000 | 25.0% | ₹1,000 | ₹0 | 10.0% | `BUDGET_CONSCIOUS_STUDENT` | **74.7%** | Family Homemaker (16.8%) |
+| **2. Young Tech Professional** | ₹160,000 | 41.9% | ₹45,000 | ₹5,000 | 14.2% | `YOUNG_TECH_PROFESSIONAL` | **59.7%** | HNI Investor (24.0%) |
+| **3. Balanced Family Homemaker** | ₹95,000 | 29.5% | ₹10,000 | ₹22,000 | 18.0% | `BALANCED_FAMILY_HOMEMAKER` | **67.3%** | Early Student (18.9%) |
+| **4. HNI Wealth Accumulator** | ₹450,000 | 57.8% | ₹220,000 | ₹20,000 | 6.0% | `HIGH_NET_WORTH_INVESTOR` | **81.0%** | Young Tech Pro (15.4%) |
+| **5. SMB Business Owner** | ₹220,000 (CV 0.58) | 34.1% | ₹30,000 | ₹35,000 | 32.0% | `SMB_BUSINESS_OWNER` | **100.0%** | Young Tech Pro (0.01%) |
+| **6. Overleveraged Distressed** | ₹42,000 | -28.6% | ₹0 | ₹22,000 | 87.5% | `DEBT_REHABILITATION_SEEKER` | **91.5%** | Family Homemaker (4.8%) |
+
+### Extreme Stress-Testing & High-Throughput Validation
+
+| Extreme Stress Scenario | Stress Constraints | Ground Truth Expectation | Model Verdict | Confidence | Status |
+|---|---|---|---|---|---|
+| **1. Acute Unemployment Crisis** | Zero monthly income, 96% card util | `DEBT_REHABILITATION_SEEKER` | `DEBT_REHABILITATION_SEEKER` | **99.8%** | ✅ **PASS** (Zero division immune) |
+| **2. Multi-Crore HNI Outlier** | ₹25L/mo income, ₹4.5 Cr savings | `HIGH_NET_WORTH_INVESTOR` | `HIGH_NET_WORTH_INVESTOR` | **98.5%** | ✅ **PASS** (Magnitude invariant) |
+| **3. 50/50 Hybrid Borderline** | ₹2.2L income, ₹85k SIP | `YOUNG_TECH_PRO / HNI` | `HIGH_NET_WORTH_INVESTOR` | **59.6%** | ✅ **PASS** (Soft transition verified) |
+| **4. Hyper-Volatile Merchant** | CV = 1.15 revenue swings | `SMB_BUSINESS_OWNER` | `SMB_BUSINESS_OWNER` | **100.0%** | ✅ **PASS** (Volatility capture) |
+| **5. Frugal Minimum Wage** | ₹14k income, ₹1.5k micro-SIP | `BUDGET_CONSCIOUS_STUDENT` | `BUDGET_CONSCIOUS_STUDENT` | **75.3%** | ✅ **PASS** (Discipline recognized) |
+| **6. Luxury Leverage Trap** | ₹1.5L income, 63% EMI, 96% util | `DEBT_REHABILITATION_SEEKER` | `DEBT_REHABILITATION_SEEKER` | **93.8%** | ✅ **PASS** (Debt overrides income) |
+| **7. 1,000 Batch Throughput** | 1,000 continuous requests | Latency $< 1.0\text{ms}$ | **555 microseconds / call** | **1,800 req/s** | ✅ **PASS** (Sub-millisecond speed) |
+
+---
+
+## 14. Financial Product Recommendation & Smart Marketplace Benchmarks (Phase 16)
+
+### Recommender Architecture Leaderboard (5-Fold Validated)
+
+| Recommender Architecture | NDCG@5 Score | Precision@3 (%) | Hit Rate@5 (%) | Mean Reciprocal Rank (MRR) | Query Latency | Status |
+|---|---|---|---|---|---|---|
+| `content_cosine_matcher` | 0.2801 | 36.1% | 41.8% | 0.2986 | 67.2 µs | Baseline |
+| `matrix_factorization_svd` | 0.6263 | 69.0% | 94.6% | 0.5296 | 69.0 µs | Candidate |
+| `popularity_baseline` | 0.6658 | 79.7% | 94.6% | 0.5808 | 43.3 µs | Baseline |
+| **`multi_stage_hybrid_ranker`** | **0.9742** | **99.85%** | **100.0%** | **0.9653** | **31.1 µs** | **Selected Production Pipeline** |
+
+### Held-Out Test Set Evaluation (1,200 User Profiles)
+
+* **NDCG@5 Score**: **0.9737** (Benchmark target: $\ge 0.90$)
+* **Top-1 Recommendation Accuracy**: **93.25%**
+* **Precision@3 (Top 3 Capture)**: **100.00%**
+* **Hit Rate@5 (Top 5 Coverage)**: **100.00%**
+* **Mean Reciprocal Rank (MRR)**: **0.9644**
+* **Eligibility Safety Violations**: **0 (0.00% Safety Purity)**
+* **Average Inference Query Latency**: **`31.1 microseconds (0.031 ms)`**
+* **Throughput Capacity**: **`32,204 queries / second`** (Pure CPU)
+
+### Real-World Consumer Persona Matchmaking Validation
+
+| User Scenario | Spending Profile Highlights | Top Recommended Product | Net Annual Benefit (₹) | Value Justification |
+|---|---|---|---|---|
+| **1. Student Credit Starter** | ₹18k income, zero credit score | `IDFC FIRST WOW Card` | **₹876 / yr** | Lifetime free FD-backed card (7.5% FD interest + CIBIL building) |
+| **2. High-Flyer Tech HNI** | ₹3.5L income, ₹85k/mo travel | `HDFC Infinia Metal Card` | **₹2,74,992 / yr** | 16.5% flight/hotel reward rate on SmartBuy + Unlimited global lounge access |
+| **3. Heavy Foodie Spender** | ₹85k income, ₹15k dining, ₹20k shopping | `Airtel Axis Card` | **₹42,600 / yr** | 10% on Swiggy/Zomato/BigBasket + 25% on Airtel utility bills |
+| **4. Debt-Distressed User** | ₹45k income, ₹1.8L card debt at 38% | `SBI Debt Consolidation Loan` | **₹47,700 / yr** | Saves ₹47.7k interest by replacing 38% card APR with 11.5% fixed loan |
+| **5. Family Utility Optimizer** | ₹70k income, ₹12k/mo electricity & DTH | `Airtel Axis Card` | **₹59,880 / yr** | 25% utility bill cashback (₹3k/mo) + 10% groceries on BigBasket |
+
+---
+
+## 15. OCR Receipt Intelligence & Smart Receipt Scanner Benchmarks (Phase 15)
+
+### Entity Extraction & Parsing Performance (800 Training Receipts)
+
+| Entity Extraction Task | Target Metric | Achieved Accuracy (%) | Benchmark Status |
+|---|---|---|---|
+| **Grand Total / Payable Amount** | $\ge 98.0\%$ | **`100.00%`** | ✅ **PASS (Exact Match)** |
+| **ISO 8601 Date Normalization** | $\ge 98.0\%$ | **`100.00%`** | ✅ **PASS (Exact Match)** |
+| **Merchant Name Recognition** | $\ge 95.0\%$ | **`100.00%`** | ✅ **PASS (Clean Extracted)** |
+| **Payment Mode Identification** | $\ge 95.0\%$ | **`100.00%`** | ✅ **PASS (UPI/Card/Cash)** |
+| **Phase 3 Category Classifier Integration** | $\ge 80.0\%$ | **`86.62%`** | ✅ **PASS (Automated Category)** |
+| **End-to-End Processing Latency** | $< 100\text{ ms}$ | **`24.8 ms`** | ⚡ **PASS (4x Faster than Budget)** |
+
+### Held-Out Test Set Evaluation (200 Test Receipts)
+
+* **Total Amount Extraction Accuracy**: **`100.00%`**
+* **ISO Date Normalization Accuracy**: **`100.00%`**
+* **Merchant Name Recognition Accuracy**: **`100.00%`**
+* **Payment Mode Identification Accuracy**: **`100.00%`**
+* **Average Latency per Receipt**: **`30.2 milliseconds`**
+* **Throughput Capacity**: **`40 receipts / second`** (Pure CPU)
+
+### Real-World Adversarial Receipt Scenarios Validated
+
+| Scenario Description | Raw Input Text Highlights | Extracted Amount (₹) | Extracted Date | Extracted Merchant | Payment Mode | Result |
+|---|---|---|---|---|---|---|
+| **5. Pharmacy Prescription** | Medicine names, cash paid + change | **₹365.00** | `2026-11-19` | `MEDPLUS PHARMACY` | `CASH` | ✅ **PASS** |
+
+---
+
+## 16. AI + ML Hybrid Copilot & FastAPI REST Microservice (Phase 19)
+
+### Production Endpoint Verification Matrix (18 Endpoints Live Tested)
+
+| HTTP Method & Endpoint | Core ML Pipeline / Engine | HTTP Status | Live Payload Verification |
+|---|---|---|---|
+| `GET /health` | Health & Loaded Model Inventory | `200 OK` | 13/13 ML Model Checkpoints Loaded |
+| `POST /api/v1/expenses/classify` | Phase 3 Expense Category Classifier | `200 OK` | Category: `food` (Swiggy meal) |
+| `POST /api/v1/ocr/scan` | Phase 15 OCR Receipt Scanner | `200 OK` | Scanned Total: ₹362.25 (`STARBUCKS`) |
+| `POST /api/v1/budget/recommend` | Phase 5 50/30/20 Budget Allocator | `200 OK` | 7 Category Budgets Tailored |
+| `POST /api/v1/savings/project` | Phase 6 Savings Growth Projector | `200 OK` | Monthly Capacity: ₹35,000 |
+| `POST /api/v1/health-score/diagnose`| Phase 7 Composite Health Score | `200 OK` | Composite Score: `97.1 / 100` (`A+`) |
+| `POST /api/v1/fraud/check` | Phase 8 Real-time Fraud Detection | `200 OK` | Risk Level: `MEDIUM` (Action: `MANUAL_REVIEW`) |
+| `POST /api/v1/anomaly/detect` | Phase 9 Spending Anomaly Detector | `200 OK` | Anomaly Spike Flag: `True` |
+| `POST /api/v1/loans/underwrite` | Phase 12 Loan Underwriting Engine | `200 OK` | Decision: `APPROVED` (`ELIGIBLE`) |
+| `POST /api/v1/credit/estimate` | Phase 13 5-Pillar Credit Estimator | `200 OK` | Score: `817` (`EXCELLENT`) |
+| `POST /api/v1/investments/recommend`| Phase 10 Simplex Portfolio Allocator| `200 OK` | Expected Portfolio CAGR: `12.37%` |
+| `POST /api/v1/goals/timeline` | Phase 11 Goal Timeline Predictor | `200 OK` | Estimated Completion: `6.96 months` |
+| `POST /api/v1/cashflow/forecast` | Phase 18 Cash Flow Forecaster | `200 OK` | 30-Day Forward Trajectory Projected |
+| `POST /api/v1/marketplace/recommend`| Phase 16 Product Matchmaker Ranker | `200 OK` | Top 3 Products Matched with NAV |
+| `POST /api/v1/persona/segment` | Phase 17 Persona Segmentation (PCA)| `200 OK` | Persona: `BUDGET_CONSCIOUS_STUDENT` |
+| `POST /api/v1/subscriptions/detect` | Phase 14 Subscription Identifier | `200 OK` | Netflix India (Cadence: `MONTHLY`) |
+| `POST /api/v1/copilot/ask` | Phase 19 Gemini Hybrid Copilot | `200 OK` | Conversational ML Diagnostic Advisory |
+| `POST /api/v1/copilot/affordability`| Phase 19 Affordability Solver | `200 OK` | Verdict: `AFFORDABLE_NO_COST_EMI` |
+
+
+
+
+
+
+
+
+
 
 
 

@@ -7,11 +7,15 @@ import { revalidatePath } from "next/cache";
 
 const serializeDecimal = (obj) => {
   const serialized = { ...obj };
-  if (obj.balance) {
+  if (obj.balance?.toNumber) {
     serialized.balance = obj.balance.toNumber();
+  } else if (typeof obj.balance === "number") {
+    serialized.balance = obj.balance;
   }
-  if (obj.amount) {
+  if (obj.amount?.toNumber) {
     serialized.amount = obj.amount.toNumber();
+  } else if (typeof obj.amount === "number") {
+    serialized.amount = obj.amount;
   }
   return serialized;
 };
@@ -107,7 +111,9 @@ export async function bulkDeleteTransactions(transactionIds) {
     
 
     revalidatePath("/dashboard");
-    revalidatePath("/account/[id]");
+    for (const accountId of Object.keys(accountBalanceChanges)) {
+      revalidatePath(`/account/${accountId}`);
+    }
 
     return { success: true };
   } catch (error) {
@@ -156,6 +162,7 @@ export async function updateDefaultAccount(accountId) {
     });
 
     revalidatePath("/dashboard");
+    revalidatePath(`/account/${accountId}`);
     return { success: true, data: serializeDecimal(account) };
   } catch (error) {
     return { success: false, error: error.message };
