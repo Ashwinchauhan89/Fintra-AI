@@ -6,6 +6,7 @@ import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import { checkUser } from "@/lib/checkUser";
 import Image from "next/image";
 import { NotificationCenter } from "./notification-center";
+import { MobileNav } from "./mobile-nav";
 import { CreditCard } from "lucide-react";
 
 const Header = async () => {
@@ -86,6 +87,7 @@ const Header = async () => {
                     <LayoutDashboard size={18} />
                     <span className="hidden md:inline">Dashboard</span>
                   </Button>
+                </Link>
                 <Link
                   href="/subscriptions"
                   className="text-neutral-200 hover:text-[#88CE02] hidden lg:flex items-center gap-2 transition-colors"
@@ -98,13 +100,14 @@ const Header = async () => {
                     <span>Subscriptions</span>
                   </Button>
                 </Link>
-                <Link href="/transaction/create">
+                <Link href="/transaction/create" className="hidden sm:inline-block">
                   <Button className="flex items-center gap-2 bg-[#88CE02] text-black hover:bg-lime-400 font-extrabold shadow-[0_0_20px_rgba(136,206,2,0.3)]">
                     <PenBox size={18} />
-                    <span className="hidden md:inline">Add Transaction</span>
+                    <span>Add Transaction</span>
                   </Button>
                 </Link>
                 <NotificationCenter />
+                <MobileNav />
               </SignedIn>
               <SignedOut>
                 <SignInButton forceRedirectUrl="/dashboard">
