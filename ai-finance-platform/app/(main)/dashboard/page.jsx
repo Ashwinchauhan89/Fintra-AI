@@ -12,6 +12,7 @@ import { PortfolioSimulator } from "./_components/portfolio-simulator";
 import { RLDecisionSimulator } from "./_components/rl-decision-simulator";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { StressTester } from "./_components/stress-tester";
 
 export default async function DashboardPage() {
   const [accounts, transactions] = await Promise.all([
@@ -57,6 +58,12 @@ export default async function DashboardPage() {
 
       {/* Multi-Asset Portfolio & SIP Simulator */}
       <PortfolioSimulator />
+
+      {/* Autonomous Macroeconomic & Recession Stress Test Lab */}
+      <StressTester
+        accounts={accounts}
+        transactions={transactions || []}
+      />
 
       {/* Accounts Grid */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
