@@ -4,6 +4,7 @@ import Header from "@/components/header";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/theme-provider";
+import { CurrencyProvider } from "@/lib/currency-context";
 import SmoothScroll from "@/components/smooth-scroll";
 import Footer from "@/components/footer";
 
@@ -26,13 +27,14 @@ export default function RootLayout({ children }) {
       enableSystem
       disableTransitionOnChange
     >
-      <Header />
-      <SmoothScroll>
-        <main className="min-h-screen pt-28">{children}</main>
-      </SmoothScroll>
+      <CurrencyProvider>
+        <Header />
+        <SmoothScroll>
+          <main className="min-h-screen pt-28">{children}</main>
+        </SmoothScroll>
 
-      <Toaster richColors />
-
+        <Toaster richColors />
+      </CurrencyProvider>
     </ThemeProvider>
   );
 

@@ -7,6 +7,7 @@ import { checkUser } from "@/lib/checkUser";
 import Image from "next/image";
 import { NotificationCenter } from "./notification-center";
 import { MobileNav } from "./mobile-nav";
+import { CurrencySelector } from "./currency-selector";
 import { CreditCard } from "lucide-react";
 
 const Header = async () => {
@@ -73,6 +74,7 @@ const Header = async () => {
 
         {/* Action Buttons */}
         <div className="flex items-center space-x-3">
+          <CurrencySelector />
           {isClerkConfigured ? (
             <>
               <SignedIn>
