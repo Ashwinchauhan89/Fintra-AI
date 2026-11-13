@@ -11,6 +11,7 @@ import {
   RefreshCw,
   Clock,
   Download,
+  Users,
 } from "lucide-react";
 import { format } from "date-fns";
 import { toast } from "sonner";
@@ -54,6 +55,7 @@ import useFetch from "@/hooks/use-fetch";
 import { BarLoader } from "react-spinners";
 import { useRouter } from "next/navigation";
 import { AnomalyBadge } from "./anomaly-badge";
+import { SplitExpenseModal } from "./split-expense-modal";
 
 const RECURRING_INTERVALS = {
   DAILY: "Daily",
@@ -71,6 +73,7 @@ export function NoPaginationTransactionTable({ transactions }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [typeFilter, setTypeFilter] = useState("");
   const [recurringFilter, setRecurringFilter] = useState("");
+  const [splittingTransaction, setSplittingTransaction] = useState(null);
   const router = useRouter();
 
   // Memoized filtered and sorted transactions
@@ -458,6 +461,12 @@ export function NoPaginationTransactionTable({ transactions }) {
                         >
                           Edit
                         </DropdownMenuItem>
+                        <DropdownMenuItem
+                          onClick={() => setSplittingTransaction(transaction)}
+                        >
+                          <Users className="h-4 w-4 mr-2" />
+                          Split Bill
+                        </DropdownMenuItem>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem
                           className="text-destructive"
@@ -474,6 +483,13 @@ export function NoPaginationTransactionTable({ transactions }) {
           </TableBody>
         </Table>
       </div>
+
+      {/* Peer Bill Splitting Modal */}
+      <SplitExpenseModal
+        transaction={splittingTransaction}
+        isOpen={!!splittingTransaction}
+        onClose={() => setSplittingTransaction(null)}
+      />
     </div>
   );
 }
